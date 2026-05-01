@@ -1,0 +1,11 @@
+# Word 暫存檔
+~$*.docx
+~$*.doc
+
+# 系統檔案
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Claude Code 本地設定
+.claude/
