@@ -162,65 +162,6 @@ body.reading .floating-menu { display: none; }
 .floating-menu.open span:nth-child(2) { opacity: 0; }
 .floating-menu.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ===== 側邊欄頂部:回首頁 + 切換文件 ===== */
-.sidebar-header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-bottom: 18px;
-  margin-bottom: 18px;
-  border-bottom: 1px solid var(--border);
-}
-
-.back-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  font-size: 12.5px;
-  color: var(--accent-cyan);
-  text-decoration: none;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  width: fit-content;
-  letter-spacing: 0.05em;
-  transition: all 0.2s;
-}
-
-.back-home:hover {
-  color: var(--accent-pink);
-  border-color: var(--accent-pink-soft);
-  background: rgba(255, 77, 143, 0.08);
-}
-
-.file-select {
-  background: rgba(0, 0, 0, 0.35);
-  color: var(--text-main);
-  border: 1px solid var(--border-strong);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 0.2s;
-  width: 100%;
-}
-
-.file-select:hover {
-  border-color: var(--accent-pink);
-  box-shadow: 0 0 12px rgba(255, 77, 143, 0.25);
-}
-
-.file-select option {
-  background: var(--bg-deep);
-  color: var(--text-main);
-}
-
-.file-select optgroup {
-  color: var(--accent-pink);
-  font-weight: 700;
-}
-
 /* ===== Layout ===== */
 .layout {
   display: flex;
@@ -739,11 +680,6 @@ body.reading .floating-menu { display: none; }
 
   .brand-jp { font-size: 18px; }
   .brand-en, .brand-tag { display: none; }
-
-  .file-select {
-    font-size: 12px;
-    padding: 6px 8px;
-  }
 
   .sidebar {
     position: fixed;

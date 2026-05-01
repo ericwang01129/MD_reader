@@ -24,9 +24,7 @@
   const errorBox = document.getElementById('error');
   const backToTop = document.getElementById('backToTop');
   const tocContainer = document.getElementById('toc');
-  const fileSelect = document.getElementById('fileSelect');
   const brandHome = document.getElementById('brandHome');
-  const backHome = document.getElementById('backHome');
   const quickLinks = document.querySelectorAll('a[data-file]');
 
   let scrollObserver = null;
@@ -176,7 +174,6 @@
       currentFile = filePath;
 
       buildTOC();
-      fileSelect.value = filePath;
 
       // 切換到「閱讀模式」:隱藏 topbar
       document.body.classList.add('reading');
@@ -210,7 +207,6 @@
     errorBox.classList.add('hidden');
     welcome.classList.remove('hidden');
     tocContainer.innerHTML = '<p class="toc-empty">尚未選擇文件</p>';
-    fileSelect.value = '';
 
     // 退出「閱讀模式」:顯示 topbar
     document.body.classList.remove('reading');
@@ -229,22 +225,12 @@
   }
 
   // ===== 事件綁定 =====
-  fileSelect.addEventListener('change', (e) => {
-    const file = e.target.value;
-    if (file) navigateTo(file, true);
-    else {
-      history.pushState({}, '', location.pathname + location.search);
-      showWelcome();
-    }
-  });
-
   function goHome(e) {
     if (e) e.preventDefault();
     history.pushState({}, '', location.pathname + location.search);
     showWelcome();
   }
   brandHome.addEventListener('click', goHome);
-  backHome.addEventListener('click', goHome);
 
   quickLinks.forEach(link => {
     link.addEventListener('click', (e) => {
