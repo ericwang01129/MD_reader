@@ -116,22 +116,81 @@ body {
   text-shadow: 0 0 16px rgba(255, 77, 143, 0.65);
 }
 
-/* 右側:目前文件名稱 + 切換選單 */
-.topbar-right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 14px;
+/* ===== 閱讀模式:隱藏 topbar ===== */
+body.reading .topbar { display: none; }
+body.reading .sidebar { top: 0; height: 100vh; }
+body.reading .layout { min-height: 100vh; }
+body.reading .floating-menu { display: none; }
+
+@media (max-width: 768px) {
+  body.reading .floating-menu { display: flex; }
 }
 
-.current-doc {
-  font-size: 13px;
-  color: var(--accent-cyan-soft);
-  letter-spacing: 0.06em;
-  max-width: 280px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/* ===== 浮動漢堡按鈕(僅行動版閱讀時顯示) ===== */
+.floating-menu {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 90;
+  width: 44px;
+  height: 44px;
+  background: rgba(22, 26, 107, 0.95);
+  border: 1px solid var(--accent-pink);
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.floating-menu span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--accent-pink);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+.floating-menu.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.floating-menu.open span:nth-child(2) { opacity: 0; }
+.floating-menu.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ===== 側邊欄頂部:回首頁 + 切換文件 ===== */
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  width: fit-content;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+}
+
+.back-home:hover {
+  color: var(--accent-pink);
+  border-color: var(--accent-pink-soft);
+  background: rgba(255, 77, 143, 0.08);
 }
 
 .file-select {
@@ -144,7 +203,7 @@ body {
   font-family: inherit;
   cursor: pointer;
   transition: all 0.2s;
-  max-width: 220px;
+  width: 100%;
 }
 
 .file-select:hover {
@@ -664,36 +723,6 @@ body {
 /* ===== Hidden util ===== */
 .hidden { display: none !important; }
 
-/* ===== Hamburger menu (hidden on desktop) ===== */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: 1px solid var(--border);
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  padding: 0;
-  margin-right: 12px;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--accent-pink);
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.menu-toggle.open span:nth-child(2) { opacity: 0; }
-.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
   .content { padding: 28px 24px; }
@@ -706,16 +735,12 @@ body {
     --reading-line-height: 1.85;
   }
 
-  .menu-toggle { display: flex; }
-
   .topbar { padding: 0 16px; }
 
   .brand-jp { font-size: 18px; }
   .brand-en, .brand-tag { display: none; }
 
-  .current-doc { display: none; }
   .file-select {
-    max-width: 160px;
     font-size: 12px;
     padding: 6px 8px;
   }
@@ -729,6 +754,11 @@ body {
     z-index: 80;
     background: var(--bg-deep);
     box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  body.reading .sidebar {
+    top: 0;
+    height: 100vh;
   }
 
   .sidebar.open { transform: translateX(0); }
@@ -797,6 +827,7 @@ body {
     background: rgba(0, 0, 0, 0.55);
     z-index: 70;
   }
+  body.reading.menu-open::after { inset: 0; }
 }
 
 @media (max-width: 420px) {
@@ -808,7 +839,7 @@ body {
 /* ===== 列印樣式 ===== */
 @media print {
   body { background: white; color: black; }
-  .topbar, .sidebar, .footer, .back-to-top, .menu-toggle { display: none !important; }
+  .topbar, .sidebar, .footer, .back-to-top, .floating-menu { display: none !important; }
   .content { padding: 0; max-width: 100%; }
   .markdown-body { color: black; }
   .markdown-body h1, .markdown-body h2, .markdown-body h3 { color: black; }

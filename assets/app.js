@@ -16,7 +16,7 @@
 
   // ===== DOM 引用 =====
   const sidebar = document.getElementById('sidebar');
-  const menuToggle = document.getElementById('menuToggle');
+  const floatingMenu = document.getElementById('floatingMenu');
   const welcome = document.getElementById('welcome');
   const docArticle = document.getElementById('document');
   const docContent = document.getElementById('docContent');
@@ -25,30 +25,33 @@
   const backToTop = document.getElementById('backToTop');
   const tocContainer = document.getElementById('toc');
   const fileSelect = document.getElementById('fileSelect');
-  const currentDoc = document.getElementById('currentDoc');
   const brandHome = document.getElementById('brandHome');
+  const backHome = document.getElementById('backHome');
   const quickLinks = document.querySelectorAll('a[data-file]');
 
   let scrollObserver = null;
   let currentFile = null;
 
-  // ===== 行動版選單切換 =====
+  // ===== 行動版選單 =====
   function closeMenu() {
     sidebar.classList.remove('open');
-    menuToggle.classList.remove('open');
+    floatingMenu.classList.remove('open');
     document.body.classList.remove('menu-open');
   }
   function toggleMenu() {
     const willOpen = !sidebar.classList.contains('open');
     sidebar.classList.toggle('open', willOpen);
-    menuToggle.classList.toggle('open', willOpen);
+    floatingMenu.classList.toggle('open', willOpen);
     document.body.classList.toggle('menu-open', willOpen);
   }
-  menuToggle.addEventListener('click', toggleMenu);
+  floatingMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
   document.addEventListener('click', (e) => {
     if (sidebar.classList.contains('open') &&
         !sidebar.contains(e.target) &&
-        !menuToggle.contains(e.target)) {
+        !floatingMenu.contains(e.target)) {
       closeMenu();
     }
   });
@@ -93,7 +96,7 @@
         e.preventDefault();
         const target = document.getElementById(h.id);
         if (target) {
-          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - 24;
           window.scrollTo({ top, behavior: 'smooth' });
         }
         closeMenu();
@@ -143,7 +146,7 @@
         }
       }
     }, {
-      rootMargin: '-80px 0px -70% 0px',
+      rootMargin: '-24px 0px -70% 0px',
       threshold: 0
     });
 
@@ -173,7 +176,10 @@
       currentFile = filePath;
 
       buildTOC();
-      updateCurrentDoc(filePath);
+      fileSelect.value = filePath;
+
+      // 切換到「閱讀模式」:隱藏 topbar
+      document.body.classList.add('reading');
 
       loader.classList.add('hidden');
       docArticle.classList.remove('hidden');
@@ -185,13 +191,6 @@
       errorBox.textContent = '⚠️ ' + (err.message || '載入失敗');
       console.error(err);
     }
-  }
-
-  function updateCurrentDoc(filePath) {
-    const opt = fileSelect.querySelector('option[value="' + filePath + '"]');
-    const label = opt ? opt.textContent : filePath;
-    currentDoc.textContent = label;
-    fileSelect.value = filePath;
   }
 
   // ===== 路由 =====
@@ -210,9 +209,12 @@
     loader.classList.add('hidden');
     errorBox.classList.add('hidden');
     welcome.classList.remove('hidden');
-    tocContainer.innerHTML = '<p class="toc-empty">尚未選擇文件<br><small>請於右上方選單挑選一份文件,或回首頁挑選</small></p>';
-    currentDoc.textContent = '';
+    tocContainer.innerHTML = '<p class="toc-empty">尚未選擇文件</p>';
     fileSelect.value = '';
+
+    // 退出「閱讀模式」:顯示 topbar
+    document.body.classList.remove('reading');
+    closeMenu();
   }
 
   function parseHash() {
@@ -230,14 +232,19 @@
   fileSelect.addEventListener('change', (e) => {
     const file = e.target.value;
     if (file) navigateTo(file, true);
-    else showWelcome();
+    else {
+      history.pushState({}, '', location.pathname + location.search);
+      showWelcome();
+    }
   });
 
-  brandHome.addEventListener('click', (e) => {
-    e.preventDefault();
+  function goHome(e) {
+    if (e) e.preventDefault();
     history.pushState({}, '', location.pathname + location.search);
     showWelcome();
-  });
+  }
+  brandHome.addEventListener('click', goHome);
+  backHome.addEventListener('click', goHome);
 
   quickLinks.forEach(link => {
     link.addEventListener('click', (e) => {

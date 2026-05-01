@@ -12,42 +12,45 @@
 </head>
 <body>
 
-<header class="topbar">
-  <button id="menuToggle" class="menu-toggle" aria-label="開啟目錄">
-    <span></span><span></span><span></span>
-  </button>
+<!-- 首頁專用 topbar(閱讀文件時隱藏) -->
+<header class="topbar" id="topbar">
   <a href="#" class="brand" id="brandHome" title="回首頁">
     <span class="brand-jp">デカマホロ</span>
     <span class="brand-en">Decamahoro</span>
     <span class="brand-tag">繁體中文</span>
   </a>
-  <div class="topbar-right">
-    <span id="currentDoc" class="current-doc"></span>
-    <select id="fileSelect" class="file-select" aria-label="切換文件">
-      <option value="">📄 選擇文件…</option>
-      <optgroup label="📖 全員可閱覽">
-        <option value="MD/公開資訊.md">公開資訊總匯</option>
-      </optgroup>
-      <optgroup label="🔒 秘匿 HO（個別）">
-        <option value="MD/HO1_秘匿_刑警.md">HO1 · 刑警</option>
-        <option value="MD/HO2_秘匿_Somnia.md">HO2 · Somnia</option>
-        <option value="MD/HO3_秘匿_技術員.md">HO3 · 技術員</option>
-        <option value="MD/HO4_秘匿_Proto.md">HO4 · Proto</option>
-      </optgroup>
-      <optgroup label="🎲 KP 用">
-        <option value="MD/decamahoro_zh-TW.md">完整劇本(含劇透)</option>
-      </optgroup>
-    </select>
-  </div>
 </header>
+
+<!-- 閱讀模式：行動版浮動漢堡按鈕 -->
+<button id="floatingMenu" class="floating-menu" aria-label="開啟目錄">
+  <span></span><span></span><span></span>
+</button>
 
 <div class="layout">
 
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-inner">
+      <div class="sidebar-header">
+        <a href="#" class="back-home" id="backHome" title="回首頁">← 回首頁</a>
+        <select id="fileSelect" class="file-select" aria-label="切換文件">
+          <option value="">📄 選擇文件…</option>
+          <optgroup label="📖 全員可閱覽">
+            <option value="MD/公開資訊.md">公開資訊總匯</option>
+          </optgroup>
+          <optgroup label="🔒 秘匿 HO">
+            <option value="MD/HO1_秘匿_刑警.md">HO1 · 刑警</option>
+            <option value="MD/HO2_秘匿_Somnia.md">HO2 · Somnia</option>
+            <option value="MD/HO3_秘匿_技術員.md">HO3 · 技術員</option>
+            <option value="MD/HO4_秘匿_Proto.md">HO4 · Proto</option>
+          </optgroup>
+          <optgroup label="🎲 KP 用">
+            <option value="MD/decamahoro_zh-TW.md">完整劇本(含劇透)</option>
+          </optgroup>
+        </select>
+      </div>
       <h2 class="nav-title">本頁目錄</h2>
       <nav id="toc" class="toc">
-        <p class="toc-empty">尚未選擇文件<br><small>請於右上方選單挑選一份文件,或回首頁挑選</small></p>
+        <p class="toc-empty">尚未選擇文件</p>
       </nav>
     </div>
   </aside>
@@ -87,7 +90,6 @@
 
 <footer class="footer">
   <p>本作為《克蘇魯神話 TRPG》二次創作物 · Call of Cthulhu ©Chaosium Inc.</p>
-  <p><a href="https://github.com/ericwang01129/decamahoro_zh-TW" target="_blank" rel="noopener">GitHub Repository</a></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
