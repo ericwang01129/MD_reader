@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デカマホロ Decamahoro · 繁體中文閱讀器</title>
+<meta name="description" content="非公式 CoC 劇本《デカマホロ》繁體中文版線上閱讀器">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button id="menuToggle" class="menu-toggle" aria-label="開啟目錄">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand">
+    <span class="brand-jp">デカマホロ</span>
+    <span class="brand-en">Decamahoro</span>
+    <span class="brand-tag">Call of Cthulhu · 繁體中文</span>
+  </div>
+  <div class="brand-deco" aria-hidden="true">✦</div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <h2 class="nav-title">目錄</h2>
+
+      <div class="nav-group">
+        <h3>全員可閱覽</h3>
+        <ul class="nav-list">
+          <li><a href="#" data-file="MD/公開資訊.md">公開資訊</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group secret">
+        <h3>秘匿 HO（個別）</h3>
+        <ul class="nav-list">
+          <li><a href="#" data-file="MD/HO1_秘匿_刑警.md">HO1 · 刑警</a></li>
+          <li><a href="#" data-file="MD/HO2_秘匿_Somnia.md">HO2 · Somnia</a></li>
+          <li><a href="#" data-file="MD/HO3_秘匿_技術員.md">HO3 · 技術員</a></li>
+          <li><a href="#" data-file="MD/HO4_秘匿_Proto.md">HO4 · Proto</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group kp">
+        <h3>KP 用</h3>
+        <ul class="nav-list">
+          <li><a href="#" data-file="MD/decamahoro_zh-TW.md">完整劇本（含劇透）</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>原作 ヒチリ<br>SPLL E188304</p>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content" id="content">
+    <article class="welcome" id="welcome">
+      <h1>歡迎來到 デカマホロ 閱讀室</h1>
+      <p class="lead">本站為非公式 CoC 劇本《デカマホロ》的繁體中文線上閱讀器。</p>
+      <p>請從左側目錄選擇要閱讀的章節：</p>
+      <ul class="quick-links">
+        <li><a href="#" data-file="MD/公開資訊.md">公開資訊</a><span>劇本概要、世界觀、公開 HO、NPC 公開資訊</span></li>
+        <li><a href="#" data-file="MD/HO1_秘匿_刑警.md">HO1 秘匿</a><span>刑警 · 限 HO1 玩家</span></li>
+        <li><a href="#" data-file="MD/HO2_秘匿_Somnia.md">HO2 秘匿</a><span>Somnia · 限 HO2 玩家</span></li>
+        <li><a href="#" data-file="MD/HO3_秘匿_技術員.md">HO3 秘匿</a><span>技術員 · 限 HO3 玩家</span></li>
+        <li><a href="#" data-file="MD/HO4_秘匿_Proto.md">HO4 秘匿</a><span>Proto · 限 HO4 玩家</span></li>
+        <li><a href="#" data-file="MD/decamahoro_zh-TW.md">完整劇本</a><span>含全劇透 · 僅 KP 使用</span></li>
+      </ul>
+      <div class="warning">
+        ⚠️ 秘匿 HO 與完整劇本含劇透內容，請依個人角色身分閱覽。
+      </div>
+    </article>
+
+    <article id="document" class="document hidden">
+      <div id="docContent" class="markdown-body"></div>
+      <button class="back-to-top" id="backToTop" aria-label="回到頂端">▲</button>
+    </article>
+
+    <div id="loader" class="loader hidden">
+      <div class="spinner"></div>
+      <p>讀取中...</p>
+    </div>
+
+    <div id="error" class="error hidden"></div>
+  </main>
+
+</div>
+
+<footer class="footer">
+  <p>本作為《克蘇魯神話 TRPG》二次創作物 · Call of Cthulhu ©Chaosium Inc.</p>
+  <p><a href="https://github.com/ericwang01129/decamahoro_zh-TW" target="_blank" rel="noopener">GitHub Repository</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

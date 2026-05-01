@@ -117,10 +117,6 @@ MP 在每場戰鬥後重置。槍械形狀者不會發生子彈耗盡，劍系�
 ### ◆ 權利表記 ◆
 
 本作為「株式會社 Arclight」及「KADOKAWA 股份有限公司」持有權利之《克蘇魯神話 TRPG》的二次創作物。Call of Cthulhu is copyright ©1981, 2015, 2019 by Chaosium Inc.; all rights reserved. Arranged by Arclight Inc. Call of Cthulhu is a registered trademark of Chaosium Inc. PUBLISHED BY KADOKAWA CORPORATION 「克蘇魯神話 TRPG」
-
-
----
-
 ## KP 資訊
 
 魔女凱齊亞・梅森（Keziah Mason）從阿卡姆出發，足跡遍及世界各地，組織了新的魔女信徒團。約 200 年前，凱齊亞造訪日本，新組織了一個魔女信徒團，作為其中一員所屬的便是 **{HO4}**，而 **{HO3}** 的祖先則被此信徒團施加了詛咒。

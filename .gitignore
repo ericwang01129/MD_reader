@@ -9,3 +9,6 @@ desktop.ini
 
 # Claude Code 本地設定
 .claude/
+
+# 大容量素材壓縮檔（已不需要進版控）
+decamahoro.zip
