@@ -89,7 +89,7 @@
       const a = document.createElement('a');
       a.href = '#';
       a.dataset.target = h.id;
-      a.textContent = h.textContent.replace(/^[\s✦◆#·*]+/, '').trim();
+      a.textContent = h.textContent.replace(/^[\s#·*]+/, '').trim();
       a.title = a.textContent;
 
       a.addEventListener('click', (e) => {
@@ -188,7 +188,7 @@
     } catch (err) {
       loader.classList.add('hidden');
       errorBox.classList.remove('hidden');
-      errorBox.textContent = '⚠️ ' + (err.message || '載入失敗');
+      errorBox.textContent = err.message || '載入失敗';
       console.error(err);
     }
   }

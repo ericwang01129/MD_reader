@@ -6,7 +6,7 @@
 :root {
   /* 主色 */
   --bg-deep: #161A6B;
-  --bg-mid:  #1F1FA8;
+  --bg-mid: #1F1FA8;
   --bg-card: #20256A;
   --bg-card-hover: #2A2F8A;
 
@@ -355,7 +355,7 @@ body.reading .floating-menu { display: none; }
 }
 
 .welcome h1::after {
-  content: ' ✦';
+  content: ' ';
   color: var(--accent-pink);
 }
 

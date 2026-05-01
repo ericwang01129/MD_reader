@@ -8,7 +8,7 @@
 
 ## 線上閱讀
 
-🔗 **https://ericwang01129.github.io/decamahoro_zh-TW/**
+**https://ericwang01129.github.io/decamahoro_zh-TW/**
 
 ## 內容
 
@@ -49,7 +49,7 @@ python -m http.server 8000
 # 瀏覽器開啟 http://localhost:8000
 ```
 
-⚠️ 不可直接以 `file://` 開啟（fetch 會被瀏覽器阻擋）。
+不可直接以 `file://` 開啟（fetch 會被瀏覽器阻擋）。
 
 ## 權利表記
 
