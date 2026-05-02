@@ -1,9 +1,3 @@
----
-title: HO介紹
-tags: [子項目]
-
----
-
 <div style="float: right; width: 30%; padding: 1em; background: #f4f4f4; border-left: 3px solid #888;">
   <img src="images/HO1.png" alt="HO1 盜賊">
 </div>
