@@ -30,6 +30,13 @@
   let scrollObserver = null;
   let currentFile = null;
 
+  // ===== 站台根 URL（捕獲於頁面進入時，replaceState 後仍可用） =====
+  const SITE_ROOT_HREF = new URL('.', document.baseURI).href;
+  const SITE_ROOT_PATH = new URL('.', document.baseURI).pathname;
+
+  function mdToHtml(p) { return p.replace(/\.md$/i, '.html'); }
+  function htmlToMd(p) { return p.replace(/\.html$/i, '.md'); }
+
   // ===== <title> 與 <meta description> =====
   const DEFAULT_TITLE = document.title;
   const DEFAULT_DESC = (document.querySelector('meta[name="description"]') || {}).content || '';
@@ -123,7 +130,7 @@
     if (!rawUrl) return rawUrl;
     if (/^(?:[a-z]+:|\/\/|\/|#|mailto:|data:)/i.test(rawUrl)) return rawUrl;
     try {
-      const base = new URL(mdFilePath, document.baseURI);
+      const base = new URL(mdFilePath, SITE_ROOT_HREF);
       return new URL(rawUrl, base).href;
     } catch (e) {
       return rawUrl;
@@ -141,14 +148,13 @@
       if (/\.md(?:[?#]|$)/i.test(href) &&
           !/^(?:[a-z]+:|\/\/)/i.test(href)) {
         try {
-          const base = new URL(filePath, document.baseURI);
+          const base = new URL(filePath, SITE_ROOT_HREF);
           const resolved = new URL(href, base);
-          const sitePath = location.pathname.replace(/[^/]*$/, '');
           let relPath = resolved.pathname;
-          if (relPath.startsWith(sitePath)) {
-            relPath = relPath.slice(sitePath.length);
+          if (relPath.startsWith(SITE_ROOT_PATH)) {
+            relPath = relPath.slice(SITE_ROOT_PATH.length);
           }
-          a.href = '#' + encodeURIComponent(relPath);
+          a.href = SITE_ROOT_PATH + encodeURI(mdToHtml(relPath));
           a.dataset.mdLink = relPath;
           return;
         } catch (e) { /* fallthrough */ }
@@ -305,11 +311,16 @@
   }
 
   // ===== 路由 =====
-  function navigateTo(filePath, push) {
+  function navigateTo(filePath, push, replace) {
     loadMarkdown(filePath);
-    if (push) {
-      const hash = '#' + encodeURIComponent(filePath);
-      if (location.hash !== hash) history.pushState({ file: filePath }, '', hash);
+    if (push || replace) {
+      const target = SITE_ROOT_PATH + encodeURI(mdToHtml(filePath));
+      const current = location.pathname + location.search;
+      if (current !== target) {
+        const state = { file: filePath };
+        if (replace) history.replaceState(state, '', target);
+        else history.pushState(state, '', target);
+      }
     }
   }
 
@@ -339,10 +350,28 @@
     }
   }
 
+  // 從目前 pathname 推導要載入的 .md（用於使用者直接打開 .html stub 時）
+  function parsePathname() {
+    let p = location.pathname;
+    if (p.startsWith(SITE_ROOT_PATH)) p = p.slice(SITE_ROOT_PATH.length);
+    if (!p) return null;
+    if (/(^|\/)index\.html$/i.test(p)) return null;
+    if (!/\.html$/i.test(p)) return null;
+    try {
+      return decodeURIComponent(htmlToMd(p));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function parseRoute() {
+    return parsePathname() || parseHash();
+  }
+
   // ===== 事件綁定 =====
   function goHome(e) {
     if (e) e.preventDefault();
-    history.pushState({}, '', location.pathname + location.search);
+    history.pushState({}, '', SITE_ROOT_PATH);
     showWelcome();
   }
   brandHome.addEventListener('click', goHome);
@@ -356,7 +385,7 @@
   });
 
   window.addEventListener('popstate', () => {
-    const file = parseHash();
+    const file = parseRoute();
     if (file) navigateTo(file, false);
     else showWelcome();
   });
@@ -370,7 +399,7 @@
   });
 
   // ===== 啟動 =====
-  const initialFile = parseHash();
-  if (initialFile) navigateTo(initialFile, false);
+  const initialFile = parseRoute();
+  if (initialFile) navigateTo(initialFile, false, true);
   else showWelcome();
 })();
