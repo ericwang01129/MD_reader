@@ -1,5 +1,5 @@
 /* ============================================================
-   デカマホロ Reader · Markdown 載入 + HackMD 風格 TOC
+   MD Reader · Markdown 載入 + HackMD 風格 TOC + 相對路徑解析
    ============================================================ */
 
 (function () {
@@ -53,6 +53,53 @@
       closeMenu();
     }
   });
+
+  // ===== 相對路徑解析(相對於 MD 檔所在目錄) =====
+  function resolveRelative(rawUrl, mdFilePath) {
+    if (!rawUrl) return rawUrl;
+    if (/^(?:[a-z]+:|\/\/|\/|#|mailto:|data:)/i.test(rawUrl)) return rawUrl;
+    try {
+      const base = new URL(mdFilePath, document.baseURI);
+      return new URL(rawUrl, base).href;
+    } catch (e) {
+      return rawUrl;
+    }
+  }
+
+  function rewriteRelativeUrls(filePath) {
+    docContent.querySelectorAll('img[src]').forEach(img => {
+      img.src = resolveRelative(img.getAttribute('src'), filePath);
+    });
+    docContent.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      // 若連結指向 .md 檔,改為使用本 reader 的 hash 路由
+      if (/\.md(?:[?#]|$)/i.test(href) &&
+          !/^(?:[a-z]+:|\/\/)/i.test(href)) {
+        try {
+          const base = new URL(filePath, document.baseURI);
+          const resolved = new URL(href, base);
+          const sitePath = location.pathname.replace(/[^/]*$/, '');
+          let relPath = resolved.pathname;
+          if (relPath.startsWith(sitePath)) {
+            relPath = relPath.slice(sitePath.length);
+          }
+          a.href = '#' + encodeURIComponent(relPath);
+          a.dataset.mdLink = relPath;
+          return;
+        } catch (e) { /* fallthrough */ }
+      }
+      a.href = resolveRelative(href, filePath);
+    });
+
+    // 內部 .md 連結改為觸發 navigateTo
+    docContent.querySelectorAll('a[data-md-link]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo(a.dataset.mdLink, true);
+      });
+    });
+  }
 
   // ===== TOC 生成 =====
   function slugify(text, fallback) {
@@ -173,9 +220,9 @@
       docContent.innerHTML = safeHtml;
       currentFile = filePath;
 
+      rewriteRelativeUrls(filePath);
       buildTOC();
 
-      // 切換到「閱讀模式」:隱藏 topbar
       document.body.classList.add('reading');
 
       loader.classList.add('hidden');
@@ -208,7 +255,6 @@
     welcome.classList.remove('hidden');
     tocContainer.innerHTML = '<p class="toc-empty">尚未選擇文件</p>';
 
-    // 退出「閱讀模式」:顯示 topbar
     document.body.classList.remove('reading');
     closeMenu();
   }
@@ -246,7 +292,6 @@
     else showWelcome();
   });
 
-  // 回到頂端
   window.addEventListener('scroll', () => {
     if (window.scrollY > 400) backToTop.classList.add('show');
     else backToTop.classList.remove('show');

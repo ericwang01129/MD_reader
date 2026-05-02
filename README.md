@@ -1,47 +1,56 @@
-# デカマホロ（DekaMahoro）繁體中文翻譯
+# MD Reader · 通用 Markdown 線上閱讀器
 
-非公式 CoC（克蘇魯神話 TRPG）劇本《デカマホロ》之繁體中文翻譯版本。
+自建的純前端 Markdown 閱讀器,以 HackMD 風的白底黑字介面呈現,支援多文件、HackMD 風 TOC、相對路徑圖片、深層 hash 路由。
 
-- 原作者：ヒチリ（[@hichikororin](https://twitter.com/hichikororin)）
-- 原作 SPLL：E188304
-- 副標題：在魔法身旁呼吸（魔法のそばで息をする）
+無後端、無建置流程;只要把 .md 檔放進子資料夾,在 `index.html` 加一行連結即可。
 
-## 線上閱讀
+## 功能
 
-**https://ericwang01129.github.io/decamahoro_zh-TW/**
+- 純前端、單一 `index.html` 入口
+- HackMD 風格白底黑字、無干擾排版
+- 自動產生左側 HackMD 風 TOC,並支援滾動高亮(scroll-spy)
+- Markdown 中的相對路徑圖片/連結會以 MD 檔所在目錄為基準解析
+- 內部 `.md` 連結自動轉為閱讀器內導向(hash 路由)
+- 行動版響應式;閱讀模式下隱藏 topbar、提供浮動漢堡選單
+- 由 [marked](https://github.com/markedjs/marked) 解析、[DOMPurify](https://github.com/cure53/DOMPurify) 消毒
 
-## 內容
+## 專案結構
 
-| 路徑 | 說明 |
-|---|---|
-| `index.html` + `assets/` | GitHub Pages 線上閱讀器（部署於根目錄） |
-| `MD/` | 全部翻譯文本（線上版直接讀取此處） |
-| `MD/公開資訊.md` | 玩家可閱覽：劇本概要、世界觀、公開 HO、NPC 公開資訊 |
-| `MD/HO1_秘匿_刑警.md` | HO1 個別秘匿（限該玩家） |
-| `MD/HO2_秘匿_Somnia.md` | HO2 個別秘匿（限該玩家） |
-| `MD/HO3_秘匿_技術員.md` | HO3 個別秘匿（限該玩家） |
-| `MD/HO4_秘匿_Proto.md` | HO4 個別秘匿（限該玩家） |
-| `MD/decamahoro_zh-TW.md` | 完整劇本（含全劇透，僅 KP 用） |
-| `decamahoro NPC/` | NPC 立繪 |
-| `seifuku/` | 制服素材 |
-| `still/` | 場景靜止畫 |
-| `decamahoro.pdf` | 原文 PDF |
+```
+.
+├── index.html          # 閱讀器入口
+├── assets/
+│   ├── app.js          # 載入、TOC、相對路徑解析、路由
+│   └── style.css       # HackMD 風主題
+└── decamahoro/         # 收錄文件:デカマホロ 繁中翻譯
+    ├── README.md
+    ├── MD/             # 翻譯 Markdown
+    └── ...             # 立繪、PDF 等資產
+```
 
-## 翻譯慣例
+## 使用方式
 
-- 神話生物・神格採台灣 CoC 常見譯名（奈亞拉托提普、猶格・索托斯、阿卡姆、香巴拉等）
-- 角色名以漢字保留，假名於首次出現處括註原讀音
-- 技能以〈〉、對白以「」、探索場所以【】標示
+### 線上閱讀
 
-## 部署 GitHub Pages
+開啟 `index.html` 後,從首頁「收錄文件」清單選擇,或以 hash 直接開啟任意 .md:
 
-1. 推送至 `main` 分支
-2. **Settings → Pages**
-   - Source: `Deploy from a branch`
-   - Branch: **`main` / `/ (root)`**
-3. 約 1 分鐘後上線於上方網址
+```
+index.html#decamahoro/MD/公開資訊.md
+```
 
-### 本地預覽
+### 加入新的 Markdown 文件
+
+1. 把 `.md` 與其引用的圖片/資源放進任一子資料夾
+2. MD 內以**相對於該 MD 檔位置**的路徑引用圖片(例:`![](../images/foo.png)`)
+3. 在 `index.html` 的「收錄文件」區段加入連結:
+
+   ```html
+   <li><a href="#" data-file="my-folder/article.md">文章名稱</a><span>說明</span></li>
+   ```
+
+## 本地預覽
+
+直接以 `file://` 開啟瀏覽器會被 fetch 阻擋,需要走 HTTP:
 
 ```powershell
 cd "d:\帶團用\DekaMahoro"
@@ -49,16 +58,21 @@ python -m http.server 8000
 # 瀏覽器開啟 http://localhost:8000
 ```
 
-不可直接以 `file://` 開啟（fetch 會被瀏覽器阻擋）。
+## 部署 GitHub Pages
 
-## 權利表記
+1. 推送至 `main` 分支
+2. **Settings → Pages**
+   - Source: `Deploy from a branch`
+   - Branch: **`main` / `/ (root)`**
+3. 約 1 分鐘後上線
 
-本作為「株式會社 Arclight」及「KADOKAWA 股份有限公司」持有權利之《克蘇魯神話 TRPG》的二次創作物。
-Call of Cthulhu is copyright ©1981, 2015, 2019 by Chaosium Inc.; all rights reserved.
-Arranged by Arclight Inc. Call of Cthulhu is a registered trademark of Chaosium Inc.
-PUBLISHED BY KADOKAWA CORPORATION 「克蘇魯神話 TRPG」
+## 收錄文件
 
-## 使用須知
+| 子資料夾 | 內容 | 說明 |
+|---|---|---|
+| [`decamahoro/`](decamahoro/) | デカマホロ 繁體中文翻譯 | 非公式 CoC 劇本 · 詳見 [decamahoro/README.md](decamahoro/README.md) |
 
-- 本翻譯本僅供 TRPG 跑團使用，禁止二次散佈與商業使用。
-- 翻譯內容若有疑問，請聯繫譯者；劇本相關請洽原作者。
+## 授權
+
+閱讀器本身(`index.html`、`assets/`)為自建程式碼,可自由使用。
+各子資料夾下的內容請依其各自 README 所載之授權與使用須知為準。
