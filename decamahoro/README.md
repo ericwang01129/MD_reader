@@ -8,19 +8,19 @@
 
 ## 線上閱讀
 
-從專案根目錄的閱讀器入口進入,或直接以 hash 開啟對應檔案。
+從專案根目錄的閱讀器入口進入，或直接以 hash 開啟對應檔案。
 
 ## 內容
 
 | 路徑 | 說明 |
 |---|---|
-| `MD/` | 全部翻譯文本(線上閱讀器讀取此處) |
+| `MD/` | 全部翻譯文本（線上閱讀器讀取此處） |
 | `MD/公開資訊.md` | 玩家可閱覽:劇本概要、世界觀、公開 HO、NPC 公開資訊 |
-| `MD/HO1_秘匿_刑警.md` | HO1 個別秘匿(限該玩家) |
-| `MD/HO2_秘匿_夢想.md` | HO2 個別秘匿(限該玩家) |
-| `MD/HO3_秘匿_技術員.md` | HO3 個別秘匿(限該玩家) |
-| `MD/HO4_秘匿_Proto.md` | HO4 個別秘匿(限該玩家) |
-| `MD/decamahoro_zh-TW.md` | 完整劇本(含全劇透,僅 KP 用) |
+| `MD/HO1_秘匿_刑警.md` | HO1 個別秘匿（限該玩家） |
+| `MD/HO2_秘匿_夢想.md` | HO2 個別秘匿（限該玩家） |
+| `MD/HO3_秘匿_技術員.md` | HO3 個別秘匿（限該玩家） |
+| `MD/HO4_秘匿_Proto.md` | HO4 個別秘匿（限該玩家） |
+| `MD/decamahoro_zh-TW.md` | 完整劇本（含全劇透，僅 KP 用） |
 | `decamahoro NPC/` | NPC 立繪 |
 | `seifuku/` | 制服素材 |
 | `still/` | 場景靜止畫 |
@@ -39,7 +39,7 @@
 ## 權利表記
 
 本作為「株式會社 Arclight」及「KADOKAWA 股份有限公司」持有權利之《克蘇魯神話 TRPG》的二次創作物。
-Call of Cthulhu is copyright ©1981, 2015, 2019 by Chaosium Inc.; all rights reserved.
+Call of Cthulhu is copyright ©1981， 2015， 2019 by Chaosium Inc.; all rights reserved.
 Arranged by Arclight Inc. Call of Cthulhu is a registered trademark of Chaosium Inc.
 PUBLISHED BY KADOKAWA CORPORATION 「克蘇魯神話 TRPG」
 
