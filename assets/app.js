@@ -30,6 +30,70 @@
   let scrollObserver = null;
   let currentFile = null;
 
+  // ===== <title> 與 <meta description> =====
+  const DEFAULT_TITLE = document.title;
+  const DEFAULT_DESC = (document.querySelector('meta[name="description"]') || {}).content || '';
+
+  function setMeta(name, value, attr) {
+    attr = attr || 'name';
+    let el = document.querySelector('meta[' + attr + '="' + name + '"]');
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attr, name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', value);
+  }
+
+  function applyMeta(title, desc) {
+    document.title = title;
+    setMeta('description', desc);
+    setMeta('og:title', title, 'property');
+    setMeta('og:description', desc, 'property');
+  }
+
+  function extractTitleAndPreview(md) {
+    const lines = md.split(/\r?\n/);
+    let inFrontMatter = false;
+    let inFence = false;
+    let title = '';
+    const previewParts = [];
+
+    for (let i = 0; i < lines.length; i++) {
+      const raw = lines[i];
+      const line = raw.trim();
+
+      if (i === 0 && line === '---') { inFrontMatter = true; continue; }
+      if (inFrontMatter) { if (line === '---') inFrontMatter = false; continue; }
+
+      if (/^```/.test(line)) { inFence = !inFence; continue; }
+      if (inFence) continue;
+
+      if (!title) {
+        const h1 = line.match(/^#\s+(.+?)\s*#*\s*$/);
+        if (h1) { title = h1[1].trim(); continue; }
+      }
+
+      if (!line || /^#{1,6}\s/.test(line) || /^[->|*_=]{3,}$/.test(line)) continue;
+
+      const cleaned = line
+        .replace(/^>\s*/, '')
+        .replace(/^[-*+]\s+/, '')
+        .replace(/^\d+\.\s+/, '')
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+        .replace(/[*_`~]+/g, '')
+        .trim();
+
+      if (cleaned) previewParts.push(cleaned);
+      if (previewParts.join(' ').length >= 120) break;
+    }
+
+    let preview = previewParts.join(' ').replace(/\s+/g, ' ').trim();
+    if (preview.length > 160) preview = preview.slice(0, 157) + '…';
+    return { title: title || DEFAULT_TITLE, preview: preview || DEFAULT_DESC };
+  }
+
   // ===== 行動版選單 =====
   function closeMenu() {
     sidebar.classList.remove('open');
@@ -220,6 +284,9 @@
       docContent.innerHTML = safeHtml;
       currentFile = filePath;
 
+      const meta = extractTitleAndPreview(md);
+      applyMeta(meta.title + ' · MD Reader', meta.preview);
+
       rewriteRelativeUrls(filePath);
       buildTOC();
 
@@ -254,6 +321,8 @@
     errorBox.classList.add('hidden');
     welcome.classList.remove('hidden');
     tocContainer.innerHTML = '<p class="toc-empty">尚未選擇文件</p>';
+
+    applyMeta(DEFAULT_TITLE, DEFAULT_DESC);
 
     document.body.classList.remove('reading');
     closeMenu();
