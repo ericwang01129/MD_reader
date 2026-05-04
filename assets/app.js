@@ -154,6 +154,7 @@
           if (relPath.startsWith(SITE_ROOT_PATH)) {
             relPath = relPath.slice(SITE_ROOT_PATH.length);
           }
+          relPath = decodeURIComponent(relPath);
           a.href = SITE_ROOT_PATH + encodeURI(mdToHtml(relPath));
           a.dataset.mdLink = relPath;
           return;
