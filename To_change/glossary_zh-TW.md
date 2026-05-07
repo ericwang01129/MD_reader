@@ -50,9 +50,9 @@
 | EN | zh-TW |
 |---|---|
 | Mental Fortitude (MF) — Willpower | 心靈韌性（MF）— 意志力 |
-| Mental Aptitude (MA) — Intellect | 心靈才能（MA）— 智力 |
+| Mental Aptitude (MA) — Intellect | 心靈天賦（MA）— 智力 |
 | Physical Fortitude (PF) — Endurance | 肉體韌性（PF）— 耐力 |
-| Physical Aptitude (PA) — Strength | 肉體才能（PA）— 體能 |
+| Physical Aptitude (PA) — Strength | 肉體天賦（PA）— 體能 |
 | damaged | 受損 |
 | changed | 蛻化（作為機制動詞） |
 | restored / healing | 恢復 / 治療 |
