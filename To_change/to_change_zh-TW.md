@@ -5,7 +5,11 @@
 > 解析機制：以塔羅 22 張大阿爾克那組成的「預兆牌」為核心，無骰系統。
 > 本譯本為非公式繁中翻譯，依原書頁次逐章翻譯中。
 
+<figure class="cover-art">
+
 ![《To Change》封面](images/p001_1.jpg)
+
+</figure>
 
 ---
 
@@ -1285,5 +1289,3 @@
 代名詞（she/her、he/him、they/them、she/fae、any/all 等）一律保留**原文**——這是原書對跨性別表達原貌的尊重，不應在中譯中被消除。
 
 英文故事標題保留括註原文，以便對照。原書已知排版限制：本 PDF 共 210 頁，TOC 中所列「製作人員（Credits, p. 211）」未實際收錄於這份檔案，因此譯本未列。
-
-譯名表詳見 [`work/glossary.md`](work/glossary.md)。

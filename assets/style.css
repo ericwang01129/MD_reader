@@ -477,6 +477,25 @@ body.reading .floating-menu { display: none; }
 
 .markdown-body h3 { clear: both; }
 
+/* 全寬封面 — 取消浮動、置中、滿版 */
+.markdown-body .cover-art {
+  margin: 1.5em 0 2em;
+  text-align: center;
+}
+
+.markdown-body .cover-art img {
+  float: none;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  border: none;
+  background: transparent;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+}
+
 /* 角色建立 22 張塔羅卡——以圖為主的獨立區塊 */
 .markdown-body .char-card {
   margin: 2em 0;
