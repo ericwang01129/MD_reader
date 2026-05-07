@@ -12,3 +12,7 @@ desktop.ini
 
 # 大容量素材壓縮檔（已不需要進版控）
 decamahoro.zip
+
+# To Change：OCR 損毀的 docx 來源、抽文工作目錄不入版控
+To_change/To Change PDF.docx
+To_change/work/
