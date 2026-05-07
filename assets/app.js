@@ -196,9 +196,24 @@
     const list = document.createElement('ul');
     list.className = 'toc-list';
 
+    // 確保每個 heading 的 id 在文件內唯一；若 marked／slugify 因相同標題文字
+    // 產生重複 id，於後續同名標題加上 -2、-3… 後綴。否則 TOC 點擊第二次以後
+    // 出現的同名標題時，document.getElementById() 永遠回傳第一個元素，造成
+    // 跳到第一次出現位置的 bug。
+    const usedIds = new Set();
     headings.forEach((h, i) => {
-      if (!h.id) h.id = slugify(h.textContent, 'h-' + i);
+      const base = h.id || slugify(h.textContent, 'h-' + i) || ('h-' + i);
+      let id = base;
+      let n = 2;
+      while (usedIds.has(id)) {
+        id = base + '-' + n;
+        n++;
+      }
+      if (h.id !== id) h.id = id;
+      usedIds.add(id);
+    });
 
+    headings.forEach((h, i) => {
       const li = document.createElement('li');
       li.className = 'toc-item toc-' + h.tagName.toLowerCase();
 
