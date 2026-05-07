@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>蛻化十字 v1.5 — 繁中版</title>
+   <!--For use with the 'To Change' game system by Ulysses Duckler & Ewen Albright
+
+     V1. 12/06/2022 by J.Morgan Wolff
+     繁體中文翻譯：依本譯本既定譯名（敘事者／動作／預兆牌／蛻化／韌性／才能…）
+     僅翻譯可見文字，保留全部 id、class、JavaScript 與索引順序-->
+
+  <style>
+  #body{}
+
+#overlay{
+ background-image: url("images/295783630049211.png");
+/* Sparkle Magic Pink Colorful by @mariaandraa */
+ background-repeat:round;
+
+  }
+
+
+
+#sheet{
+  position: relative;
+  background: rgb(147, 112, 219);
+background: linear-gradient(180deg, rgba(173,216,230,1) 0%, rgba(147,112,219,1) 40%, rgba(219,112,147,1) 60%, rgba(147,112,219,1) 80%, rgba(173,216,230,1) 100%);
+  width: 1400px;
+  height: 2100px;
+  color: indigo;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Tahoma, sans-serif;
+}
+
+.row {height:180px;margin:20px;}
+
+.bumper{height:40px;
+  font-family: Georgia, "Noto Serif TC", serif;
+font-size: 40px;
+text-align: center;
+vertical-align: middle;
+  line-height: 40px; }
+
+.bigbumper
+{height:130px;
+font-family: 'Brush Script MT', cursive;
+font-size: 90px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+line-height: 150px; }
+
+
+
+
+.second {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.third {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.middle {
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.box{
+  resize: none;
+  position: relative;
+  box-sizing: border-box;
+  overflow: auto;
+  width: 420px;
+  height: 180px;
+  padding: 5px;
+  border: 5px solid rebeccapurple;
+  border-radius: 12px;
+  margin-bottom: 0px;
+  color: black;
+  font-size: 18px;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Tahoma, sans-serif;
+ }
+
+
+.left {
+	float: left;
+}
+
+.right{
+  float: right;
+}
+
+.upper.box.left{background: rgb(255,182,193);
+background: linear-gradient(310deg, rgba(230,230,250,.6) 10%, rgba(255,182,193,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.upper.box.right{background: rgb(176,196,222);
+background: linear-gradient(40deg, rgba(255,228,225,.6) 10%, rgba(176,196,222,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.lower.box.left{background: rgb(176,196,222);
+background: linear-gradient(220deg, rgba(255,228,225,.6) 10%, rgba(176,196,222,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.lower.box.right{background: rgb(255,182,193);
+background: linear-gradient(130deg, rgba(230,230,250,.6) 10%, rgba(255,182,193,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.box.perm
+{background: rgb(216,191,216);
+background: radial-gradient(circle, rgba(220,20,60,.8) 10%, rgba(221, 160, 221,.7) 50%, rgba(201,112,165,0) 90%)rgba(102,51,153,.6) 100%;background-position: center;}
+
+.special1{
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  height: 180px;
+  vertical-align: baseline;
+  margin-left: 910px;
+  font-weight:bold;
+  color: ;}
+
+.status {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 180px;
+  font-weight:bold;
+  background-color: ;
+}
+
+
+.changebox{
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+.changebox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: violet;
+}
+
+
+.changebox:hover input ~ .checkmark {
+  background-color: mediumpurple;
+}
+
+
+.changebox.change input:checked ~ .checkmark {
+  background-color: blueviolet;
+}
+.changebox.damage input:checked ~ .checkmark {
+  background-color: crimson;
+}
+
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+.changebox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+
+.changebox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+input[type=text] {
+  font-size: 20px;
+  width: 400px;
+  padding: 8px 10px;
+  margin: 8px 0;
+   box-sizing: border-box;
+  border: 3px solid indigo;
+  border-radius: 6px;
+  background-color: lightpink;
+  resize: none;;
+}
+
+.inputs{font-size:20px; font-weight:bold; }
+
+.description{
+  font-size:20px;
+  vertical-align: top;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 50px;
+  padding-right: 50px;}
+
+select{
+    font-size: 18px;
+  text-align: center;
+  background-color: lightpink;}
+
+.return:not(#result) {
+  display:none;
+}
+
+textarea {
+
+  color: black;
+  -webkit-text-fill-color: black
+}
+      </style>
+</head>
+
+
+
+
+  <body>
+
+
+    <div id="sheet">
+      <div id="overlay">
+        <div class="bigbumper">
+
+          <p class="gradient-text" style="text-decoration: underline"><em>To Change</em></p></div>
+        <p style="height:20px; font-size:30px; text-align:center">角色卡與蛻化十字</p>
+<p class="inputs" style="text-align:center">
+  <label for="pname">玩家姓名：</label>
+<input type="text" id="pname" name="pname">
+
+
+
+  <label for="cname">角色姓名：</label>
+<input type="text" id="cname" name="cname">
+      </p>
+
+
+        <table>
+    <tbody><tr style="text-align:center; vertical-align:bottom">
+        <td style="width: 34%">
+          <label for="facecard" style="font-size: 20px; font-weight:bold"><em>面相牌（Face）：</em></label>
+
+        <select name="Face card" id="facecard" class="bootstrap-select facecard" onchange="func1(this.value)">
+  <option value="1" selected="selected">— 選擇你的面相牌 —</option>
+  <option value="2">愚者 The Fool</option>
+  <option value="3">魔術師 The Magician</option>
+  <option value="4">女祭司 The High Priestess</option>
+  <option value="5">皇后 The Empress</option>
+  <option value="6">皇帝 The Emperor</option>
+  <option value="7">教皇 The Hierophant</option>
+  <option value="8">戀人 The Lovers</option>
+  <option value="9">戰車 The Chariot</option>
+  <option value="10">力量 Strength</option>
+  <option value="11">隱者 The Hermit</option>
+  <option value="12">命運之輪 The Wheel of Fortune</option>
+  <option value="13">正義 Justice</option>
+  <option value="14">倒吊人 The Hanged Man</option>
+  <option value="15">死神 Death</option>
+  <option value="16">節制 Temperance</option>
+  <option value="17">惡魔 The Devil</option>
+  <option value="18">高塔 The Tower</option>
+  <option value="19">星星 The Star</option>
+  <option value="20">月亮 The Moon</option>
+  <option value="21">太陽 The Sun</option>
+  <option value="22">審判 Judgement</option>
+  <option value="23">世界 The World</option>
+    </select>
+
+      </td>
+      <td style="width: 33%">
+        <label for="risingcard" style="font-size: 20px; font-weight:bold"><em>昇位牌（Rising）：</em></label>
+        <select name="Rising card" id="risingcard">
+  <option value="select">— 選擇你的昇位牌 —</option>
+  <option value="thefool">愚者 The Fool</option>
+  <option value="themagician">魔術師 The Magician</option>
+  <option value="thehighpriestss">女祭司 The High Priestess</option>
+  <option value="theempress">皇后 The Empress</option>
+  <option value="theemperor">皇帝 The Emperor</option>
+  <option value="thehierophant">教皇 The Hierophant</option>
+  <option value="thelovers">戀人 The Lovers</option>
+  <option value="thechariot">戰車 The Chariot</option>
+  <option value="strength">力量 Strength</option>
+  <option value="thehermit">隱者 The Hermit</option>
+  <option value="wheeloffortune">命運之輪 The Wheel of Fortune</option>
+  <option value="justice">正義 Justice</option>
+  <option value="thehangedman">倒吊人 The Hanged Man</option>
+  <option value="temperance">節制 Temperance</option>
+  <option value="thedevil">惡魔 The Devil</option>
+  <option value="thetower">高塔 The Tower</option>
+  <option value="thestar">星星 The Star</option>
+  <option value="themoon">月亮 The Moon</option>
+  <option value="thesun">太陽 The Sun</option>
+  <option value="judgement">審判 Judgement</option>
+  <option value="theworld">世界 The World</option>
+    </select>
+
+      </td>
+      <td style="width: 33%">
+        <label for="fallingcard" style="font-size: 20px; font-weight:bold"><em>墜位牌（Falling）：</em></label>
+        <select name="Falling card" id="fallingcard">
+  <option value="select">— 選擇你的墜位牌 —</option>
+  <option value="thefool">愚者 The Fool</option>
+  <option value="themagician">魔術師 The Magician</option>
+  <option value="thehighpriestss">女祭司 The High Priestess</option>
+  <option value="theempress">皇后 The Empress</option>
+  <option value="theemperor">皇帝 The Emperor</option>
+  <option value="thehierophant">教皇 The Hierophant</option>
+  <option value="thelovers">戀人 The Lovers</option>
+  <option value="thechariot">戰車 The Chariot</option>
+  <option value="strength">力量 Strength</option>
+  <option value="thehermit">隱者 The Hermit</option>
+  <option value="wheeloffortune">命運之輪 The Wheel of Fortune</option>
+  <option value="justice">正義 Justice</option>
+  <option value="thehangedman">倒吊人 The Hanged Man</option>
+  <option value="temperance">節制 Temperance</option>
+  <option value="thedevil">惡魔 The Devil</option>
+  <option value="thetower">高塔 The Tower</option>
+  <option value="thestar">星星 The Star</option>
+  <option value="themoon">月亮 The Moon</option>
+  <option value="thesun">太陽 The Sun</option>
+  <option value="judgement">審判 Judgement</option>
+  <option value="theworld">世界 The World</option>
+    </select>
+           </td>
+    </tr>
+          <tr>
+           <td class="description"><p>
+
+
+
+
+</p><div class="return"><p>你的面相牌會賦予你一項與該牌綁定的特殊能力。</p></div>
+<div class="return"><p>每當你抽牌失敗時，若愚者位於棄牌堆中，將牠放回牌堆並重新洗牌。</p></div>
+<div class="return"><p>魔術師讓你在所有屬性上取得成功，且你的成功充滿奇幻色彩，在外行人眼中宛如奇蹟。</p></div>
+<div class="return"><p>女祭司讓你在所有屬性上取得成功，且你的成功源自你的過去，會喚起一段失落的記憶。</p></div>
+<div class="return"><p>皇后讓你在所有屬性上取得成功，且你的成功是為了他人之利，與身邊每個人共享。</p></div>
+<div class="return"><p>皇帝讓你在所有屬性上取得成功，且你的成功將你的意志加諸於他人之上，標誌你為一名領導者。</p></div>
+<div class="return"><p>教皇讓你在所有屬性上取得成功，且你的成功具有教育意義，留給對方一道難忘的教訓。</p></div>
+<div class="return"><p>戀人讓你在所有屬性上取得成功，且你的成功會把迷戀引向你，餵養著愛之火。</p></div>
+<div class="return"><p>戰車讓你在所有屬性上取得成功，且你的成功無可否認，沒有人能質疑。</p></div>
+<div class="return"><p>力量讓你在所有屬性上取得成功，且你的成功宛如超人，搏動著能量與原始的力。</p></div>
+<div class="return"><p>隱者讓你在所有屬性上取得成功，且你的成功只屬於你自己——沒有人能搶走你行動的功勞。</p></div>
+<div class="return"><p>命運之輪讓你在所有屬性上取得成功，且你的成功預示著「運勢之潮即將翻轉」。</p></div>
+<div class="return"><p>每當你的「蛻化十字」上水平或垂直對稱地分布著已蛻化的屬性點時，你的每次抽牌都多翻開一張牌。</p></div>
+<div class="return"><p>倒吊人讓你在所有屬性上取得成功，且你的成功是以「只有你才能理解的方式」運作。</p></div>
+<div class="return"><p>每當任何一張牌被使用並棄掉時，你都可以讓那張牌成為你的面相牌——獲得它的能力、並取代你目前的面相牌。</p></div>
+<div class="return"><p>每當你承受一次蛻化時，你都可以選擇將它變為「永久」。</p></div>
+<div class="return"><p>當你使用惡魔時，由你決定「有多少屬性點被蛻化」與「具體是哪幾點」，即使順序不依規則也行。</p></div>
+<div class="return"><p>當你使用一張牌之後，所有翻開的牌（除了死神與節制）都會被棄掉，而非僅棄掉你使用的那張。</p></div>
+<div class="return"><p>星星讓你在所有屬性上取得成功，且你的成功是「純粹的天才之筆」。</p></div>
+<div class="return"><p>每次抽牌中你可一次將任何一張牌（除了死神或節制）視為「月亮」對待。</p></div>
+<div class="return"><p>每當任何玩家在抽牌中成功、且牌堆被洗牌之後，你可以請敘事者讓你看牌堆最上方那一張。</p></div>
+<div class="return"><p>每當審判被使用時，由你而非敘事者來決定成敗。</p></div>
+<div class="return"><p>當你使用世界時，從棄牌堆中取出任意數量的牌（世界本身除外），把它們放回牌堆——而不是只取一張。</p></div>
+
+            <em><div id="result"></div></em>
+          <p></p> </td>
+
+      <td class="description"><p><em>
+        當你翻出這張牌時，你離自己的目標更靠近一步，並多翻開一張牌進入當前手牌。
+        </em></p></td>
+
+
+          <td class="description"><p><em>當你翻出這張牌時，你離自己恐懼的源頭更靠近一步，並必須將該手牌最先翻開的那一張洗回牌堆。</em></p></td>
+         </tr>
+
+      </tbody></table>
+
+
+
+      <div class="bumper">
+    <div class="left" style="margin-left:40px">肉體才能（PA）</div><div class="right" style="margin-right:40px">心靈才能（MA）</div></div>
+
+
+<!------------------------------>
+
+      <div class="first row">
+
+
+     <textarea id="PA1text" disabled="disabled" label="第一點肉體才能蛻化" class="upper box left">勾選頁面左下角的方塊，即可填寫第一點肉體才能（PA）的蛻化描述。
+      </textarea>
+      <div id="PA1" class="left status">
+
+  <label class="changebox change" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已蛻化">已蛻化
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage center" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已受損">已受損
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+
+      <textarea disabled="" name="MA1text" id="MA1text" label="第一點心靈才能蛻化" class="upper box right">勾選頁面左下角的方塊，即可填寫第一點心靈才能（MA）的蛻化描述。
+      </textarea>
+
+      <div id="MA1" class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已蛻化">已蛻化</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已受損">已受損</div></label>
+      </div>
+      </div>
+
+    <!------------------------------>
+
+    <div class="second row">
+      <textarea id="PA2text" disabled="disabled" class="upper box left">勾選頁面左下角的方塊，即可填寫第二點肉體才能（PA）的蛻化描述。 </textarea>
+
+      <div class="left status">
+<label class="changebox change" title="標記此屬性點為已蛻化" style="margin-left:20px; margin-top:40px">已蛻化
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px">已受損
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+
+      <textarea id="MA2text" disabled="disabled" class="upper box right">勾選頁面左下角的方塊，即可填寫第二點心靈才能（MA）的蛻化描述。 </textarea>
+
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已蛻化">已蛻化</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已受損">已受損</div></label>
+      </div>
+      </div>
+    </div>
+
+
+
+ <!------------------------------>
+    <div class="third row">
+
+      <textarea id="PA3text" disabled="disabled" class="upper box left">勾選頁面左下角的方塊，即可填寫第三點肉體才能（PA）的蛻化描述。 </textarea>
+
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已蛻化">已蛻化
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已受損">已受損
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+
+     <textarea id="MA3text" disabled="disabled" class="upper box right"> 勾選頁面左下角的方塊，即可填寫第三點心靈才能（MA）的蛻化描述。 </textarea>
+
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已蛻化">已蛻化</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已受損">已受損</div></label>
+      </div>
+      </div>
+    </div>
+ <!------------------------------>
+      <div class="bumper upper" style="margin-top:-20px">永恆 Permanence</div>
+
+    <div class="center row"> <div class="special1"><label class="changebox change" style="margin-left:20px; margin-top:40px" title="標記永恆之點為已蛻化">已蛻化
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="標記永恆之點為已受損">已受損
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label></div>
+
+
+      <textarea id="permtext" disabled="disabled" class="center box perm">勾選頁面左下角的方塊，即可填寫永恆之點的蛻化描述。 </textarea>
+    </div>
+<div class="bumper bottom" style="color:rgba(75,0,130,.5)"><em>再也回不去了……</em></div>
+ <!------------------------------>
+      <div class="third row">
+
+           <textarea id="MF3text" disabled="disabled" class="lower box left">勾選頁面左下角的方塊，即可填寫第三點心靈韌性（MF）的蛻化描述。 </textarea>
+
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已蛻化">已蛻化
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已受損">已受損
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+
+     <textarea id="PF3text" disabled="disabled" class="lower box right">勾選頁面左下角的方塊，即可填寫第三點肉體韌性（PF）的蛻化描述。 </textarea>
+
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已蛻化">已蛻化</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已受損">已受損</div></label>
+      </div>
+      </div>
+    </div>
+ <!------------------------------>
+  <div class="second row">
+
+      <textarea id="MF2text" disabled="disabled" class="lower box left">勾選頁面左下角的方塊，即可填寫第二點心靈韌性（MF）的蛻化描述。 </textarea>
+
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已蛻化">已蛻化
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已受損">已受損
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+
+           <textarea id="PF2text" disabled="disabled" class="lower box right">勾選頁面左下角的方塊，即可填寫第二點肉體韌性（PF）的蛻化描述。 </textarea>
+
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已蛻化">已蛻化</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已受損">已受損</div></label>
+      </div>
+      </div>
+    </div>
+ <!------------------------------>
+    <div class="first row">
+
+      <textarea id="MF1text" disabled="disabled" class="lower box left">勾選頁面左下角的方塊，即可填寫第一點心靈韌性（MF）的蛻化描述。 </textarea>
+
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已蛻化">已蛻化
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="標記此屬性點為已受損">已受損
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+
+           <textarea id="PF1text" disabled="disabled" class="lower box right">勾選頁面左下角的方塊，即可填寫第一點肉體韌性（PF）的蛻化描述。 </textarea>
+
+
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已蛻化">已蛻化</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="標記此屬性點為已受損">已受損</div></label>
+
+      </div>
+      </div>
+
+ <!------------------------------>
+          <div class="bumper"><div class="left" style="margin-left:40px">心靈韌性（MF）</div><div class="right" style="margin-right:40px">肉體韌性（PF）</div></div>
+<div id="overlay">
+</div>
+<br>
+
+<label for="writeprotect" style="position:absolute; bottom:0px">
+    <input type="checkbox" id="enableField" title="解鎖／鎖定蛻化描述欄位" onclick="a(this)">
+</label>
+<label for="Test" style="position:absolute; left:-9999px">
+    <input type="checkbox" id="disableField" onclick="a(this)">
+停用</label>
+
+
+
+
+  <script>
+  // 原作者註：第一次寫 JS。原邏輯保留，僅依索引對應翻譯後的描述。
+
+let select = document.querySelector(".facecard");
+let divs = document.querySelectorAll(".return");
+let result = document.querySelector("#result");
+
+function func1(par){
+  result.innerText = divs[par - 1].innerText;
+}
+
+
+
+
+
+function a(enabledisableField) {
+        var PA1text = document.getElementById("PA1text");
+        var PA2text = document.getElementById("PA2text");
+        var PA3text = document.getElementById("PA3text");
+          var MA1text = document.getElementById("MA1text");
+           var MA2text = document.getElementById("MA2text");
+          var MA3text = document.getElementById("MA3text");
+          var MF1text = document.getElementById("MF1text");
+          var MF2text = document.getElementById("MF2text");
+          var MF3text = document.getElementById("MF3text");
+          var PF1text = document.getElementById("PF1text");
+          var PF2text = document.getElementById("PF2text");
+          var PF3text = document.getElementById("PF3text");
+          var permtext = document.getElementById("permtext");
+
+
+        var enablecheck=document.getElementById('enableField');
+        var disablecheck=document.getElementById('disableField');
+
+if(enablecheck.checked===true && disablecheck.checked===true){
+  alert("請忽略這個訊息");
+
+}
+
+  if(enablecheck.checked===false && disablecheck.checked===false){
+    PA1text.disabled =true;
+          PA2text.disabled =true;
+          PA3text.disabled =true;
+          MA1text.disabled =true;
+          MA2text.disabled =true;
+          MA3text.disabled =true;
+          MF1text.disabled =true;
+          MF2text.disabled =true;
+          MF3text.disabled =true;
+          PF1text.disabled =true;
+          PF2text.disabled =true;
+          PF3text.disabled =true;
+          permtext.disabled =true;
+
+    return;
+
+}
+
+     else if (enablecheck.checked===true) {
+          PA1text.disabled =false;
+          PA2text.disabled =false;
+          PA3text.disabled =false;
+          MA1text.disabled =false;
+          MA2text.disabled =false;
+          MA3text.disabled =false;
+          MF1text.disabled =false;
+          MF2text.disabled =false;
+          MF3text.disabled =false;
+          PF1text.disabled =false;
+          PF2text.disabled =false;
+          PF3text.disabled =false;
+          permtext.disabled =false;
+
+
+            return;
+                     }
+    else if(disablecheck.checked===true){
+          PA1text.disabled =true;
+          PA2text.disabled =true;
+          PA3text.disabled =true;
+          MA1text.disabled =true;
+          MA2text.disabled =true;
+          MA3text.disabled =true;
+          MF1text.disabled =true;
+          MF2text.disabled =true;
+          MF3text.disabled =true;
+          PF1text.disabled =true;
+          PF2text.disabled =true;
+          PF3text.disabled =true;
+          permtext.disabled =true;
+
+      return;
+                     }
+
+
+    }
+
+  </script>
+
+
+
+</div></div></body></html>

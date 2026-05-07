@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///F:/Downloads/TC%20Character%20Sheet%20by%20Jenny%20Wolff.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Change Cross v1.5</title>
+   <!--For use with the 'To Change' game system by Ulysses Duckler & Ewen Albright
+    
+     V1. 12/06/2022
+    
+   by J.Morgan Wolff: I know this isn't pretty coding, but this is the first time I've even touched html in over 20 years, and since then a lot has changed...(heheh) Anyway, hope this is useful to someone.-->
+     
+  <style>
+  #body{}
+
+#overlay{
+ background-image: url("images/295783630049211.png"); 
+/* Sparkle Magic Pink Colorful by @mariaandraa */
+ background-repeat:round;
+  
+  }
+
+
+
+#sheet{
+  position: relative;
+  background: rgb(147, 112, 219);
+background: linear-gradient(180deg, rgba(173,216,230,1) 0%, rgba(147,112,219,1) 40%, rgba(219,112,147,1) 60%, rgba(147,112,219,1) 80%, rgba(173,216,230,1) 100%);
+  width: 1400px;
+  height: 2100px;
+  color: indigo;
+}
+
+.row {height:180px;margin:20px;}
+
+.bumper{height:40px;
+  font-family: Georgia, serif;
+font-size: 40px;
+text-align: center;
+vertical-align: middle;
+  line-height: 40px; }
+
+.bigbumper
+{height:130px;
+font-family: 'Brush Script MT', cursive;
+font-size: 90px;
+font-weight: bold;
+text-align: center;
+vertical-align: middle;
+line-height: 150px; }
+
+
+
+
+
+.second {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.third {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.middle {
+ 
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.box{
+  resize: none;
+  position: relative;  
+  box-sizing: border-box;
+  overflow: auto;
+  width: 420px;
+  height: 180px;
+  padding: 5px;
+  border: 5px solid rebeccapurple;
+  border-radius: 12px;
+  margin-bottom: 0px;
+  color: black;
+  font-size: 18px;
+  font-family: Tahoma, sans-serif;
+ }
+
+
+.left {
+	float: left;
+}
+
+.right{
+  float: right;
+}
+
+.upper.box.left{background: rgb(255,182,193);
+background: linear-gradient(310deg, rgba(230,230,250,.6) 10%, rgba(255,182,193,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.upper.box.right{background: rgb(176,196,222);
+background: linear-gradient(40deg, rgba(255,228,225,.6) 10%, rgba(176,196,222,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.lower.box.left{background: rgb(176,196,222);
+background: linear-gradient(220deg, rgba(255,228,225,.6) 10%, rgba(176,196,222,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.lower.box.right{background: rgb(255,182,193);
+background: linear-gradient(130deg, rgba(230,230,250,.6) 10%, rgba(255,182,193,.6) 40%, rgba(102,51,153,1) 100%);}
+
+.box.perm
+{background: rgb(216,191,216);
+background: radial-gradient(circle, rgba(220,20,60,.8) 10%, rgba(221, 160, 221,.7) 50%, rgba(201,112,165,0) 90%)rgba(102,51,153,.6) 100%;background-position: center;}
+
+.special1{
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  height: 180px;
+  vertical-align: baseline;
+  margin-left: 910px;
+  font-weight:bold;
+  color: ;}
+
+.status {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 180px;
+  font-weight:bold;
+  background-color: ;
+}
+
+ 
+.changebox{
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+
+.changebox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: violet;
+}
+
+
+.changebox:hover input ~ .checkmark {
+  background-color: mediumpurple;
+}
+
+
+.changebox.change input:checked ~ .checkmark {
+  background-color: blueviolet; 
+}
+.changebox.damage input:checked ~ .checkmark {
+  background-color: crimson;
+}
+
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+.changebox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+
+.changebox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+input[type=text] {
+  font-size: 20px;
+  width: 400px;
+  padding: 8px 10px;
+  margin: 8px 0;
+   box-sizing: border-box;
+  border: 3px solid indigo;
+  border-radius: 6px;
+  background-color: lightpink;
+  resize: none;;
+}
+
+.inputs{font-size:20px; font-weight:bold; }
+
+.description{  
+  font-size:20px;
+  vertical-align: top;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 50px;
+  padding-right: 50px;}
+
+select{
+    font-size: 18px;
+  text-align: center;
+  background-color: lightpink;}
+
+.return:not(#result) {
+  display:none;
+}
+
+textarea {
+ 
+  color: black;
+  -webkit-text-fill-color: black
+}
+      </style>
+</head>
+
+  
+
+  
+  <body>
+    
+   
+    <div id="sheet">
+      <div id="overlay">
+        <div class="bigbumper">
+          
+          <p class="gradient-text" style="text-decoration: underline"><em>To Change</em></p></div>
+        <p style="height:20px; font-size:30px; text-align:center">Character sheet and Change Cross</p>
+<p class="inputs" style="text-align:center">   
+  <label for="pname">Player name:</label>
+<input type="text" id="pname" name="pname">
+  
+         
+  
+  <label for="cname">Character name:</label>
+<input type="text" id="cname" name="cname">
+      </p>     
+      
+      
+        <table>
+    <tbody><tr style="text-align:center; vertical-align:bottom">
+        <td style="width: 34%">
+          <label for="facecard" style="font-size: 20px; font-weight:bold"><em>Face card:</em></label> 
+          
+        <select name="Face card" id="facecard" class="bootstrap-select facecard" onchange="func1(this.value)">
+  <option value="1" selected="selected">- Select your Face card -</option>
+  <option value="2">The Fool</option>
+  <option value="3">The Magician</option>
+  <option value="4">The High Priestess</option>
+  <option value="5">The Empress</option>
+  <option value="6">The Emperor</option>
+  <option value="7">The Hierophant</option>
+  <option value="8">The Lovers</option>
+  <option value="9">The Chariot</option>
+  <option value="10">Strength</option>
+  <option value="11">The Hermit</option>
+  <option value="12">The Wheel of Fortune</option>
+  <option value="13">Justice</option>
+  <option value="14">The Hanged Man</option>
+  <option value="15">Death</option>
+  <option value="16">Temperance</option>
+  <option value="17">The Devil</option>
+  <option value="18">The Tower</option>
+  <option value="19">The Star</option>
+  <option value="20">The Moon</option>
+  <option value="21">The Sun</option>
+  <option value="22">Judgement</option>
+  <option value="23">The World</option>
+    </select>
+          
+      </td>
+      <td style="width: 33%">
+        <label for="risingcard" style="font-size: 20px; font-weight:bold"><em>Rising card:</em></label> 
+        <select name="Rising card" id="risingcard">
+  <option value="select">- Select your Rising card -</option>
+  <option value="thefool">The Fool</option>
+  <option value="themagician">The Magician</option>
+  <option value="thehighpriestss">The High Priestess</option>
+  <option value="theempress">The Empress</option>
+  <option value="theemperor">The Emperor</option>
+  <option value="thehierophant">The Hierophant</option>
+  <option value="thelovers">The Lovers</option>
+  <option value="thechariot">The Chariot</option>
+  <option value="strength">Strength</option>
+  <option value="thehermit">The Hermit</option>
+  <option value="wheeloffortune">The Wheel of Fortune</option>
+  <option value="justice">Justice</option>
+  <option value="thehangedman">The Hanged Man</option>
+  <option value="temperance">Temperance</option>
+  <option value="thedevil">The Devil</option>
+  <option value="thetower">The Tower</option>
+  <option value="thestar">The Star</option>
+  <option value="themoon">The Moon</option>
+  <option value="thesun">The Sun</option>
+  <option value="judgement">Judgement</option>
+  <option value="theworld">The World</option>
+    </select>
+       
+      </td>
+      <td style="width: 33%">
+        <label for="fallingcard" style="font-size: 20px; font-weight:bold"><em>Falling card:</em></label> 
+        <select name="Falling card" id="fallingcard">
+  <option value="select">- Select your Falling card -</option>
+  <option value="thefool">The Fool</option>
+  <option value="themagician">The Magician</option>
+  <option value="thehighpriestss">The High Priestess</option>
+  <option value="theempress">The Empress</option>
+  <option value="theemperor">The Emperor</option>
+  <option value="thehierophant">The Hierophant</option>
+  <option value="thelovers">The Lovers</option>
+  <option value="thechariot">The Chariot</option>
+  <option value="strength">Strength</option>
+  <option value="thehermit">The Hermit</option>
+  <option value="wheeloffortune">The Wheel of Fortune</option>
+  <option value="justice">Justice</option>
+  <option value="thehangedman">The Hanged Man</option>
+  <option value="temperance">Temperance</option>
+  <option value="thedevil">The Devil</option>
+  <option value="thetower">The Tower</option>
+  <option value="thestar">The Star</option>
+  <option value="themoon">The Moon</option>
+  <option value="thesun">The Sun</option>
+  <option value="judgement">Judgement</option>
+  <option value="theworld">The World</option>
+    </select>
+           </td>
+    </tr>
+          <tr>  
+           <td class="description"><p>
+            
+             
+
+
+             
+</p><div class="return"><p>Your Face card gives you a special ability associated with that card.</p></div>
+<div class="return"><p>Whenever you fail on a draw, if The Fool is in the discard pile, return it to the deck and reshuffle.</p></div>
+<div class="return"><p>The Magician gives you success on all attributes, and your success is fantastical, appearing as a miracle to the untrained eye.</p></div>
+<div class="return"><p>The High Priestess gives you success on all attributes, and your success comes from your past, sparking a lost memory.</p></div>
+<div class="return"><p>The Empress gives you success on all attributes, and your success is for the benefit of others, shared with everyone around you.</p></div>
+<div class="return"><p>The Emperor gives you success on all attributes, and your success imposes your will over others, marking you as a leader.</p></div>
+<div class="return"><p>The Hierophant gives you success on all attributes, and your success is instructive, teaching an unforgettable lesson.</p></div>
+<div class="return"><p>The Lovers gives you success on all attributes, and your success draws infatuation towards you, feeding the flame of love.</p></div>
+<div class="return"><p>The Chariot gives you success on all attributes, and your success is undeniable; nobody can doubt it.</p></div>
+<div class="return"><p>Strength gives you success on all attributes, and your success feels superhuman, pulsing with energy and raw power.</p></div>
+<div class="return"><p>The Hermit gives you success on all attributes, and your success is yours alone, no one else can take credit for your actions.</p></div>
+<div class="return"><p>Wheel of Fortune gives you success on all attributes, and your success signals a change in the tides of fortune.</p></div>
+<div class="return"><p>Whenever your change cross is horizontally or vertically symmetrical with changed attributes, you reveal one additional card on all your draws.</p></div>
+<div class="return"><p>The Hanged Man gives you success on all attributes, and your success works in ways that only you can understand.</p></div>
+<div class="return"><p>Whenever a card is used and discarded, you can make it become your face card, gaining its ability, and replacing your current face card.</p></div>
+<div class="return"><p>Whenever you take a change, you can choose to make it permanent.</p></div>
+<div class="return"><p>When you use The Devil, you decide how many attribute points are changed and which ones, even ones that are out of order.</p></div>
+<div class="return"><p>After you use a card, you discard all the revealed cards (except Death and Temperance) instead of just discarding the one you used.</p></div> 
+<div class="return"><p>The Star gives you success on all attributes, and your success is a stroke of sheer genius.</p></div>
+<div class="return"><p>Once per draw, you can treat any card (except Death or Temperance) as if it were The Moon.</p></div>
+<div class="return"><p>Whenever any player succeeds on a draw, after the deck is shuffled, you can ask the Storyteller to let you look at the top card of the deck.</p></div> 
+<div class="return"><p>Whenever Judgement is used, you are the one who decides success or failure, instead of the Storyteller.</p></div>
+<div class="return"><p>When you use The World, take any number of cards from the discard pile (other than The World) and return them to the deck, instead of just one.</p></div>           
+            
+            <em><div id="result"></div></em>
+          <p></p> </td>
+               
+      <td class="description"><p><em>
+        When you reveal this card, you move
+closer to reaching your goals and reveal another card into the current hand.
+        </em></p></td>
+            
+          
+          <td class="description"><p><em>When you reveal this card, you move closer to the source of your fears and must shuffle the first card revealed for the hand back into the deck.</em></p></td>
+         </tr>
+          
+      </tbody></table>
+      
+          
+      
+      <div class="bumper">
+    <div class="left" style="margin-left:40px">Physical Aptitude</div><div class="right" style="margin-right:40px">Mental Aptitude</div></div>
+
+
+<!------------------------------>  
+
+      <div class="first row">
+      
+  
+     <textarea id="PA1text" disabled="disabled" label="First Physical Aptitude attribute change" class="upper box left">Check the box at the bottom-left corner of the page to enter the first Physical Aptitude change description.
+      </textarea>
+      <div id="PA1" class="left status">
+  
+  <label class="changebox change" style="margin-left:20px; margin-top:40px" title="Mark this attribute point changed">Changed
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage center" style="margin-left:20px; margin-top:40px" title="Mark this attribute point damaged">Damaged
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+      
+      <textarea disabled="" name="MA1text" id="MA1text" label="First Mental Aptitude attribute change" class="upper box right">Check the box at the bottom-left corner of the page to enter the first Mental Aptitude change description.
+      </textarea>    
+      
+      <div id="MA1" class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point changed">Changed</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point damaged">Damaged</div></label>
+      </div>
+      </div>
+        
+    <!------------------------------>
+ 
+    <div class="second row">
+      <textarea id="PA2text" disabled="disabled" class="upper box left">Check the box at the bottom-left corner of the page to enter the second Physical Aptitude change description. </textarea>
+     
+      <div class="left status">
+<label class="changebox change" title="Mark this attribute point changed" style="margin-left:20px; margin-top:40px">Changed
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px">Damaged
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+      
+      <textarea id="MA2text" disabled="disabled" class="upper box right">Check the box at the bottom-left corner of the page to enter the second Mental Aptitude change description. </textarea>
+      
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point changed">Changed</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point damaged">Damaged</div></label>
+      </div>
+      </div>
+    </div>
+    
+   
+    
+ <!------------------------------>
+    <div class="third row">
+      
+      <textarea id="PA3text" disabled="disabled" class="upper box left">Check the box at the bottom-left corner of the page to enter the third Physical Aptitude change description. </textarea>
+      
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="Mark this attribute point changed">Changed
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="Mark this attribute point damaged">Damaged
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+      
+     <textarea id="MA3text" disabled="disabled" class="upper box right"> Check the box at the bottom-left corner of the page to enter the third Mental Aptitude change description. </textarea>   
+      
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point changed">Changed</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point damaged">Damaged</div></label>
+      </div>
+      </div>
+    </div>
+ <!------------------------------>
+      <div class="bumper upper" style="margin-top:-20px">Permanence</div>
+         
+    <div class="center row"> <div class="special1"><label class="changebox change" style="margin-left:20px; margin-top:40px" title="Mark the point of Permanence changed">Changed
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="Mark this attribute point damaged">Damaged
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label></div>  
+         
+      
+      <textarea id="permtext" disabled="disabled" class="center box perm">Check the box at the bottom-left corner of the page to enter the Permanence change description. </textarea>                                           
+    </div>
+<div class="bumper bottom" style="color:rgba(75,0,130,.5)"><em>No going back...</em></div>
+ <!------------------------------>    
+      <div class="third row">
+      
+           <textarea id="MF3text" disabled="disabled" class="lower box left">Check the box at the bottom-left corner of the page to enter the third Mental Fortitude change description. </textarea> 
+        
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="Mark this attribute point changed">Changed
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="Mark this attribute point damaged">Damaged
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+      
+     <textarea id="PF3text" disabled="disabled" class="lower box right">Check the box at the bottom-left corner of the page to enter the third Physical Fortitude change description. </textarea>      
+      
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point changed">Changed</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point damaged">Damaged</div></label>
+      </div>
+      </div>
+    </div>
+ <!------------------------------>
+  <div class="second row">
+      
+      <textarea id="MF2text" disabled="disabled" class="lower box left">Check the box at the bottom-left corner of the page to enter the second Mental Fortitude change description. </textarea> 
+    
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="Mark this attribute point changed">Changed
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="Mark this attribute point damaged">Damaged
+  <input type="checkbox" value="davmaged">
+  <span class="checkmark"></span> </label>
+      </div>
+      
+           <textarea id="PF2text" disabled="disabled" class="lower box right">Check the box at the bottom-left corner of the page to enter the second Physical Fortitude change description. </textarea>     
+      
+      <div class="right status">
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point changed">Changed</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point damaged">Damaged</div></label>
+      </div>
+      </div>
+    </div>
+ <!------------------------------>
+    <div class="first row">
+      
+      <textarea id="MF1text" disabled="disabled" class="lower box left">Check the box at the bottom-left corner of the page to enter the first Mental Fortitude change description. </textarea> 
+      
+      <div class="left status">
+<label class="changebox change" style="margin-left:20px; margin-top:40px" title="Mark this attribute point changed">Changed
+  <input type="checkbox" value="changed">
+  <span class="checkmark"></span> </label>
+    <label class="changebox damage" style="margin-left:20px; margin-top:40px" title="Mark this attribute point damaged">Damaged
+  <input type="checkbox" value="damaged">
+  <span class="checkmark"></span> </label>
+      </div>
+      
+           <textarea id="PF1text" disabled="disabled" class="lower box right">Check the box at the bottom-left corner of the page to enter the first Physical Fortitude change description. </textarea>      
+      
+      
+      <div class="right status">
+      <label class="changebox change" style="margin-left:60px; margin-top:40px">
+  <input type="checkbox" value="changed">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point changed">Changed</div></label>
+    <label class="changebox damage" style="margin-left:60px; margin-top:40px">
+    <input type="checkbox" value="damaged">
+        <span class="checkmark"></span><div style="margin-left:-125px" title="Mark this attribute point damaged">Damaged</div></label>
+     
+      </div>
+      </div>
+        
+ <!------------------------------> 
+          <div class="bumper"><div class="left" style="margin-left:40px">Mental Fortitude</div><div class="right" style="margin-right:40px">Physical Fortitude</div></div> 
+<div id="overlay">
+</div>
+<br>
+
+<label for="writeprotect" style="position:absolute; bottom:0px"> 
+    <input type="checkbox" id="enableField" title="Unlock/lock Change descriptions" onclick="a(this)">
+</label>
+<label for="Test" style="position:absolute; left:-9999px">
+    <input type="checkbox" id="disableField" onclick="a(this)">
+Disable</label>    
+
+  
+  
+
+
+  <script>
+  // would you believe I've never used javascript before? yeah?
+
+let select = document.querySelector(".facecard");
+let divs = document.querySelectorAll(".return");
+let result = document.querySelector("#result");
+
+function func1(par){
+  result.innerText = divs[par - 1].innerText;
+}
+
+
+
+
+
+function a(enabledisableField) {
+        var PA1text = document.getElementById("PA1text");
+        var PA2text = document.getElementById("PA2text");
+        var PA3text = document.getElementById("PA3text");
+          var MA1text = document.getElementById("MA1text");
+           var MA2text = document.getElementById("MA2text");
+          var MA3text = document.getElementById("MA3text");
+          var MF1text = document.getElementById("MF1text");
+          var MF2text = document.getElementById("MF2text");
+          var MF3text = document.getElementById("MF3text");
+          var PF1text = document.getElementById("PF1text");
+          var PF2text = document.getElementById("PF2text");
+          var PF3text = document.getElementById("PF3text");
+          var permtext = document.getElementById("permtext");
+
+ 
+        var enablecheck=document.getElementById('enableField');
+        var disablecheck=document.getElementById('disableField');
+
+if(enablecheck.checked===true && disablecheck.checked===true){
+  alert("ignore this");
+  
+}
+  
+  if(enablecheck.checked===false && disablecheck.checked===false){
+    PA1text.disabled =true;
+          PA2text.disabled =true;
+          PA3text.disabled =true;
+          MA1text.disabled =true;
+          MA2text.disabled =true;
+          MA3text.disabled =true;
+          MF1text.disabled =true;
+          MF2text.disabled =true;
+          MF3text.disabled =true;
+          PF1text.disabled =true;
+          PF2text.disabled =true;
+          PF3text.disabled =true;
+          permtext.disabled =true;
+          
+    return;
+  
+}
+       
+     else if (enablecheck.checked===true) {
+          PA1text.disabled =false;
+          PA2text.disabled =false;
+          PA3text.disabled =false;
+          MA1text.disabled =false;
+          MA2text.disabled =false;
+          MA3text.disabled =false;
+          MF1text.disabled =false;
+          MF2text.disabled =false;
+          MF3text.disabled =false;
+          PF1text.disabled =false;
+          PF2text.disabled =false;
+          PF3text.disabled =false;
+          permtext.disabled =false;
+ 
+            
+            return;
+                     }
+    else if(disablecheck.checked===true){
+          PA1text.disabled =true;
+          PA2text.disabled =true;
+          PA3text.disabled =true;
+          MA1text.disabled =true;
+          MA2text.disabled =true;
+          MA3text.disabled =true;
+          MF1text.disabled =true;
+          MF2text.disabled =true;
+          MF3text.disabled =true;
+          PF1text.disabled =true;
+          PF2text.disabled =true;
+          PF3text.disabled =true;
+          permtext.disabled =true;
+
+      return;
+                     } 
+                       
+                     
+    }
+  
+  </script>
+
+
+
+</div></div></body></html>
