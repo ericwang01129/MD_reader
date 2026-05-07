@@ -28,7 +28,7 @@
 | Solo Play | 單人遊玩 | |
 | journalling game | 札記式遊戲 | |
 | campaign | 戰役 | 多場連續之長期遊戲 |
-| session | 一場 | 單次遊戲 |
+| session | 團務 | 單次遊戲（TRPG 圈習慣語） |
 | upright / reversed | 正位 / 逆位 | |
 | change cross | 蛻化十字 | 4 屬性 + 永恆 |
 | transgender change wheel | 跨性別蛻化輪盤 | |
