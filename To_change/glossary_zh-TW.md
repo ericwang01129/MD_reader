@@ -19,11 +19,11 @@
 | Player | 玩家 | |
 | Move | 動作 | |
 | Story Moves | 故事動作 | |
-| Resolution | 結算 | |
+| Resolution | 行動判定 | |
 | Future Deck | 預兆牌 | |
 | Major Arcana | 大阿爾克那 | |
 | draw / reveal / discard / shuffle back | 抽 / 翻開 / 棄掉 / 洗回（牌堆） | |
-| Succumb | 屈服 | 「以一點蛻化換得成功」 |
+| Succumb | 蛻變 | 「以一點蛻化換得成功」 |
 | Permanence (point of) | 永恆（之點） | 蛻化交叉之核 |
 | Solo Play | 單人遊玩 | |
 | journalling game | 札記式遊戲 | |
