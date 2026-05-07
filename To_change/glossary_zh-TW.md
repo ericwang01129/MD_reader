@@ -43,7 +43,7 @@
 |---|---|
 | Face card | 面相牌 |
 | Rising card | 昇位牌 |
-| Falling card | 墜位牌 |
+| Falling card | 墮位牌 |
 
 ## 3. 屬性（Attributes）
 
