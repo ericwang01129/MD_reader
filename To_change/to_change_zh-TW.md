@@ -2279,8 +2279,6 @@ Bartholomew 同意製作一份逆轉這場蛻化的藥水——但每劑解藥�
 
 ## 劇本：Weed for the Aspiring Woof（致欲為汪汪者的草）
 
-![Weed for the Aspiring Woof 封面](images/p196_1.jpg)
-
 > 譯註：本劇本以**單人**遊玩為設計目標，但也可與朋友一起進行。
 
 > （打火機聲。）我猜每個人都不一樣吧。這應該是我一開始該說的，免得給你錯誤期待。
@@ -2329,13 +2327,7 @@ Bartholomew 同意製作一份逆轉這場蛻化的藥水——但每劑解藥�
 
 ---
 
-![狼血品系開場 1](images/p197_1.jpg)
-
-![狼血品系開場 2](images/p198_1.jpg)
-
 ### MOSH PUPPY（暴衝小狗）
-
-![Mosh Puppy](images/p199_1.jpg)
 
 
 - **類別**：Sativa 混種
@@ -2365,11 +2357,7 @@ Mosh Puppy 是一支充滿能量的品系——對「愛在森林中跳躍奔跑
 
 ---
 
-![Mosh Puppy 變身](images/p200_1.jpg)
-
 ### BONE FRITTER（骨頭油炸餅）
-
-![Bone Fritter](images/p201_1.jpg)
 
 
 - **類別**：Indica 混種
@@ -2402,11 +2390,7 @@ Bone Fritter 對「忙了一天累壞了的小狗」是個絕佳品系——它�
 
 ---
 
-![Bone Fritter 變身](images/p202_1.jpg)
-
 ### KNOTTY DOG（打結之犬）
-
-![Knotty Dog](images/p203_1.jpg)
 
 
 - **類別**：Hybrid（混種）
@@ -2440,11 +2424,7 @@ Knotty Dog 是眾多會誘發<strong>發情（heat）／求偶（rut）</strong>
 
 ---
 
-![Knotty Dog 變身](images/p204_1.jpg)
-
 ### WOOF QUEEN（汪汪女王）
-
-![Woof Queen](images/p205_1.jpg)
 
 
 - **類別**：Indica 混種
@@ -2475,8 +2455,6 @@ Knotty Dog 是眾多會誘發<strong>發情（heat）／求偶（rut）</strong>
 > ——Sasha
 
 ---
-
-![Woof Queen 變身](images/p206_1.jpg)
 
 ![《To Change》末頁](images/p210_1.jpg)
 
