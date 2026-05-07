@@ -270,14 +270,17 @@
   }
 
   // ===== Markdown 載入 =====
-  async function loadMarkdown(filePath) {
+  async function loadMarkdown(filePath, anchor) {
     try {
       welcome.classList.add('hidden');
       docArticle.classList.add('hidden');
       errorBox.classList.add('hidden');
       loader.classList.remove('hidden');
 
-      const res = await fetch(filePath, { cache: 'no-cache' });
+      // 永遠以 SITE_ROOT_HREF 為基底解析 fetch URL，避免 history.replaceState
+      // 把 URL 換到 .html 子目錄後，下一次 fetch 出現雙重前綴
+      const fetchUrl = new URL(filePath, SITE_ROOT_HREF).href;
+      const res = await fetch(fetchUrl, { cache: 'no-cache' });
       if (!res.ok) {
         throw new Error('找不到檔案:' + filePath + ' (HTTP ' + res.status + ')');
       }
@@ -301,7 +304,21 @@
 
       loader.classList.add('hidden');
       docArticle.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // 若指定了 anchor 就捲到對應 heading；否則回到頂端
+      if (anchor) {
+        requestAnimationFrame(() => {
+          const target = document.getElementById(anchor);
+          if (target) {
+            const top = target.getBoundingClientRect().top + window.scrollY - 24;
+            window.scrollTo({ top, behavior: 'instant' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+          }
+        });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
       closeMenu();
     } catch (err) {
       loader.classList.add('hidden');
@@ -312,13 +329,14 @@
   }
 
   // ===== 路由 =====
-  function navigateTo(filePath, push, replace) {
-    loadMarkdown(filePath);
+  function navigateTo(filePath, push, replace, anchor) {
+    loadMarkdown(filePath, anchor);
     if (push || replace) {
-      const target = SITE_ROOT_PATH + encodeURI(mdToHtml(filePath));
-      const current = location.pathname + location.search;
+      let target = SITE_ROOT_PATH + encodeURI(mdToHtml(filePath));
+      if (anchor) target += '#' + encodeURI(anchor);
+      const current = location.pathname + location.search + location.hash;
       if (current !== target) {
-        const state = { file: filePath };
+        const state = { file: filePath, anchor: anchor || null };
         if (replace) history.replaceState(state, '', target);
         else history.pushState(state, '', target);
       }
@@ -340,12 +358,12 @@
     closeMenu();
   }
 
-  function parseHash() {
+  // 解析 hash 為 { file, anchor }；hash 內容支援 `path|anchor` 或單純的 `anchor`
+  // 由呼叫端依 pathname 是否已給出 file 來決定如何詮釋 hash
+  function parseHashRaw() {
     if (!location.hash || location.hash.length < 2) return null;
     try {
-      const raw = location.hash.slice(1);
-      const filePart = raw.split('|')[0];
-      return decodeURIComponent(filePart);
+      return decodeURIComponent(location.hash.slice(1));
     } catch (e) {
       return null;
     }
@@ -365,8 +383,21 @@
     }
   }
 
+  // 回傳 { file, anchor } 或 null
+  // 路由規則：
+  //   1. 若 pathname 是 *.html（非 index.html）→ file 由 pathname 決定，hash 視為 anchor
+  //   2. 若 pathname 是 index.html / 站根 → 從 hash 取得 file（以 `|` 分隔可選的 anchor）
   function parseRoute() {
-    return parsePathname() || parseHash();
+    const pathFile = parsePathname();
+    const hashRaw = parseHashRaw();
+    if (pathFile) {
+      return { file: pathFile, anchor: hashRaw || null };
+    }
+    if (hashRaw) {
+      const parts = hashRaw.split('|');
+      return { file: parts[0], anchor: parts[1] || null };
+    }
+    return null;
   }
 
   // ===== 事件綁定 =====
@@ -386,8 +417,8 @@
   });
 
   window.addEventListener('popstate', () => {
-    const file = parseRoute();
-    if (file) navigateTo(file, false);
+    const route = parseRoute();
+    if (route) navigateTo(route.file, false, false, route.anchor);
     else showWelcome();
   });
 
@@ -400,7 +431,7 @@
   });
 
   // ===== 啟動 =====
-  const initialFile = parseRoute();
-  if (initialFile) navigateTo(initialFile, false, true);
+  const initialRoute = parseRoute();
+  if (initialRoute) navigateTo(initialRoute.file, false, true, initialRoute.anchor);
   else showWelcome();
 })();

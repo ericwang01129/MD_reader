@@ -32,7 +32,7 @@ TEMPLATE = """<!DOCTYPE html>
 <meta http-equiv="refresh" content="0;url={redirect_attr}">
 <link rel="canonical" href="{canonical_attr}">
 <style>body{{font-family:sans-serif;background:#fafafa;color:#333;text-align:center;padding:4rem 1rem}}a{{color:#0066cc}}</style>
-<script>location.replace({redirect_js});</script>
+<script>(function(){{var h=location.hash?location.hash.slice(1):'';location.replace({redirect_js}+(h?'|'+h:''));}})();</script>
 </head>
 <body>
 <h1>{title}</h1>
