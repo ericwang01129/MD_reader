@@ -37,15 +37,12 @@
 - [行動判定（Resolution）](#行動判定)
   - [何時抽牌（When to Draw Cards）](#何時抽牌)
   - [預兆牌（Future Deck）](#預兆牌)
-- [跨性別蛻化（Transgender Changes）](#跨性別蛻化)
 - [角色建立（Character Creation）](#角色建立)
-- [單人遊玩（Solo Play）](#單人遊玩)
+- [規則替代與選項（Alternate Rules & Options）](#規則替代與選項)
 - [表格（Tables）](#表格)
 - [故事動作（Story Moves）](#故事動作)
+- [單人遊玩（Solo Play）](#單人遊玩)
 - [故事（Stories）— 拆分至獨立檔案](to_change_stories_zh-TW.md)
-- [玩家提示（Player Tips）](#玩家提示)
-- [敘事者提示（Storyteller Tips）](#敘事者提示)
-- [規則替代與選項（Alternate Rules & Options）](#規則替代與選項)
 - [關於本譯本](#關於本譯本)
 
 ---
