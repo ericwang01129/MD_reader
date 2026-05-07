@@ -29,8 +29,7 @@
   - [肉體韌性 PF（Physical Fortitude）](#肉體韌性-pf)
   - [肉體才能 PA（Physical Aptitude）](#肉體才能-pa)
 - [結算（Resolution）](#結算)
-- [預兆牌 Pt. 1（Future Deck Pt. 1）](#預兆牌-pt-1)
-- [預兆牌 Pt. 2（Future Deck Pt. 2）](#預兆牌-pt-2)
+- [預兆牌（Future Deck）](#預兆牌)
 - [何時抽牌（When to Draw Cards）](#何時抽牌)
 - [跨性別蛻化（Transgender Changes）](#跨性別蛻化)
 - [角色建立（Character Creation）](#角色建立)
@@ -248,55 +247,36 @@
 
 ---
 
-## 預兆牌 Pt. 1
+## 預兆牌
 
-### 0 — 愚者 The Fool
-成功，但永遠是以最糟的方式（受傷、出糗、額外的麻煩）。
+22 張大阿爾克那組成的牌堆。下表依塔羅編號 0–XXI 列出每張牌的效果。
 
-### XII 倒吊人 The Hanged Man、VIII 力量 Strength、X 命運之輪 Wheel of Fortune
-以<strong>肉體才能（PA）</strong>取得成功。
+| 編號 | 牌名 | 效果 |
+|:---:|---|---|
+| 0 | 愚者 The Fool | 成功，但永遠是以最糟的方式（受傷、出糗、額外的麻煩）。 |
+| I | 魔術師 The Magician | 以<strong>心靈才能（MA）</strong>取得成功。 |
+| II | 女祭司 The High Priestess | 以<strong>心靈韌性（MF）</strong>取得成功。 |
+| III | 皇后 The Empress | 以<strong>心靈才能（MA）</strong>取得成功。 |
+| IV | 皇帝 The Emperor | 以<strong>心靈韌性（MF）</strong>取得成功。 |
+| V | 教皇 The Hierophant | 以<strong>肉體韌性（PF）</strong>取得成功。 |
+| VI | 戀人 The Lovers | 以<strong>肉體韌性（PF）</strong>取得成功。 |
+| VII | 戰車 The Chariot | 以<strong>肉體韌性（PF）</strong>取得成功。 |
+| VIII | 力量 Strength | 以<strong>肉體才能（PA）</strong>取得成功。 |
+| IX | 隱者 The Hermit | 以<strong>心靈韌性（MF）</strong>取得成功。 |
+| X | 命運之輪 Wheel of Fortune | 以<strong>肉體才能（PA）</strong>取得成功。 |
+| XI | 正義 Justice | 在「全體玩家中累積最多蛻化、或並列最多」的那項屬性上取得成功。 |
+| XII | 倒吊人 The Hanged Man | 以<strong>肉體才能（PA）</strong>取得成功。 |
+| XIII | 死神 Death | 無可逃避者。**不能被選用**——除非牠是這手牌中唯一翻開的一張。一旦被使用，視為成功，且**不會被棄掉**。任何一次抽牌中只要翻出死神且最終成功，你便承受一次**蛻化**。 |
+| XIV | 節制 Temperance | 失敗，但希望未滅。**所有已棄掉的牌全部洗回牌堆。** |
+| XV | 惡魔 The Devil | 成功，且你承受一次**蛻化**。你可以對敘事者**許願**，指定這次轉化的具體樣貌；敘事者必須盡力滿足你的願望——包括減弱、誇大、或在美學層面修飾這次蛻化。 |
+| XVI | 高塔 The Tower | 災難性失敗，並引發一場全新危機。**你下一次抽牌時，要多翻開兩張牌。** |
+| XVII | 星星 The Star | 以<strong>心靈才能（MA）</strong>取得成功。 |
+| XVIII | 月亮 The Moon | 失敗——或是選擇從牌堆**底部**抽出一張新牌，並必須改用那張牌。然後將那張牌與月亮一同棄掉。 |
+| XIX | 太陽 The Sun | 成功，並可看到牌堆**最上方**的下三張牌。 |
+| XX | 審判 Judgement | 是成功還是失敗，由**敘事者**決定（在雙人或單人遊戲中，由抽牌的玩家自己決定）。 |
+| XXI | 世界 The World | 世界介入並重生。從棄牌堆中取出一張牌（**世界**本身除外），把它放回牌堆，洗牌後重新抽。若場合許可，順便從遊戲中暫離一下，喝點水、休息片刻。 |
 
-### I 魔術師 The Magician、III 皇后 The Empress、XVII 星星 The Star
-以<strong>心靈才能（MA）</strong>取得成功。
-
-### V 教皇 The Hierophant、VI 戀人 The Lovers、VII 戰車 The Chariot
-以<strong>肉體韌性（PF）</strong>取得成功。
-
-### II 女祭司 The High Priestess、IV 皇帝 The Emperor、IX 隱者 The Hermit
-以<strong>心靈韌性（MF）</strong>取得成功。
-
-### XI 正義 Justice
-在「全體玩家中累積最多蛻化、或並列最多」的那項屬性上取得成功。
-
-### XIII 死神 Death
-無可逃避者。**不能被選用**——除非牠是這手牌中唯一翻開的一張。一旦被使用，視為成功，且**不會被棄掉**。任何一次抽牌中只要翻出死神且最終成功，你便承受一次**蛻化**。
-
-### XIV 節制 Temperance
-失敗，但希望未滅。**所有已棄掉的牌全部洗回牌堆。**
-
-> （**節制**與**死神**永遠不會被棄掉。）
-
----
-
-## 預兆牌 Pt. 2
-
-### XV 惡魔 The Devil
-成功，且你承受一次**蛻化**。你可以對敘事者**許願**，指定這次轉化的具體樣貌；敘事者必須盡力滿足你的願望——包括減弱、誇大、或在美學層面修飾這次蛻化。
-
-### XVI 高塔 The Tower
-災難性失敗，並引發一場全新危機。**你下一次抽牌時，要多翻開兩張牌。**
-
-### XVIII 月亮 The Moon
-失敗——或是選擇從牌堆**底部**抽出一張新牌，並必須改用那張牌。然後將那張牌與月亮一同棄掉。
-
-### XIX 太陽 The Sun
-成功，並可看到牌堆**最上方**的下三張牌。
-
-### XX 審判 Judgement
-是成功還是失敗，由**敘事者**決定（在雙人或單人遊戲中，由抽牌的玩家自己決定）。
-
-### XXI 世界 The World
-世界介入並重生。從棄牌堆中取出一張牌（**世界**本身除外），把它放回牌堆，洗牌後重新抽。若場合許可，順便從遊戲中暫離一下，喝點水、休息片刻。
+> **節制（XIV）** 與 **死神（XIII）** 永遠不會被棄掉。
 
 ---
 
