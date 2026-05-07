@@ -33,7 +33,7 @@
 | change cross | 蛻化十字 | 4 屬性 + 永恆 |
 | transgender change wheel | 跨性別蛻化輪盤 | |
 | Tier (1–5) | 等級 1–5 | 心靈蛻化的五階 |
-| Lines | 紅線 | 安全工具 |
+| Lines | 線 | 安全工具 |
 | Veils | 帷幕 | 安全工具 |
 | body Tiers / mental Tiers | 身體等級 / 心靈等級 | |
 
