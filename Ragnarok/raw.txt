@@ -1,0 +1,4628 @@
+                                                                                                      TRPG 
+
+
+GATE
+
+
+ TRPG6  HO 
+4 
+ 913 RP 
+
+ POW HO 
+
+NPC  PC PVP / 
+ 6
+ 2025.04.30
+
+                                                       1
+        TRPG 
+
+  PL 
+
+ TRPG6  4PL 
+ TRPG7 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ KP 
+ NPC 
+PL  KP 
+ KP  PL 
+
+
+
+NPC 
+NPC 
+PC /
+PVP 
+ AF 
+
+PCNPC
+
+
+
+
+                                                        2
+                                                            TRPG 
+
+
+
+
+
+ PC  NPC 
+
+
+
+
+NPC NOT 
+
+
+
+
+ PC  AF 
+ TS 
+
+
+
+
+BOOTH 
+
+ SNS 
+
+
+
+
+NPC 
+
+
+
+ TRPG 6 
+ 
+ 2015 
+
+                                                        3
+                                                                                                      TRPG 
+
+                                              PL 
+
+ HO
+
+HO1 TRUTH
+
+
+
+POW +3 
+13 
+
+HO2 DESTROY
+
+
+
+EDU +3 
+16-18 
+
+HO3 FAITH
+
+
+
+DEX +3 
+14-18 
+
+HO4 ORDER
+
+
+.
+STR +3 
+
+HO -2 
+PL 
+
+                                                        4
+                                                                                                      TRPG 
+
+
+
+ AF""""
+
+
+
+1.
+2.
+3.
+4.10 
+
+
+ GATE 
+ GATE
+ GATE 
+
+GATE 
+PC 
+
+
+NPC 
+
+NPC 
+
+                                                        5
+                                                                                                      TRPG 
+
+
+ AF
+MP  30  MP  MP
+
+
+ 2 
+
+
+
+PL 
+
+
+HO 
+
+
+                                                        6
+                                                                                                      TRPG 
+
+
+
+ MP  1 
+
+ KP PC 
+
+  2D8+1+DB
+  2D8+DB
+/  2D8+2+DB
+  2D6+DB
+  2D8+DB
+  2D10+DB
+  2D10+DB
+  3D8
+  2D6+1
+ 1R2   2D8
+ 1R1   2D10+4
+ 1R1  3D6+1
+ 1R1  4D6
+ 1R1  4D6
+ 1R1  4D6
+
+                                                        7
+                                                                                                      TRPG 
+
+                                                 
+ 2025.04.30ver 
+
+
+1
+
+ HP  0 
+ MP ""HP ""
+
+ 1D4+1/1D10+1
+
+2
+
+
+
+
+
+
+
+
+3
+
+
+ MP  20 
+
+                                                        8
+                                                                                                      TRPG 
+
+                                                    KP 
+
+
+
+
+PL 
+
+ KP  PL 
+
+NPC  NPC NPC  RP 
+ PL 
+
+
+
+NPC 
+ 7 NPC  NPC 
+
+NPC 
+ HO  NPC NPC  PL  NPC 
+ PC 
+
+PC /
+
+PVP 
+NPC  HO1 GATE  HO2
+ HO3 HO4 
+PVP 
+ AF 
+ AF 
+
+
+PCNPC
+SAN0  PC 
+ NPC  PC 
+
+
+
+
+
+ 2015 
+
+
+                                                        9
+                                                                                                      TRPG 
+
+
+
+ RP 
+
+NPC  RP  RP 
+
+
+
+  1826 / 913 
+ 68,732 
+PDF  151 
+
+()
+
+ 20  ×1 26 ×1 
+
+
+
+
+ 3 
+
+NPC 
+SNS 
+ OK 
+ NPC 
+NPC  RP 
+
+ OK 
+PC 
+ PC  KP 
+
+NPC 
+ 3L 4PL  PL 
+
+
+PL 
+
+                                                       10
+                                                                                                      TRPG 
+
+
+ 
+
+    KP PL 
+    
+     KP PL  PL
+     RP 
+ 
+    
+    
+ NPC 
+     PL  NPC  RP 
+    
+     PC 
+OK 
+
+                                                       12
+      TRPG 
+
+ HO
+
+HO1 TRUTH
+
+
+
+
+POW +3 
+13 
+
+HO1 
+
+
+
+ 7 
+
+
+
+
+
+
+
+
+
+ GATE
+
+HO 
++30+30POW+3
+
+13
+                                                                                                      TRPG 
+
+NPC
+""
+
+
+
+
+
+""""
+
+
+
+
+
+
+"" KP 
+
+                                                       14
+                                                                                                      TRPG 
+
+HO2 DESTROY
+
+
+
+EDU +3 
+16-18 
+
+HO2 
+ 3 
+3  GATE 
+ GATE 
+
+
+
+
+
+HO 
++30EDU*2EDU+3 21
+NPC
+
+GATE 
+
+
+                                                       15
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+ 3 
+
+ 3  KP 
+
+
+                                                       16
+                                                                                                      TRPG 
+
+HO3 FAITH
+
+
+
+DEX +3 
+14-18 
+
+HO3 
+
+ PL 
+
+
+
+
+
+1 
+
+1  GATE 
+
+
+HO 
++30DEX+3
+
+                                                       17
+                                                                                                      TRPG 
+
+NPC
+
+
+
+
+
+
+
+
+
+
+
+ KP 
+
+                                                       18
+                                                                                                      TRPG 
+
+HO4 ORDER
+
+
+.
+STR +3 
+
+HO4 
+
+
+
+
+
+
+GATE 
+ GATE 
+
+HO 
++30STR+3
+NPC
+
+
+
+
+                                                       19
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ KP 
+
+
+                                                       20
+                                          TRPG 
+
+  KP  NPC 
+
+
+
+STR9 CON11 POW16 DEX12 APP17 SIZ11 INT14 EDU12
+HP11  2 DB+0  MP30
+13 /154cm//
+ 4/27
+
+HO1 
+
+
+
+7 
+ GATE 
+
+
+
+
+                                                       21
+                                                            TRPG 
+
+
+
+1D100<={SAN} 
+CCB<=80 
+CCB<=70 
+CCB<=60 
+CCB<=40 
+CCB<=35 
+CCB<=64 
+CCB<=40 
+CCB<=65 
+CCB<=20 
+CCB<=45 
+CCB<=65 
+CCB<=70 
+CCB<=65 
+CCB<=70 
+2D8+2 
+
+CCB<=9*5 STR×5
+CCB<=11*5 CON×5
+CCB<=16*5 POW×5
+CCB<=12*5 DEX×5
+CCB<=17*5 APP×5
+CCB<=11*5 SIZ×5
+CCB<=14*5 INT×5
+
+//STR=9
+//CON=11
+//POW=16
+//DEX=12
+//APP=17
+//SIZ=11
+//INT=14
+//EDU=12
+//DB=+0
+
+                                                       22
+   TRPG 
+
+
+
+STR9 CON10 POW14 DEX13 APP13 SIZ12 INT13 EDU13
+HP11  2 DB+0  MP30
+17 /167cm//
+ 9/9
+HO2 
+
+
+3 HO2 
+
+ HO2  GATE 
+HO2 
+
+                                                       23
+                      TRPG 
+
+
+
+1D100<={SAN} 
+CCB<=70 
+CCB<=65 
+CCB<=65 
+CCB<=75 
+CCB<=60 
+CCB<=76 
+CCB<=60 
+CCB<=15 
+CCB<=26 
+CCB<=70 
+CCB<=65 
+CCB<=60 
+CCB<=65 
+2D6+0 
+
+CCB<=10*5 STR×5
+CCB<=9*5 CON×5
+CCB<=14*5 POW×5
+CCB<=13*5 DEX×5
+CCB<=13*5 APP×5
+CCB<=12*5 SIZ×5
+CCB<=13*5 INT×5
+
+//STR=10
+//CON=9
+//POW=14
+//DEX=13
+//APP=13
+//SIZ=12
+//INT=13
+//EDU=13
+//DB=+0
+
+                 24
+   TRPG 
+
+
+
+STR10 CON12 POW16 DEX13 APP18 SIZ15 INT16 EDU20
+HP14  0 DB+1D4  MP30
+25 /176cm//
+ 6/8
+ GATE 
+
+
+
+PC 
+ HO2 
+
+                                                       25
+                      TRPG 
+
+
+
+1D100<={SAN} 
+CCB<=80 
+CCB<=80 
+CCB<=99 
+CCB<=50 
+CCB<=65 
+CCB<=76 
+CCB<=75 
+CCB<=50 
+CCB<=85 
+CCB<=80 
+CCB<=81 
+CCB<=65 
+CCB<=75 
+
+CCB<=10*5 STR×5
+CCB<=12*5 CON×5
+CCB<=16*5 POW×5
+CCB<=13*5 DEX×5
+CCB<=18*5 APP×5
+CCB<=15*5 SIZ×5
+CCB<=16*5 INT×5
+
+//STR=10
+//CON=12
+//POW=16
+//DEX=13
+//APP=18
+//SIZ=15
+//INT=16
+//EDU=20
+//DB=+1D4
+
+                 26
+       TRPG 
+
+
+
+STR9 CON8 POW16 DEX7 APP17 SIZ13 INT16 EDU20
+HP11 DB+0
+25 /177cm//
+ 6/8
+
+HO3 
+
+
+
+
+
+  27
+                      TRPG 
+
+
+
+1D100<={SAN} 
+CCB<=80 
+CCB<=80 
+CCB<=99 
+CCB<=70 
+CCB<=54 
+CCB<=50 
+CCB<=65 
+CCB<=20 
+CCB<=41 
+CCB<=81 
+CCB<=35 
+CCB<=60 
+CCB<=51 
+CCB<=85 
+CCB<=70 
+CCB<=55 
+
+CCB<=9*5 STR×5
+CCB<=8*5 CON×5
+CCB<=16*5 POW×5
+CCB<=7*5 DEX×5
+CCB<=17*5 APP×5
+CCB<=13*5 SIZ×5
+CCB<=16*5 INT×5
+
+//STR=9
+//CON=8
+//POW=16
+//DEX=7
+//APP=17
+//SIZ=13
+//INT=16
+//EDU=20
+//DB=+0
+
+                 28
+       TRPG 
+
+
+
+STR18 CON14 POW15 DEX15 APP12 SIZ15 INT14 EDU16
+HP15 DB+1D6
+26 /182cm//
+ 10/20
+
+ HO4 
+
+
+
+
+
+
+  29
+                      TRPG 
+
+
+
+1D100<={SAN} 
+CCB<=75 
+CCB<=70 
+CCB<=80 
+CCB<=40 
+CCB<=60 
+CCB<=80 
+CCB<=60 
+CCB<=75 
+CCB<=20 
+CCB<=75 
+CCB<=61 
+CCB<=75 
+CCB<=80  1R3 
+1D10 
+CCB<=75 
+1D6+{DB} 
+2D6+{DB}  MA 
+
+CCB<=18*5 STR×5
+CCB<=14*5 CON×5
+CCB<=15*5 POW×5
+CCB<=15*5 DEX×5
+CCB<=12*5 APP×5
+CCB<=15*5 SIZ×5
+CCB<=14*5 INT×5
+
+//STR=18
+//CON=14
+//POW=15
+//DEX=15
+//APP=12
+//SIZ=15
+//INT=14
+//EDU=16
+//DB=+1D6
+
+                 30
+       TRPG 
+
+
+
+STR14 CON12 POW15 DEX16 APP14 SIZ14 INT18 EDU15
+HP13 DB+1D4
+27 /177cm//
+ 4/15
+
+
+ PSI HO1 
+
+
+
+PSI 
+HO1 
+
+  31
+       TRPG 
+
+
+
+STR8 CON10 POW14 DEX15 APP12 SIZ7 INT16 EDU21
+HP9 DB-1D4
+/140cm//
+ 2/11
+
+
+ PC 
+
+
+  32
+     TRPG 
+
+
+
+PC  GATE 
+
+
+3  HO2 
+MP 
+ GATE 
+GATE  HO1 HO2 
+
+
+PC  MP PC  MP 
+ AF 
+HO2 
+
+
+
+
+
+ GATE  1 
+ HO3 
+ HO4  HO1 
+GATE 
+ GATE 
+
+
+33
+          TRPG 
+
+     
+
+HO1
+
+
+
+ 7 
+
+
+KP 
+HO1  CS 
+
+{HO1}
+
+......
+{HO1}
+
+
+
+
+
+
+
+
+
+
+
+......
+
+
+
+GATE 
+
+{HO1 }
+
+     34
+                                                                                                      TRPG 
+
+
+
+
+KP 
+ RP 
+
+GATE ......
+
+
+
+
+{HO1 }
+
+
+                                                       35
+          TRPG 
+
+HO2
+
+
+
+
+
+
+
+
+
+
+
+......
+
+
+
+ GATE 
+
+
+
+
+
+
+ 3 
+
+
+......
+
+ GATE 
+ 7 
+
+
+
+
+ GATE 
+
+     36
+                                                                                                      TRPG 
+
+
+{HO2}
+
+
+
+
+GATE ......
+
+
+
+
+
+KP 
+HO2  RP 
+
+                                                       37
+                                                                                                      TRPG 
+
+HO3
+
+
+
+
+
+
+
+
+HO3  CS 
+
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 
+ GATE  1 
+
+
+
+
+......
+
+ GATE 
+ 7 
+
+                                                       38
+                                                                                                      TRPG 
+
+{HO3 }
+
+
+
+
+KP 
+ RP 
+
+GATE ......
+
+
+
+{HO3 }
+
+
+                                                       39
+      TRPG 
+
+HO4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HO4  HO4  CS 
+
+
+
+
+
+
+
+
+......
+
+...
+
+
+
+
+
+......
+
+ GATE 
+                                                       40
+                                                                                                      TRPG 
+
+ 7 
+{HO4 }
+
+
+
+
+KP 
+ RP 
+
+GATE ......
+
+
+
+{HO4 }
+
+
+                                                       41
+                                                                                                      TRPG 
+
+                               01 GATE  DAY1 7:0013:00
+
+DAY1 7:00
+
+
+
+
+
+
+ GATE
+
+ GATE 
+
+
+
+
+
+
+
+
+
+
+GATE 
+
+
+
+
+A...
+B...
+
+ SAN+1D2
+
+SANC  SAN  
+ RP 
+ KP  RP PL  RP  OK 
+
+                                                       42
+                                                                                                      TRPG 
+
+ RP 
+  RP 
+
+
+
+NPC  RP 
+
+
+
+{HO1}
+
+
+
+ 
+
+HO1 
+
+
+
+......
+
+ 
+HO2 
+
+
+
+
+
+
+KP 
+
+
+ ... DEX 
+
+...DEX*5 
+
+                                                       43
+                 TRPG 
+
+DAY1 10:00
+
+
+
+
+
+
+
+
+
+
+//
+PC 
+
+INT*5
+
+
+1MP+1D3 
+
+
+
+1MP+1 
+ 5
+
+GATE 
+    
+
+
+
+
+            44
+             TRPG 
+
+DAY1 12:00
+
+
+
+
+
+A ...
+B ...
+C ...
+
+... /  / 
+
+ RP 
+  RP 
+
+ SAN+1D2
+
+
+NPC  RP 
+
+
+
+
+
+
+
+
+...A 
+
+
+
+ A 
+
+
+
+
+
+                                                       45
+             TRPG 
+
+DAY1 13:00
+
+
+
+
+
+
+
+
+ 
+ 1D3 
+
+GATE 
+
+RP 
+
+
+
+
+
+
+
+
+
+
+{HO1}
+
+
+
+
+
+
+
+
+
+
+
+                                                       46
+                                                                                                      TRPG 
+
+
+......
+
+
+
+ RP 
+
+  
+
+
+""
+RP 
+
+MP-1SAN-1
+
+
+                                                       47
+                                                                                                      TRPG 
+
+                                      02  DAY1 14:00
+
+DAY1 14:00
+
+
+
+
+
+
+
+
+PC 
+
+
+
+
+
+
+
+
+ 0/1D6
+
+
+   
+
+                                                       48
+      TRPG 
+
+
+
+
+
+   
+
+ 1R 
+ PC 
+
+
+
+
+
+STR22 CON16 SIZ11 INT12 POW17 DEX14 HP14 DB+1D6
+1D2 
+CCB<=30 
+1D6+1D6 
+CCB<=30 
+1D6+1D6 
+
+
+STR16 CON15 SIZ11 INT12 POW15 DEX13 HP13 DB+1D4
+1D2 
+CCB<=30 
+1D6+1D4 
+CCB<=30 
+1D6+1D4 
+
+
+STR16 CON10 SIZ12 INT16 POW13 DEX18 HP11 DB+1D4
+1D2 
+CCB<=30 
+1D6+1D4 
+CCB<=30 
+1D6+1D4 
+
+
+
+                                                       49
+                                                            TRPG 
+
+NPC 
+
+ NPC 
+
+
+PC  PC +10 
+
+                                                           EDU12
+STR9 CON11 POW16 DEX12 APP17 SIZ11 INT14
+HP11  2 DB+0  MP30
+
+1D100<={SAN} 
+CCB<=80 
+CCB<=70 
+CCB<=60 
+CCB<=40 
+CCB<=35 
+CCB<=64 
+CCB<=40 
+CCB<=65 
+CCB<=20 
+CCB<=45 
+CCB<=65 
+CCB<=70 
+CCB<=65 
+CCB<=70 
+2D8+2 
+
+CCB<=9*5 STR×5
+CCB<=11*5 CON×5
+CCB<=16*5 POW×5
+CCB<=12*5 DEX×5
+CCB<=17*5 APP×5
+CCB<=11*5 SIZ×5
+CCB<=14*5 INT×5
+
+//STR=9
+                                                       50
+                                           TRPG 
+
+//CON=11
+//POW=16
+//DEX=12
+//APP=17
+//SIZ=11
+//INT=14
+//EDU=12
+//DB=+0
+
+                                          EDU13
+STR9 CON10 POW14 DEX13 APP13 SIZ12 INT13
+HP11  2 DB+0  MP30
+
+1D100<={SAN} 
+CCB<=70 
+CCB<=65 
+CCB<=65 
+CCB<=75 
+CCB<=60 
+CCB<=76 
+CCB<=60 
+CCB<=15 
+CCB<=26 
+CCB<=70 
+CCB<=65 
+CCB<=60 
+CCB<=65 
+2D6+0 
+
+CCB<=10*5 STR×5
+CCB<=9*5 CON×5
+CCB<=14*5 POW×5
+CCB<=13*5 DEX×5
+CCB<=13*5 APP×5
+CCB<=12*5 SIZ×5
+CCB<=13*5 INT×5
+
+                 51
+                                                                                                      TRPG 
+
+//STR=10
+//CON=9
+//POW=14
+//DEX=13
+//APP=13
+//SIZ=12
+//INT=13
+//EDU=13
+//DB=+0
+
+
+
+
+
+
+
+......
+...
+......
+
+KP 
+
+
+
+
+
+
+
+
+
+ GATE 
+
+                                                       52
+                                                                                                      TRPG 
+
+                                   03  DAY1 16:0019:30
+DAY1 16:00
+
+
+
+ PC  1D3 
+
+
+
+RP 
+
+  
+   RP 
+  
+
+                                                       53
+           TRPG 
+
+HO1 
+
+GATE 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ RP 
+
+
+{HO1}
+......
+{HO1}
+......
+...
+
+
+HO1 
+ HO1 
+
+
+      54
+       TRPG 
+
+HO2 
+
+
+
+
+...{HO2}
+
+
+
+
+
+
+
+
+GATE ...
+
+
+
+
+
+
+
+ RP 
+
+
+...
+
+
+...
+{HO2}...
+
+
+KP 
+...
+
+
+                                                       55
+                                                                                                      TRPG 
+
+
+
+
+
+""
+
+
+{HO2}
+
+
+
+
+
+
+......
+
+
+HO2  RP 
+
+
+
+
+                                                       56
+           TRPG 
+
+HO3 
+
+
+
+ GATE 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+......
+
+
+
+......
+
+      57
+       TRPG 
+
+HO4 
+
+{HO4 }
+
+
+{HO4}
+
+
+
+GATE 
+
+
+
+
+
+...
+
+
+
+
+{HO4}
+
+
+
+RP 
+
+RP 
+
+
+ GATE 
+
+......GATE 
+
+
+ 1000 
+ GATE  GATE 
+
+
+                                                       58
+                                                                                                      TRPG 
+
+QA
+
+GATE ...
+
+
+
+
+
+
+{HO4 }
+
+
+
+
+
+
+
+
+...
+
+
+
+INT*5
+
+
+
+
+ 289P
+ POW + POW 
+MP  MP  POW 
+
+{HO4}
+
+
+
+
+                                                       59
+                                                                                                      TRPG 
+
+KP 
+
+
+GATE 
+
+NPC  
+
+                                                       60
+                 TRPG 
+
+DAY1 19:30
+
+
+
+
+
+
+
+
+
+ RP 
+  RP 
+
+ SAN+1D2
+
+RP 
+
+
+
+            61
+                                                                                                      TRPG 
+
+                                             04- DAY1 
+
+
+
+KP 
+ PC 
+ CS  PC 
+
+ DM 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""
+
+
+
+
+
+
+                                                       62
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                       63
+                                                                                                      TRPG 
+
+                                    05  DAY2 7:0010:00
+DAY2 7:00
+ MP HP+1 
+
+
+
+
+
+A...
+B...
+ RP 
+
+  RP 
+ SAN+1D2
+
+                                                       64
+             TRPG 
+
+DAY2 10:00
+
+
+
+
+
+
+
+
+
+
+
+
+
+CON*5
+
+CON*5 
+
+
+CON*5 
+
+
+
+
+HO1  CON*5  RP 
+
+{HO1}
+
+
+HO2  CON*5  RP 
+
+......
+......
+
+HO3HO4  CON*5  RP 
+
+
+
+                                                       65
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RP 
+
+
+
+
+......
+
+
+
+
+
+
+
+
+
+
+RP 
+
+
+
+
+
+
+
+                                                       66
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+""
+Call Of Cthulhu
+
+KP 
+GATE BGM 
+
+                                                       67
+                                                                                                      TRPG 
+
+                               06  DAY1 10:0011:00
+
+
+
+ HO4
+
+{HO4 }
+GATE 
+......GATE 
+
+
+
+
+
+...
+
+
+
+
+
+
+
+
+DEX*5
+
+DEX 
+
+
+DEX 
+ 2R 
+
+
+ GATE 
+
+
+                                                       68
+                                                                                                      TRPG 
+
+DEX*5 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/
+ 0/1D4
+ 1/1D4
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+STR18 CON11 SIZ13 INT11 POW18 DEX10 HP12 DB+1D4
+1D3 
+CCB<=30 
+1D6+1D4 
+
+                                                       69
+                                           TRPG 
+
+CCB<=40 
+1D4 
+CCB<=20 
+1D6+1D4 
+
+
+STR15 CON15 SIZ9 INT12 POW15 DEX12 HP12 DB+0
+1D3 
+CCB<=30 
+1D6 
+CCB<=40 
+1D4 
+CCB<=20 
+1D6 
+
+
+STR10 CON23 SIZ15 INT8 POW17 DEX7 HP19 DB+1D4
+1D3 
+CCB<=30 
+1D6+1D4 
+CCB<=40 
+1D4 
+CCB<=20 
+1D6+1D4 
+
+
+
+   NPC 
+
+ NPC 
+
+
+PC  PC +10 
+
+                                          EDU12
+STR9 CON11 POW16 DEX12 APP17 SIZ11 INT14
+HP11  2 DB+0  MP30
+
+          70
+                                                                                                      TRPG 
+
+1D100<={SAN} 
+CCB<=80 
+CCB<=70 
+CCB<=60 
+CCB<=40 
+CCB<=35 
+CCB<=64 
+CCB<=40 
+CCB<=65 
+CCB<=20 
+CCB<=45 
+CCB<=65 
+CCB<=70 
+CCB<=65 
+CCB<=70 
+2D8+2 
+
+CCB<=9*5 STR×5
+CCB<=11*5 CON×5
+CCB<=16*5 POW×5
+CCB<=12*5 DEX×5
+CCB<=17*5 APP×5
+CCB<=11*5 SIZ×5
+CCB<=14*5 INT×5
+
+//STR=9
+//CON=11
+//POW=16
+//DEX=12
+//APP=17
+//SIZ=11
+//INT=14
+//EDU=12
+//DB=+0
+
+
+STR9 CON10 POW14 DEX13 APP13 SIZ12 INT13 EDU13
+
+                                                       71
+                                                            TRPG 
+
+HP11  2 DB+0  MP30
+
+1D100<={SAN} 
+CCB<=70 
+CCB<=65 
+CCB<=65 
+CCB<=75 
+CCB<=60 
+CCB<=76 
+CCB<=60 
+CCB<=15 
+CCB<=26 
+CCB<=70 
+CCB<=65 
+CCB<=60 
+CCB<=65 
+2D6+0 
+
+CCB<=10*5 STR×5
+CCB<=9*5 CON×5
+CCB<=14*5 POW×5
+CCB<=13*5 DEX×5
+CCB<=13*5 APP×5
+CCB<=12*5 SIZ×5
+CCB<=13*5 INT×5
+
+//STR=10
+//CON=9
+//POW=14
+//DEX=13
+//APP=13
+//SIZ=12
+//INT=13
+//EDU=13
+//DB=+0
+
+
+                                                       72
+                                                                                                      TRPG 
+
+
+
+
+
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PC  NPC 
+
+RP 
+
+
+
+
+
+
+...
+
+
+
+
+
+
+
+
+                                                       73
+                                                                                                      TRPG 
+
+
+
+PC  NPC 
+RP 
+
+...
+
+......
+
+
+
+                                                       74
+                                                                                                      TRPG 
+
+                                      07  DAY2 11:00
+
+
+ /  / 
+ 08  
+
+                                                       75
+                                                                                                      TRPG 
+
+ 1
+
+
+
+
+
+
+
+
+1845
+
+
+
++12 1D8/2D8
+
+
+
+POW*2INT*5
+
+POW 
+
+
+
+
+/
+
+ MP
+1D10
+
+
+200SIZ 
+
+ 40SIZ  20
+
+
+MP14
+ 5 1MP  5 99  14+1933MP
+
+
+                                                       76
+                                                                                                      TRPG 
+
+D100  100  MP 
+INT*5
+HO2 
+
+ HO2
+
+
+
+......
+
+
+/
+1597
+
+
++7 1D3/1D6
+
+
+
+
+
+                                                       77
+         TRPG 
+
+ 2
+
+
+
+
+
+
+
+
+
+HO3 
+
+ HO3
+
+
+
+
+
+
+
+
+
+KP 
+HO3 
+
+    78
+                                                                                                      TRPG 
+
+                                         08  DAY2 12:00
+
+ 3
+
+
+
+
+
+
+
+5  6
+
+
+
+
+
+/ 1D3/1D10
+
+
+
+
+
+
+
+
+
+
+
+
+ HO4
+
+
+
+
+ 1/1D4
+
+RP 
+                                                       79
+                                                                                                      TRPG 
+
+
+......
+...
+
+
+
+
+
+POW15 
+  HO1  HO4 HO2 -10HO3 -5
+
+POW 
+
+
+POW 
+
+
+ PC  PC 
+
+
+
+
+...
+
+
+
+
+{HO1}
+
+
+{HO1}
+
+
+
+
+.........
+......{HO1}
+
+                                                       80
+      TRPG 
+
+...
+
+
+
+
+
+
+ HO1
+
+
+......
+
+
+
+{HO1}...
+
+
+
+
+
+
+
+
+
+
+
+                                                       81
+                                                                                                      TRPG 
+
+
+
+
+
+ HO4
+{HO4 }
+
+
+
+
+
+
+
+3MP+3POW 1SAN
+POW 
+
+
+{HO4}
+{HO4}
+
+
+...
+
+
+
+
+
+
+
+
+
+
+
+{HO4} MP-1SAN-1
+
+                                                       82
+                                                                                                      TRPG 
+
+
+
+ GATE 
+
+                                                       83
+                                                                                                      TRPG 
+
+                                   09  DAY2 12:3014:00
+
+
+
+
+
+
+
+
+
+
+2R 
+PC 
+
+
+ 0
+
+  
+
+
+   
+
+
+
+
+
+
+STR12 CON17 SIZ9 INT11 POW19 DEX12 HP13 DB+0
+1D3 
+CCB<=30 
+1D6 
+CCB<=40 
+1D4 
+CCB<=20 
+1D6 
+
+
+STR9 CON22 SIZ15 INT6 POW15 DEX8 HP19 DB+0
+
+                                                       84
+                                                                                                      TRPG 
+
+1D3 
+CCB<=30 
+1D6 
+CCB<=40 
+1D4 
+CCB<=20 
+1D6 
+
+
+STR10 CON19 SIZ15 INT15 POW17 DEX11 HP17 DB+1D4
+1D3 
+CCB<=30 
+1D6+1D4 
+CCB<=40 
+1D4 
+CCB<=20 
+1D6+1D4 
+
+
+
+
+   NPC 
+
+ NPC 
+
+
+PC  PC +10 
+
+                                                           EDU13
+STR9 CON10 POW14 DEX13 APP13 SIZ12 INT13
+HP11  2 DB+0  MP30
+
+1D100<={SAN} 
+CCB<=70 
+CCB<=65 
+CCB<=65 
+CCB<=75 
+
+                                                       85
+                      TRPG 
+
+CCB<=60 
+CCB<=76 
+CCB<=60 
+CCB<=15 
+CCB<=26 
+CCB<=70 
+CCB<=65 
+CCB<=60 
+CCB<=65 
+2D6+0 
+
+CCB<=10*5 STR×5
+CCB<=9*5 CON×5
+CCB<=14*5 POW×5
+CCB<=13*5 DEX×5
+CCB<=13*5 APP×5
+CCB<=12*5 SIZ×5
+CCB<=13*5 INT×5
+
+//STR=10
+//CON=9
+//POW=14
+//DEX=13
+//APP=13
+//SIZ=12
+//INT=13
+//EDU=13
+//DB=+0
+
+
+                 86
+                                                                                                      TRPG 
+
+2R  orPC 
+
+
+
+
+
+
+{HO4}
+
+: 
+
+
+
+
+
+
+{HO4}
+
+
+
+
+
+
+
+
+
+ HO1
+ GATE ...
+
+
+
+
+
+
+
+
+.........{HO4}
+
+                                                       87
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ OK 
+ NPC 
+ PC HO3 
+
+
+
+
+
+
+PC 
+
+
+...
+
+
+
+
+
+
+
+
+GATE 
+3 
+
+ HO4 
+
+                                                       88
+                                                                                                      TRPG 
+
+
+ HO4 
+
+
+
+ HO1 
+
+
+""
+ GATE 
+
+                                                       89
+                                                                                                      TRPG 
+
+                                   10  DAY2 14:00
+
+
+
+
+
+
+
+DEX*5
+
+
+
+
+RP 
+ SAN+1D2
+
+                                                       90
+                                                                                                      TRPG 
+
+                                   11  DAY2 15:00
+
+
+
+
+=
+
+
+
+
+
+
+ GATE 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HO1 HO2  3 
+HO3 
+HO4 
+
+RP 
+
+
+...
+
+
+                                                       91
+                                                                                                      TRPG 
+
+
+
+
+KP 
+HO3 
+
+......
+......
+
+
+
+
+
+                                                       92
+                                                                                                      TRPG 
+
+                                      12  DAY2 17:00
+
+DAY2 17:00
+
+
+
+
+
+   RP 
+  
+  
+
+
+
+
+
+
+ / 
+
+
+...
+
+
+
+
+
+
+
+
+ / 
+
+
+
+
+                                                       93
+                                                                                                      TRPG 
+
+
+ HO2
+
+
+POW*5
+
+POW 
+
+
+
+
+
+
+POW 
+
+
+
+
+{HO2}
+
+
+
+... 4 
+
+
+
+
+{HO2}
+
+
+/2 
+
+///
+
+
+
+                                                       94
+                                                                                                      TRPG 
+
+HO1  HO4 HO3 HO2 
+GATE 
+ HO2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ HO3
+
+
+
+
+
+
+
+ RP 
+
+
+
+
+
+
+
+HO3 
+
+                                                       95
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+...
+
+
+{HO3}
+
+
+
+
+
+
+
+
+
+
+
+
+{HO3}
+
+
+
+ HO3
+
+
+
+
+
+{HO3}
+
+
+
+                                                       96
+                                                                                                      TRPG 
+
+
+/
+
+
+HO3 
+
+
+DAY2 21:00
+
+
+
+
+                                                       97
+                                                                                                      TRPG 
+
+                                         13  DAY3 7:00
+
+ MP HP+1 
+
+
+
+
+
+
+
+
+
+ RP 
+
+ SAN+1D2
+
+
+
+
+
+...3 
+
+
+
+
+ 4 
+
+
+
+
+
+
+
+
+
+
+
+                                                       98
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MP-1SAN-1
+
+                                                       99
+                                                                                                      TRPG 
+
+                                     14  DAY3 9:00
+
+
+
+
+
+
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HP-1D6
+
+
+
+
+/ 1D2/1D10
+  1D3/1D20
+
+
+                                                      100
+                                                                                                      TRPG 
+
+
+
+
+DAY1 
+
+
+DAY1 
+
+
+
+
+
+
+
+1
+2DEX*5 
+3
+
+
+
+
+
+                                                      101
+                                           TRPG 
+
+
+   
+
+
+
+
+ 2D6 
+-
+50 
+
+
+
+
+STR49 CON22 SIZ48 INT16 POW15 DEX13 HP35  4 DB+5D6
+1D2 
+CCB<=85 
+1D10 
+CCB<=70 
+5D6 
+
+
+
+
+
+   NPC 
+
+ NPC 
+
+PC  PC +10 
+
+                                          EDU13
+STR9 CON10 POW14 DEX13 APP13 SIZ12 INT13
+HP11  2 DB+0  MP30
+
+1D100<={SAN} 
+CCB<=70 
+
+               102
+                                                            TRPG 
+
+CCB<=65 
+CCB<=65 
+CCB<=75 
+CCB<=60 
+CCB<=76 
+CCB<=60 
+CCB<=15 
+CCB<=26 
+CCB<=70 
+CCB<=65 
+CCB<=60 
+CCB<=65 
+2D6+0 
+
+CCB<=10*5 STR×5
+CCB<=9*5 CON×5
+CCB<=14*5 POW×5
+CCB<=13*5 DEX×5
+CCB<=13*5 APP×5
+CCB<=12*5 SIZ×5
+CCB<=13*5 INT×5
+
+//STR=10
+//CON=9
+//POW=14
+//DEX=13
+//APP=13
+//SIZ=12
+//INT=13
+//EDU=13
+//DB=+0
+
+                                                           EDU16
+STR18 CON14 POW15 DEX15 APP12 SIZ15 INT14
+HP15 DB+1D6
+
+1D100<={SAN} 
+                                                      103
+                                                            TRPG 
+
+CCB<=75 
+CCB<=18*5 STR×5
+CCB<=14*5 CON×5
+CCB<=15*5 POW×5
+CCB<=15*5 DEX×5
+CCB<=12*5 APP×5
+CCB<=15*5 SIZ×5
+CCB<=14*5 INT×5
+CCB<=70 
+CCB<=80 
+CCB<=40 
+CCB<=60 
+CCB<=80 
+CCB<=60 
+CCB<=75 
+CCB<=20 
+CCB<=75 
+CCB<=61 
+CCB<=75 
+CCB<=80  1R3 
+1D10 
+CCB<=75 
+1D6+{DB} 
+2D6+{DB}  MA 
+
+//STR=18
+//CON=14
+//POW=15
+//DEX=15
+//APP=12
+//SIZ=15
+//INT=14
+//EDU=16
+//DB=+1D6
+
+
+
+                                                      104
+    TRPG 
+
+1
+
+
+
+ GATE 
+
+
+
+
+ HO3
+
+
+
+
+HO3 
+ HO2
+GATE 
+
+
+
+15-
+
+2DEX*5 
+
+ R 
+
+MP-1SAN-1
+
+
+ 5
+
+
+
+
+
+                                                      105
+                                                                                                      TRPG 
+
+ R DEX*5 R 
+
+ PC 
+
+
+
+
+ GATE 
+
+
+
+
+ HO3
+
+
+
+HO3 
+ HO2
+GATE 
+
+
+
+15- 
+
+3
+
+ R 
+
+MP-1SAN-1D3
+
+
+
+
+
+
+ GATE 
+
+                                                      106
+                                                                                                      TRPG 
+
+
+
+ HO3
+
+
+
+HO3 
+ HO2
+GATE 
+
+
+15  
+
+                                                      107
+                                                                                                      TRPG 
+
+                                         15  DAY3 10:00
+
+
+
+
+
+ 1 /  2 /  3
+
+
+
+
+ 1
+
+
+
+
+ /  
+
+
+
+
+
+
+
+
+ 1D2/1D3+1
+
+
+
+ 2 
+
+
+
+
+
+                                                      108
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GATE 
+3 
+
+{HO2}
+
+
+
+
+
+
+{HO2}
+{HO2}
+
+GATE 
+
+
+ HO1
+
+
+
+
+
+                                                      109
+                                                                                                      TRPG 
+
+
+
+ HO2
+
+
+
+""
+
+
+
+{HO2}
+
+
+
+
+
+
+
+
+ 3 
+
+
+
+
+
+
+
+
+
+
+
+
+{HO2}
+...
+
+
+
+
+                                                      110
+                                                                                                      TRPG 
+
+
+...
+
+
+
+
+
+
+
+
+
+
+                                                      111
+     TRPG 
+
+ 2
+
+
+ 1 
+
+
+
+
+
+
+ 1D2/1D4+1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ HO3
+
+
+
+
+
+
+.........
+
+ NPC HO3  RP 
+                                                      112
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+4 
+
+
+ HO3
+
+
+
+
+
+
+...{HO3}
+
+
+
+
+{HO3}
+
+
+
+
+
+
+
+
+
+
+ HO3
++20
+
+                                                      113
+                                                                                                      TRPG 
+
+
+
+
+
+
+{HO3}
+
+
+
+ 3 
+ NPC  PC 
+
+
+
+   1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 271P
+
+
+
+
+
+                                                      114
+                                                                                                      TRPG 
+
+
+...
+
+...
+
+
+
+
+
+
+
+
+............
+...
+{HO3}
+
+{HO3}
+{HO3}
+
+
+                                                      115
+                                                                                                      TRPG 
+
+RP 
+
+ PC  HO3 
+
+
+
+ GATE 
+
+ 1 
+...
+GATE 
+
+
+1 
+
+
+...
+{HO3}
+
+
+
+
+                                                      116
+                                                                                                      TRPG 
+
+
+
+
+...
+
+
+
+
+   2
+
+
+
+{HO3} 1D3/1D5+1
+RP 
+ 
+
+
+
+
+                                                      117
+     TRPG 
+
+ 3
+
+
+
+
+
+
+
+
+
+
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+...
+
+...
+
+
+
+
+
+
+
+
+
+                                                      118
+                                            TRPG 
+
+
+
+
+
+
+ 1D3+1 
+STR10 CON10 SIZ10 INT10 POW10 DEX10 HP10 DB+0
+1D2 
+CCB<=55 
+1D4 
+CCB<=55  1R2 
+1D10 
+
+
+
+
+
+   NPC 
+
+ NPC 
+
+
+
+                                           EDU16
+STR18 CON14 POW15 DEX15 APP12 SIZ15 INT14
+HP15 DB+1D6
+
+1D100<={SAN} 
+CCB<=75 
+CCB<=18*5 STR×5
+CCB<=14*5 CON×5
+CCB<=15*5 POW×5
+CCB<=15*5 DEX×5
+CCB<=12*5 APP×5
+CCB<=15*5 SIZ×5
+CCB<=14*5 INT×5
+
+                 119
+                                         TRPG 
+
+CCB<=70 
+CCB<=80 
+CCB<=40 
+CCB<=60 
+CCB<=80 
+CCB<=60 
+CCB<=75 
+CCB<=20 
+CCB<=75 
+CCB<=61 
+CCB<=75 
+CCB<=80  1R3 
+1D10 
+CCB<=75 
+1D6+{DB} 
+2D6+{DB}  MA 
+
+//STR=18
+//CON=14
+//POW=15
+//DEX=15
+//APP=12
+//SIZ=15
+//INT=14
+//EDU=16
+//DB=+1D6
+
+                                        EDU20
+STR9 CON8 POW16 DEX7 APP17 SIZ13 INT16
+HP11 DB+0
+
+1D100<={SAN} 
+CCB<=80 
+CCB<=9*5 STR×5
+CCB<=8*5 CON×5
+CCB<=16*5 POW×5
+
+                 120
+                                                                                                      TRPG 
+
+CCB<=7*5 DEX×5
+CCB<=17*5 APP×5
+CCB<=13*5 SIZ×5
+CCB<=16*5 INT×5
+CCB<=80 
+CCB<=99 
+CCB<=70 
+CCB<=54 
+CCB<=50 
+CCB<=65 
+CCB<=20 
+CCB<=41 
+CCB<=81 
+CCB<=35 
+CCB<=60 
+CCB<=51 
+CCB<=85 
+CCB<=70 
+CCB<=55 
+
+//STR=9
+//CON=8
+//POW=16
+//DEX=7
+//APP=17
+//SIZ=13
+//INT=16
+//EDU=20
+//DB=+0
+
+
+
+
+
+
+
+
+
+                                                      121
+                                                                                                      TRPG 
+
+-10
+
+/
+
+
+
+
+{HO2}-30
+*10
+
+
+ NPC  PC 
+ 3 
+ 100  100 
+
+   1
+
+
+
+
+
+
+
+
+
+
+...{HO2}......
+
+
+
+
+
+......
+...{HO2}
+
+                                                      122
+                                                                                                      TRPG 
+
+
+
+
+RP 
+
+
+   2
+
+
+
+
+
+......{HO2}
+
+
+
+
+............
+
+......
+
+                                                      123
+                                                                                                      TRPG 
+
+
+
+{HO2} 1D3/1D5+1
+ PC  1D2/1D3+1
+
+
+
+
+
+
+                                                      124
+                                                                                                      TRPG 
+
+                                            16  DAY3
+
+
+
+
+
+
+
+
+...
+
+
+
+
+
+1D5  HP 
+
+2D5  HP  +1 
+HP  6 
+choice    
+-20
+DEX-1
+ PC  1D3/1D5+1
+
+                                                      125
+                                                                                                      TRPG 
+
+ PC  1D2/1D4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{HO4}
+
+
+
+
+
+{HO4}STR*4
+
+
+ STR/
+ 3 
+ NPC  PC 
+
+   1
+
+
+
+
+
+                                                      126
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+...{HO4}
+
+
+
+RP 
+
+   2
+
+
+
+{HO4}
+
+
+
+
+                                                      127
+                                                                                                      TRPG 
+
+
+
+
+
+
+{HO4}
+
+
+
+{HO4} 1D3/1D5+1
+
+
+
+                                                      128
+                                                                                                      TRPG 
+
+                               17  DAY3
+
+
+
+
+
+
+
+
+
+
+
+
+ 1D2/1D3+1
+
+
+
+
+
+
+
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                      129
+                                                                                                      TRPG 
+
+
+
+
+
+
+{HO1} R 
+ 2 
+4R 
+HO1 
+
+   1
+
+
+
+
+
+
+
+{HO1}
+
+
+                                                      130
+                                                                                                      TRPG 
+
+
+...
+
+{HO1}
+
+
+{HO1}......
+
+RP 
+
+
+
+
+
+
+
+
+NPC 
+ HO4 
+
+
+
+{HO4}{HO1}{HO2}{HO3}
+
+
+
+
+
+
+
+
+
+
+{HO1}
+
+...
+
+                                                      131
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+{HO3}
+
+
+{HO3}
+
+
+""...
+
+
+
+{HO2}
+
+
+
+...
+{HO1}{HO1}
+
+
+
+
+
+   24R 
+
+
+
+
+
+                                                      132
+                                                                                                      TRPG 
+
+
+
+
+
+
+/ 1D10/1D100
+
+SAN  RP 
+
+
+
+
+
+
+
+
+
+
+
+ 4 
+
+   3
+
+
+......
+
+
+
+
+
+
+{HO1}
+
+{HO1} 1D3/1D5+1
+   PC  1D2/1D3+1
+
+
+                                                      133
+                                                                                                      TRPG 
+
+
+
+
+
+NPC 
+ HO4 
+
+
+
+{HO4}{HO1}{HO2}{HO3}
+
+
+
+
+
+
+
+
+
+
+{HO1}
+
+...
+
+
+
+
+
+
+
+
+
+
+
+{HO3}
+
+
+                                                      134
+                                                                                                      TRPG 
+
+{HO3}
+
+""...
+
+
+{HO2}
+
+
+
+
+                                                      135
+                                                                                                      TRPG 
+
+                                      18  DAY3
+
+
+
+
+
+
+
+...
+
+
+
+SAN0 
+PC 
+
+
+
+
+
+...
+......
+
+
+
+
+
+
+/ 1/1D5
+/
+ 0/1D2
+
+
+
+
+1R   
+   R 
+  
+                                                      136
+      TRPG 
+
+
+   
+
+
+
+1D4  R 
+
+
+
+
+
+
+STR46 CON18 SIZ48 INT11 POW16 DEX21 HP33 DB+5D6
+1D2 
+CCB<=80 
+5D6 
+1D3  STR 
+CCB<=40 
+2D6+5D6 
+
+
+STR44 CON18 SIZ43 INT13 POW11 DEX11 HP31 DB+5D6
+1D2 
+CCB<=80 
+5D6 
+1D3  STR 
+CCB<=40 
+2D6+5D6 
+
+
+STR14 CON17 SIZ13 INT11 POW19 DEX12 HP15 DB+1D4
+1D3 
+CCB<=30 
+1D6+1D4 
+CCB<=40 
+1D4 
+
+                                                      137
+                                                                                                      TRPG 
+
+CCB<=20 
+1D6+1D4 
+
+
+STR13 CON15 SIZ15 INT12 POW14 DEX14 HP15 DB+1D4
+1D3 
+CCB<=30 
+1D6+1D4 
+CCB<=40 
+1D4 
+CCB<=20 
+1D6+1D4 
+
+
+
+
+
+
+
+
+
+
+ 25R  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  138
+                                                                                                      TRPG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HO1
+ R 1R  1  POW*5 95
+
+
+HO2
+ R  1R  1  EDU*5 95
++5  PC 
+
+HO3
+ R 1R  1  DEX*5 95
++10 
+
+HO4
+ R  1R  1  STR*5 
+ R -20 
+
++3 
+
+
+
+
+                                                      139
+            TRPG 
+
+
+
+
+
+
+ 5R 
+
+   1
+
+
+
+
+......
+
+......
+
+
+
+
+
+
+
+
+
+
+20- 
+
+   2
+
+
+
+
+
+ RP 
+
+      140
+                                                                                                      TRPG 
+
+
+
+ 2 
+
+   35R 
+
+
+
+
+
+/ 1D10/1D100
+
+HO3  SAN 
+HO3  SAN  SAN 
+ SAN 
+
+   1HO3  SAN 
+
+
+{HO3}
+
+{HO3}
+
+
+
+{HO3} MP  1  SAN 
+
+                                                      141
+                                                                                                      TRPG 
+
+
+ SAN 
+
+
+
+
+
+
+
+
+
+
+
+......
+
+......
+
+
+
+
+
+
+
+
+                                                      142
+                                                                                                      TRPG 
+
+
+
+
+
+ RP 
+
+
+
+
+
+
+ 3-1 
+
+   2SAN 
+
+
+
+
+
+
+
+
+
+
+                                                      143
+                                                                                                      TRPG 
+
+
+......
+
+......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ RP 
+
+
+
+
+
+
+
+
+
+
+ 3-1 
+
+                                                      144
+              TRPG 
+
+3 SAN 
+
+
+
+
+
+
+ RP 
+
+
+
+
+
+
+
+ 3-2 
+
+        145
+      TRPG 
+
+19 
+
+NPC 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ RP 
+  NPC 
+
+NPC  RP  RP 
+ RP 
+
+
+GATE
+
+
+
+ HO2  HO3 
+
+...
+
+                                                      146
+                                                                                                      TRPG 
+
+
+
+
+ HO3 HO3 
+
+
+ HO2  HO2 
+ HO1  RP 
+
+                                                      147
+                                                                                                      TRPG 
+
+                                            20 
+
+ PC  KP 
+
+1
+
+3 
+
+
+
+
+
+
+
+
+2
+
+
+
+
+
+
+
+3
+
+
+
+
+
+
+
+
+                                                      148
+                                                                                                      TRPG 
+
+
+
+
+
+
+ 
+
+                                                      149
+             TRPG 
+
+
+
+ 1-1  PC 
+ 1-2  PC 
+ 2 
+ 3-1 
+ 3-2  SAN 
+ 4 
+
+                                                    
+
+SAN 
+ 1D20
+HO  1D3
+ 1D6
+ 1D6
+NPC ×1D2  6 
+
+
+ +1
+ +1
+ +1
+ +5
+
+150
+                                                                                                      TRPG 
+
+                                                 
+
+
+ NPC 
+ PC 
+...
+
+ Twitter 
+ @Kasai_2222
+
+                                                      151
+
