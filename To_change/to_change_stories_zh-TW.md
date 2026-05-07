@@ -1,28 +1,28 @@
-# 《To Change》— 劇本集（Stories）
+# 《To Change》— 故事集（Stories）
 
-> 從 [《To Change》主規則書](to_change_zh-TW.md) 拆出的 **11 個現成劇本**。
+> 從 [《To Change》主規則書](to_change_zh-TW.md) 拆出的 **11 個現成故事**。
 > 開團前請先參閱主規則書中的「角色建立」「行動判定」「故事動作」「跨性別蛻化」等基礎章節。
-> 各劇本心靈等級（Mental Tier）已標於該劇本起首；Tier 4 / 5 屬於蛻化最劇烈的等級，請務必先確認玩家的安全工具設定。
+> 各故事心靈等級（Mental Tier）已標於該故事起首；Tier 4 / 5 屬於蛻化最劇烈的等級，請務必先確認玩家的安全工具設定。
 
 ---
 
 ## 目次（Stories Index）
 
-- [Big Top Energy（壓軸登場）](#劇本big-top-energy壓軸登場)
-- [Dragon's Fire（龍之炎）](#劇本dragons-fire龍之炎)
-- [Galactic North（銀河之北）](#劇本galactic-north銀河之北)
-- [Hair of the Dog（解醉之毛）](#劇本hair-of-the-dog解醉之毛)
-- [I Woke Up in Another World …!?（我和朋友穿越異世界，殿下！？）](#劇本i-woke-up-in-another-world-with-my-friends-and-now-everyones-calling-us-her-royal-highness我和朋友穿越異世界結果大家都在叫我們殿下)
-- [Maastrichtian Dynasty（馬斯垂克王朝）](#劇本maastrichtian-dynasty馬斯垂克王朝)
-- [Our Lady（聖母）](#劇本our-lady聖母)
-- [She Who Divided the Sexes（劃分兩性者）](#劇本she-who-divided-the-sexes劃分兩性者)
-- [The Wanting Tide（渴望之潮）](#劇本the-wanting-tide渴望之潮)
-- [To the Swiftest（致最迅捷者）](#劇本to-the-swiftest致最迅捷者)
-- [Weed for the Aspiring Woof（致欲為汪汪者的草）](#劇本weed-for-the-aspiring-woof致欲為汪汪者的草)
+- [Big Top Energy（壓軸登場）](#故事big-top-energy壓軸登場)
+- [Dragon's Fire（龍之炎）](#故事dragons-fire龍之炎)
+- [Galactic North（銀河之北）](#故事galactic-north銀河之北)
+- [Hair of the Dog（解醉之毛）](#故事hair-of-the-dog解醉之毛)
+- [I Woke Up in Another World …!?（我和朋友穿越異世界，殿下！？）](#故事i-woke-up-in-another-world-with-my-friends-and-now-everyones-calling-us-her-royal-highness我和朋友穿越異世界結果大家都在叫我們殿下)
+- [Maastrichtian Dynasty（馬斯垂克王朝）](#故事maastrichtian-dynasty馬斯垂克王朝)
+- [Our Lady（聖母）](#故事our-lady聖母)
+- [She Who Divided the Sexes（劃分兩性者）](#故事she-who-divided-the-sexes劃分兩性者)
+- [The Wanting Tide（渴望之潮）](#故事the-wanting-tide渴望之潮)
+- [To the Swiftest（致最迅捷者）](#故事to-the-swiftest致最迅捷者)
+- [Weed for the Aspiring Woof（致欲為汪汪者的草）](#故事weed-for-the-aspiring-woof致欲為汪汪者的草)
 
 ---
 
-## 劇本：Big Top Energy（壓軸登場）
+## 故事：Big Top Energy（壓軸登場）
 
 ![Big Top Energy 封面](images/p095_1.jpg)
 
@@ -115,7 +115,7 @@
 
 ---
 
-## 劇本：Dragon's Fire（龍之炎）
+## 故事：Dragon's Fire（龍之炎）
 
 ![Dragon's Fire 封面](images/p105_1.jpg)
 
@@ -162,9 +162,9 @@ Gunther 的搭檔，在第一次與 Grimhildr 的遭遇中倖存下來；如今�
 
 **Aurikos** 村子有麻煩了。龍 **Grimhildr** 每週都會來突襲，叼走牲口、嚇壞村民。傳聞那隻怪物甚至開始綁架良家婦女。當地神殿派了屠龍者去處理這件事——第一批人從沒回報過，神殿擔心最壞的情況，於是派玩家作為後援。他們已成功追蹤這隻邪獸到牠位於村子北方山脈荒原中的巢穴。
 
-玩家角色可以是**人類或精靈**（在這個劇本中，這兩者僅是裝飾差異）。若敘事者願意，可提供更多選項，但要謹慎判斷其與所提供「蛻化交叉」的相容性（**不要讓玩家一開始就玩狗頭人**）。每位玩家可選一件武器：刀劍、長柄武器、或弓。
+玩家角色可以是**人類或精靈**（在這個故事中，這兩者僅是裝飾差異）。若敘事者願意，可提供更多選項，但要謹慎判斷其與所提供「蛻化交叉」的相容性（**不要讓玩家一開始就玩狗頭人**）。每位玩家可選一件武器：刀劍、長柄武器、或弓。
 
-劇本以玩家在龍巢入口附近的營地開場。神殿原本應該再派支援過來，但他們應抵達的日子早過了好幾天，而下一次突襲的時間愈來愈近。看來他們是趕不上了——玩家只能靠自己。
+故事以玩家在龍巢入口附近的營地開場。神殿原本應該再派支援過來，但他們應抵達的日子早過了好幾天，而下一次突襲的時間愈來愈近。看來他們是趕不上了——玩家只能靠自己。
 
 這條龍把巢築在山體深處的洞穴狀古遺跡中。玩家發現一道相對狹小的洞穴豎井可進入內部，看起來這是他們最好的入口。
 
@@ -234,7 +234,7 @@ Grimhildr 派 Darcy 帶玩家逛城堡、滿足他們任何所需，自己則開
 
 ---
 
-## 劇本：Galactic North（銀河之北）
+## 故事：Galactic North（銀河之北）
 
 ![Galactic North 封面](images/p115_1.jpg)
 
@@ -272,7 +272,7 @@ Grimhildr 派 Darcy 帶玩家逛城堡、滿足他們任何所需，自己則開
 
 玩家是探索與測量小組的成員，從一個剛建立的軌道科研殖民地被派至 **Melusine 行星**地表。這顆行星類地，散布著由某未知異星種族遺下的廢墟——官方代號 **C-6519161**，俗稱**梅露西尼安人（Melusineans）**。先前已有針對這些廢墟的初步探勘，但這將是首次以任何有意義的規模深入**地下層**。
 
-劇本以小組在地表開場——位於一座由梅露西尼安人留下、迷宮般構造之一的入口處。任務目的：對這座廢墟進行初步勘察。
+故事以小組在地表開場——位於一座由梅露西尼安人留下、迷宮般構造之一的入口處。任務目的：對這座廢墟進行初步勘察。
 
 當小組深入到一定深度時，身後一道門封閉，切斷了他們與殖民地及任何留在地表組員的無線電通訊。此空間的唯一明顯出口，是一條繼續深入的通道——而**水正從那裡流出，迅速淹沒這個空間**。
 
@@ -282,7 +282,7 @@ Grimhildr 派 Darcy 帶玩家逛城堡、滿足他們任何所需，自己則開
 
 那些異星人當年是以「生態形塑（ecoforming）」與「生物形塑（bioforming）」並行的方式在殖民這顆行星——而玩家啟動了「居住薄膜」，使自己無意間暴露於異星生物形塑科技之下。它會把玩家改造為更適合這顆世界的存在——首要步驟便是：**將他們的生物學「正規化」為其創造者的標準**。
 
-**每位玩家在自選的任意屬性上承受 1 點蛻化。此後在劇本內每經過 4 小時，重複承受一次。**當玩家**沉浸於居住薄膜中**時，蛻化的間隔縮短為 **2 小時**。
+**每位玩家在自選的任意屬性上承受 1 點蛻化。此後在故事內每經過 4 小時，重複承受一次。**當玩家**沉浸於居住薄膜中**時，蛻化的間隔縮短為 **2 小時**。
 
 ![Galactic North 蛻化範例](images/p124_1.jpg)
 
@@ -338,11 +338,11 @@ AI 位於城北邊緣的一座塔內。塔中既有牠的電腦庫陣，也有�
 | **Anamon**（an-uh-mon; /ˈænəmɑːn/） | 「安納蒙」 | 梅露西尼安人的母星 |
 | **geeont**（gee-ont [硬 g]; /ˈgiːɑnt/） | 「吉昂特」 | 生態形塑 AI |
 | **Tahnguay**（tawn-gway; /ˈtɑːngweɪː/） | 「唐瓜伊」 | 梅露西尼安人的語言 |
-| **Melusine**（Mel-oo-seen-uh; /mɛluˈsiːnə/） | 「梅露西妮」 | 本劇本發生的行星 |
+| **Melusine**（Mel-oo-seen-uh; /mɛluˈsiːnə/） | 「梅露西妮」 | 本故事發生的行星 |
 
 ---
 
-## 劇本：Hair of the Dog（解醉之毛）
+## 故事：Hair of the Dog（解醉之毛）
 
 ![Hair of the Dog 蛻化交叉](images/p131_1.jpg)
 
@@ -434,7 +434,7 @@ Pooka 又找到玩家——但當他們靠近 **Nuckelavee** 居住的海崖時�
 
 ---
 
-## 劇本：I Woke Up in Another World with My Friends and Now Everyone's Calling Us Her Royal Highness!?!?（我和朋友穿越異世界，結果大家都在叫我們殿下！？！？）
+## 故事：I Woke Up in Another World with My Friends and Now Everyone's Calling Us Her Royal Highness!?!?（我和朋友穿越異世界，結果大家都在叫我們殿下！？！？）
 
 ![殿下！？ 封面](images/p133_1.jpg)
 
@@ -524,7 +524,7 @@ Madina 領玩家到以他們所選元素為主題的華麗私人房間。如果�
 
 ---
 
-## 劇本：Maastrichtian Dynasty（馬斯垂克王朝）
+## 故事：Maastrichtian Dynasty（馬斯垂克王朝）
 
 ![Maastrichtian Dynasty 封面](images/p143_1.jpg)
 
@@ -567,7 +567,7 @@ Dynesty 生物科技的老闆兼執行長，Victoria 的父親。內裡冷酷狡
 
 ### 蛻化（THE CHANGE）
 
-此時，蛻化開始。**每位玩家被隨機分配三組蛻化交叉之一**。理想上應該混搭**肉食性與非肉食性恐龍屬**。每位玩家在自選的任意屬性上承受 **2 點起始蛻化**。劇本內每經過 **3 小時**，再追加 2 點蛻化。
+此時，蛻化開始。**每位玩家被隨機分配三組蛻化交叉之一**。理想上應該混搭**肉食性與非肉食性恐龍屬**。每位玩家在自選的任意屬性上承受 **2 點起始蛻化**。故事內每經過 **3 小時**，再追加 2 點蛻化。
 
 蛻化也會影響其他重要角色。但**不是所有角色都得變恐龍混合體**——書中也提供了一份**中生代哺乳類**蛻化交叉（屬：**Cimolomys**）作喜劇效果。建議由 Victoria 使用——但敘事者也可讓其他角色或玩家使用之。
 
@@ -613,7 +613,7 @@ Dynesty 生物科技的老闆兼執行長，Victoria 的父親。內裡冷酷狡
 
 ---
 
-## 劇本：Our Lady（聖母）
+## 故事：Our Lady（聖母）
 
 ![Our Lady 封面](images/p155_1.jpg)
 
@@ -728,7 +728,7 @@ Dynesty 生物科技的老闆兼執行長，Victoria 的父親。內裡冷酷狡
 
 ---
 
-## 劇本：She Who Divided the Sexes（劃分兩性者）
+## 故事：She Who Divided the Sexes（劃分兩性者）
 
 ![She Who Divided 蛻化交叉](images/p175_1.jpg)
 
@@ -837,7 +837,7 @@ Mue 看到主管**全是男人**便深感厭惡，要求玩家**拆解這個父�
 
 ---
 
-## 劇本：The Wanting Tide（渴望之潮）
+## 故事：The Wanting Tide（渴望之潮）
 
 ![The Wanting Tide 封面](images/p184_1.jpg)
 
@@ -923,7 +923,7 @@ Edward 與他的爪牙會用**魚叉槍**朝任何看起來像他們真正目標
 
 ---
 
-## 劇本：To the Swiftest（致最迅捷者）
+## 故事：To the Swiftest（致最迅捷者）
 
 ![To the Swiftest 封面](images/p185_1.jpg)
 
@@ -1024,9 +1024,9 @@ Bartholomew 同意製作一份逆轉這場蛻化的藥水——但每劑解藥�
 
 ![To the Swiftest 結局](images/p195_1.jpg)
 
-## 劇本：Weed for the Aspiring Woof（致欲為汪汪者的草）
+## 故事：Weed for the Aspiring Woof（致欲為汪汪者的草）
 
-> 譯註：本劇本以**單人**遊玩為設計目標，但也可與朋友一起進行。
+> 譯註：本故事以**單人**遊玩為設計目標，但也可與朋友一起進行。
 
 > （打火機聲。）我猜每個人都不一樣吧。這應該是我一開始該說的，免得給你錯誤期待。
 >
@@ -1054,7 +1054,7 @@ Bartholomew 同意製作一份逆轉這場蛻化的藥水——但每劑解藥�
 
 **狼血紀念品（Wolfblood Keepsakes）**：每次「旅行」之後，當你把經驗寫成日誌時，問自己——**這就是我想成為的那種狼嗎？**如果答案是肯定、可能是、甚至只是「也許」，便**保留你抽到的任意數量的牌**，而不是把它們棄掉。在未來的抽牌中，除了從新抽出的牌中挑選，你也可以從**保留的牌**中挑選——以更深入地探索它們。
 
-**把菸傳下去！（Pass the Joint!）**：如果你和一群人一起跑這個劇本，不要每位玩家自己抽自己的、各自挑——而是這樣**選秀（draft）**：
+**把菸傳下去！（Pass the Joint!）**：如果你和一群人一起跑這個故事，不要每位玩家自己抽自己的、各自挑——而是這樣**選秀（draft）**：
 
 > 1. 先決定誰是「**第一玩家（first player）**」；每次抽完，第一玩家輪到上次最後挑牌的那個人。
 > 2. 第一玩家抽出 **「玩家數 + 1」張**牌。翻開這些牌，全體一起花一點時間觀察。

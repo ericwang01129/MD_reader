@@ -105,7 +105,7 @@
 
 ---
 
-## 6. 劇本：Big Top Energy（壓軸登場）
+## 6. 故事：Big Top Energy（壓軸登場）
 
 **心靈等級 1**
 
@@ -135,7 +135,7 @@
 
 ---
 
-## 7. 劇本：Dragon's Fire（龍之炎）
+## 7. 故事：Dragon's Fire（龍之炎）
 
 **心靈等級 3**
 
@@ -170,7 +170,7 @@
 
 ---
 
-## 8. 劇本：Galactic North（銀河之北）
+## 8. 故事：Galactic North（銀河之北）
 
 **心靈等級 3**
 
@@ -203,7 +203,7 @@
 | Anamon（/ˈænəmɑːn/） | 安納蒙 | 梅露西尼安人母星 |
 | geeont（/ˈgiːɑnt/） | 吉昂特 | 生態形塑 AI |
 | Tahnguay（/ˈtɑːngweɪː/） | 唐瓜伊 | 梅露西尼安語 |
-| Melusine（/mɛluˈsiːnə/） | 梅露西妮 | 本劇本所在行星 |
+| Melusine（/mɛluˈsiːnə/） | 梅露西妮 | 本故事所在行星 |
 
 ### 動作
 
@@ -214,7 +214,7 @@
 
 ---
 
-## 9. 劇本：Hair of the Dog（解醉之毛）
+## 9. 故事：Hair of the Dog（解醉之毛）
 
 **心靈等級 3**
 
@@ -251,7 +251,7 @@
 
 ---
 
-## 10. 劇本：I Woke Up in Another World…!?（殿下！？）
+## 10. 故事：I Woke Up in Another World…!?（殿下！？）
 
 **心靈等級 4**
 
@@ -286,7 +286,7 @@
 
 ---
 
-## 11. 劇本：Maastrichtian Dynasty（馬斯垂克王朝）
+## 11. 故事：Maastrichtian Dynasty（馬斯垂克王朝）
 
 **心靈等級 2**
 
@@ -322,7 +322,7 @@
 
 ---
 
-## 12. 劇本：Our Lady（聖母）
+## 12. 故事：Our Lady（聖母）
 
 **心靈等級 4**
 
@@ -358,7 +358,7 @@
 
 ---
 
-## 13. 劇本：She Who Divided the Sexes（劃分兩性者）
+## 13. 故事：She Who Divided the Sexes（劃分兩性者）
 
 **心靈等級 3**
 
@@ -395,7 +395,7 @@
 
 ---
 
-## 14. 劇本：The Wanting Tide（渴望之潮）
+## 14. 故事：The Wanting Tide（渴望之潮）
 
 **心靈等級 2**
 
@@ -431,7 +431,7 @@
 
 ---
 
-## 15. 劇本：To the Swiftest（致最迅捷者）
+## 15. 故事：To the Swiftest（致最迅捷者）
 
 **心靈等級 1**
 
@@ -468,7 +468,7 @@
 
 ---
 
-## 16. 劇本：Weed for the Aspiring Woof（致欲為汪汪者的草）
+## 16. 故事：Weed for the Aspiring Woof（致欲為汪汪者的草）
 
 **單人札記**
 
@@ -523,6 +523,6 @@
 2. **塔羅大阿爾克那**採通用譯名，不另起別稱。
 3. **登場角色姓名**一律保留英文，僅在必要時加註中文（例：「Ivan『鐵臂』Armstrong」、「Mue（穆耶）」）。
 4. **代名詞**保留原文不替換。
-5. **地名**：可意譯且有通行中文者意譯（馬斯垂克島、尼斯湖、巴布亞紐幾內亞、美拉尼西亞）；劇本內虛構地名則保留原文（Aurikos、Melusine、Briar House、Riffle House）或音譯。
+5. **地名**：可意譯且有通行中文者意譯（馬斯垂克島、尼斯湖、巴布亞紐幾內亞、美拉尼西亞）；故事內虛構地名則保留原文（Aurikos、Melusine、Briar House、Riffle House）或音譯。
 6. **異星／神話術語**：以原文列出，加上中文音譯／釋義（seya — 賽亞、Mue — 穆耶、Pooka — 普卡）。
 7. **大麻品系名**保留原文以利對照識別，僅給出**並列中譯**。
