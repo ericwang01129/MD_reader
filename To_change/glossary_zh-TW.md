@@ -19,7 +19,7 @@
 | Player | 玩家 | |
 | Move | 動作 | |
 | Story Moves | 故事動作 | |
-| Resolution | 行動判定 | |
+| Resolution | 行動占卜 | |
 | Future Deck | 預兆牌 | |
 | Major Arcana | 大阿爾克那 | |
 | draw / reveal / discard / shuffle back | 抽 / 翻開 / 棄掉 / 洗回（牌堆） | |
@@ -90,14 +90,14 @@
 |---|---|
 | Weakening | 弱化 |
 | Strengthening | 強化 |
-| Conditional | 條件式 |
-| Infectious | 傳染式 |
+| Conditional | 條件 |
+| Infectious | 傳染 |
 | Shared | 共享 |
 | Reversible | 可逆 |
 | Initial | 起始 |
 | Environmental | 環境 |
 | Progressive | 漸進 |
-| Living | 活的 |
+| Living | 活力 |
 | Rules | 規則 |
 | Levels | 等級 |
 | Healing | 治療 |
