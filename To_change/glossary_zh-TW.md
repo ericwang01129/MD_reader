@@ -20,14 +20,15 @@
 | Move | 動作 | |
 | Story Moves | 故事動作 | |
 | Resolution | 結算 | |
-| Future Deck | 未來牌堆 | |
+| Future Deck | 預兆牌 | |
 | Major Arcana | 大阿爾克那 | |
 | draw / reveal / discard / shuffle back | 抽 / 翻開 / 棄掉 / 洗回（牌堆） | |
 | Succumb | 屈服 | 「以一點蛻化換得成功」 |
 | Permanence (point of) | 永恆（之點） | 蛻化十字之核 |
 | Solo Play | 單人遊玩 | |
 | journalling game | 札記式遊戲 | |
-| campaign / session | 劇情 / 一場 | |
+| campaign | 戰役 | 多場連續之長期遊戲 |
+| session | 一場 | 單次遊戲 |
 | upright / reversed | 正位 / 逆位 | |
 | change cross | 蛻化十字 | 4 屬性 + 永恆 |
 | transgender change wheel | 跨性別蛻化輪盤 | |
