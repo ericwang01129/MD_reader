@@ -123,9 +123,9 @@ Trillium 會透露——她知道破解這道引發蛻化之法術的方法，�
 
 ---
 
-### Becoming Bigfoot — 蛻化交叉
+### Becoming Bigfoot — 蛻化十字
 
-![Becoming Bigfoot 蛻化交叉](images/stories/becoming_bigfoot_p05.jpg)
+![Becoming Bigfoot 蛻化十字](images/stories/becoming_bigfoot_p05.jpg)
 
 > **永恆（Permanence）**：你永遠成了一隻大腳怪——一頭荒野生物。你成了神話與傳說的素材，被人們在深夜的營火旁傳述。
 
@@ -610,7 +610,7 @@ Gunther 的搭檔，在第一次與 Grimhildr 的遭遇中倖存下來；如今�
 
 **Aurikos** 村子有麻煩了。龍 **Grimhildr** 每週都會來突襲，叼走牲口、嚇壞村民。傳聞那隻怪物甚至開始綁架良家婦女。當地神殿派了屠龍者去處理這件事——第一批人從沒回報過，神殿擔心最壞的情況，於是派玩家作為後援。他們已成功追蹤這隻邪獸到牠位於村子北方山脈荒原中的巢穴。
 
-玩家角色可以是**人類或精靈**（在這個故事中，這兩者僅是裝飾差異）。若敘事者願意，可提供更多選項，但要謹慎判斷其與所提供「蛻化交叉」的相容性（**不要讓玩家一開始就玩狗頭人**）。每位玩家可選一件武器：刀劍、長柄武器、或弓。
+玩家角色可以是**人類或精靈**（在這個故事中，這兩者僅是裝飾差異）。若敘事者願意，可提供更多選項，但要謹慎判斷其與所提供「蛻化十字」的相容性（**不要讓玩家一開始就玩狗頭人**）。每位玩家可選一件武器：刀劍、長柄武器、或弓。
 
 故事以玩家在龍巢入口附近的營地開場。神殿原本應該再派支援過來，但他們應抵達的日子早過了好幾天，而下一次突襲的時間愈來愈近。看來他們是趕不上了——玩家只能靠自己。
 
@@ -792,7 +792,7 @@ AI 位於城北邊緣的一座塔內。塔中既有牠的電腦庫陣，也有�
 
 ## 故事：Hair of the Dog（解醉之毛）
 
-![Hair of the Dog 蛻化交叉](images/p131_1.jpg)
+![Hair of the Dog 蛻化十字](images/p131_1.jpg)
 
 > **心靈等級 3**
 
@@ -1015,9 +1015,9 @@ Dynesty 生物科技的老闆兼執行長，Victoria 的父親。內裡冷酷狡
 
 ### 蛻化（THE CHANGE）
 
-此時，蛻化開始。**每位玩家被隨機分配三組蛻化交叉之一**。理想上應該混搭**肉食性與非肉食性恐龍屬**。每位玩家在自選的任意屬性上承受 **2 點起始蛻化**。故事內每經過 **3 小時**，再追加 2 點蛻化。
+此時，蛻化開始。**每位玩家被隨機分配三組蛻化十字之一**。理想上應該混搭**肉食性與非肉食性恐龍屬**。每位玩家在自選的任意屬性上承受 **2 點起始蛻化**。故事內每經過 **3 小時**，再追加 2 點蛻化。
 
-蛻化也會影響其他重要角色。但**不是所有角色都得變恐龍混合體**——書中也提供了一份**中生代哺乳類**蛻化交叉（屬：**Cimolomys**）作喜劇效果。建議由 Victoria 使用——但敘事者也可讓其他角色或玩家使用之。
+蛻化也會影響其他重要角色。但**不是所有角色都得變恐龍混合體**——書中也提供了一份**中生代哺乳類**蛻化十字（屬：**Cimolomys**）作喜劇效果。建議由 Victoria 使用——但敘事者也可讓其他角色或玩家使用之。
 
 如果玩家選擇翻搜飛機殘骸，可能會找到水、口糧、以及／或一台仍可運作的平板電腦。平板未連網，但連著公司內網。使用它能取得更多資訊，但**有引起內網其他使用者注意**的風險。
 
@@ -1175,9 +1175,9 @@ Tammy 與 Kol 正準備偷襲博士的實驗室，發現了昏倒的玩家——
 
 ---
 
-![No Better Team — 雷電球與海星星 蛻化交叉](images/stories/no_better_team_p05.jpg)
+![No Better Team — 雷電球與海星星 蛻化十字](images/stories/no_better_team_p05.jpg)
 
-### 雷電球 — 蛻化交叉
+### 雷電球 — 蛻化十字
 
 > **永恆**：你身上仍可保有人性的部分，至少現在是；但你從骨子裡已是一隻**雷電球**。你**不再能**透過屈服於 MF 檢定來逃出精靈球。事實上——你感覺自己**就要進化**了！……
 
@@ -1203,7 +1203,7 @@ Tammy 與 Kol 正準備偷襲博士的實驗室，發現了昏倒的玩家——
 
 ---
 
-### 海星星 — 蛻化交叉
+### 海星星 — 蛻化十字
 
 > **永恆**：你身上仍可保有人性的部分，至少現在是；但你從骨子裡已是一隻**海星星**。你**不再能**透過屈服於 MF 檢定來逃出精靈球。事實上——你感覺自己**就要進化**了！……
 
@@ -1229,9 +1229,9 @@ Tammy 與 Kol 正準備偷襲博士的實驗室，發現了昏倒的玩家——
 
 ---
 
-### 地鼠 — 蛻化交叉
+### 地鼠 — 蛻化十字
 
-![No Better Team — 地鼠 蛻化交叉](images/stories/no_better_team_p06.jpg)
+![No Better Team — 地鼠 蛻化十字](images/stories/no_better_team_p06.jpg)
 
 > **永恆**：你身上仍可保有人性的部分，至少現在是；但你從骨子裡已是一隻**地鼠**。你**不再能**透過屈服於 MF 檢定來逃出精靈球。事實上——你感覺自己**就要進化**了！……
 
@@ -1374,7 +1374,7 @@ Tammy 與 Kol 正準備偷襲博士的實驗室，發現了昏倒的玩家——
 
 ## 故事：She Who Divided the Sexes（劃分兩性者）
 
-![She Who Divided 蛻化交叉](images/p175_1.jpg)
+![She Who Divided 蛻化十字](images/p175_1.jpg)
 
 > **心靈等級 3**
 
@@ -1605,9 +1605,9 @@ Valeuldo 對玩家的蛻化沒有反應。Carmie 不會說出口，但會試圖*
 
 ---
 
-### Six Gossamer Rings — 蛻化交叉
+### Six Gossamer Rings — 蛻化十字
 
-![Six Gossamer Rings 蛻化交叉](images/stories/six_gossamer_rings_p07.jpg)
+![Six Gossamer Rings 蛻化十字](images/stories/six_gossamer_rings_p07.jpg)
 
 > **永恆（Permanence）**：什麼都沒變。你以前是……什麼別的東西？不，那不對。你**一直**就是這頭飢渴之獸。你每天若沒吃下與自己同重量的肉，便承受 4 點傷害。
 
@@ -1772,9 +1772,9 @@ Ula 失去的那條腿生出了**第二個 Ula**。副本意識到自己的真�
 
 ---
 
-### The Estivating Subsumption — 蛻化交叉
+### The Estivating Subsumption — 蛻化十字
 
-![The Estivating Subsumption 蛻化交叉](images/stories/estivating_subsumption_p08.jpg)
+![The Estivating Subsumption 蛻化十字](images/stories/estivating_subsumption_p08.jpg)
 
 > **永恆（Permanence）**：蜂群的意志壓倒一切。它們不是你身體裡的「客人」——**你才是它們身體裡的客人**。為蜂群效力的渴望搏動於你的腦海。如果你不是已徹底迷失——你**也許永遠**無法真正自由。
 
@@ -2090,9 +2090,9 @@ Blanchet 博士需要至少 24 小時準備解藥。第二天，Rhine 博士會�
 
 ---
 
-### Watching the Loch — 蛻化交叉
+### Watching the Loch — 蛻化十字
 
-![Watching the Loch 蛻化交叉與線索](images/stories/watching_the_loch_p05.jpg)
+![Watching the Loch 蛻化十字與線索](images/stories/watching_the_loch_p05.jpg)
 
 > **永恆（Permanence）**：你是這座湖的怪物——一則活生生的傳說，注定永遠被追逐——你存在的本身會把人類逼往瘋狂。功能上你看起來像一隻**奇異的蛇頸龍**。
 
@@ -2441,9 +2441,9 @@ Monoceros 居於森林最深處的一片**附魔林間空地**。如果玩家**�
 
 ---
 
-### Whence All Monsters Come — 蛻化交叉
+### Whence All Monsters Come — 蛻化十字
 
-![Whence All Monsters Come — Salamander 與 Serra 蛻化交叉](images/stories/whence_all_monsters_p07.jpg)
+![Whence All Monsters Come — Salamander 與 Serra 蛻化十字](images/stories/whence_all_monsters_p07.jpg)
 
 > **永恆（Permanence）**：你感受到 Pelorium 的滿足。你不是一隻典型的（**Salamander／Serra／Wolpertinger**），但你也不再是人類，永遠不會了。你是最稀有的怪獸之一——**獨一無二**。你會繼續被綁定，還是走出自己的路？
 
@@ -2490,7 +2490,7 @@ Monoceros 居於森林最深處的一片**附魔林間空地**。如果玩家**�
 - 回到 Pelorium 的念頭帶給你安心；作為 Serra 感覺對勁。
 - 你越來越畏懼**火**——它彷彿是你天生的剋星。同時你越來越渴望水——你感覺現在可以**在水裡呼吸**。
 
-![Whence All Monsters Come — Wolpertinger 蛻化交叉](images/stories/whence_all_monsters_p08.jpg)
+![Whence All Monsters Come — Wolpertinger 蛻化十字](images/stories/whence_all_monsters_p08.jpg)
 
 #### Wolpertinger 路徑
 

@@ -24,13 +24,13 @@
 | Major Arcana | 大阿爾克那 | |
 | draw / reveal / discard / shuffle back | 抽 / 翻開 / 棄掉 / 洗回（牌堆） | |
 | Succumb | 蛻變 | 「以一點蛻化換得成功」 |
-| Permanence (point of) | 永恆（之點） | 蛻化交叉之核 |
+| Permanence (point of) | 永恆（之點） | 蛻化十字之核 |
 | Solo Play | 單人遊玩 | |
 | journalling game | 札記式遊戲 | |
 | campaign | 戰役 | 多場連續之長期遊戲 |
 | session | 團務 | 單次遊戲（TRPG 圈習慣語） |
 | upright / reversed | 正位 / 逆位 | |
-| change cross | 蛻化交叉 | 4 屬性 + 永恆 |
+| change cross | 蛻化十字 | 4 屬性 + 永恆 |
 | transgender change wheel | 跨性別蛻化輪盤 | |
 | Tier (1–5) | 等級 1–5 | 心靈蛻化的五階 |
 | Lines | 線 | 安全工具 |
