@@ -210,17 +210,43 @@
 
 ## HO 別事前公開資訊
 
+<div class="vamp-ho-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/HO僀儊乕僕/HO1.png" alt="HO 處女 立繪" style="width: 200px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
+
 ### HO 處女 / Virgin
 
 - 擁有**演技才能**　〈藝術（演技）〉：**[ 初始值 5 ] + 60 + 1d10**
 - 你是歌劇團的新人。村莊遭襲，你為求援而前來歌劇團。
 - **適合的人**：被兄弟姊妹或家人吸引的人。王道系主角。直到最後仍不放棄希望的人。
 
+</div>
+
+</div>
+
+<div class="vamp-ho-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/HO僀儊乕僕/HO2.png" alt="HO 花嫁 立繪" style="width: 200px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
+
 ### HO 花嫁 / Wedding Bride
 
 - 擁有**舞蹈才能**　〈藝術（舞蹈）〉：**[ 初始值 5 ] + 60 + 1d10**
 - 你從 **■■** 處逃出。在 HO 姬失去記憶之前，你曾與 HO 姬在一起。
 - **適合的人**：隊伍中的王牌位。即使情感繁雜也不會被甩開的人。
+
+</div>
+
+</div>
+
+<div class="vamp-ho-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/HO僀儊乕僕/HO3.png" alt="HO 母 立繪" style="width: 200px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
 
 ### HO 母 / Mommy
 
@@ -229,11 +255,25 @@
 - 你是資深成員。你正在尋找失蹤的座長。
 - **適合的人**：領袖、統合全體、握有決定權的場面存在。情感較為繁忙。
 
+</div>
+
+</div>
+
+<div class="vamp-ho-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/HO僀儊乕僕/HO4.png" alt="HO 姬 立繪" style="width: 200px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
+
 ### HO 姬 / Princess
 
 - 擁有**歌唱才能**　〈藝術（歌唱）〉：**[ 初始值 5 ] + 70 + 1d10**
 - 你失去了記憶。你身上有 **■■■**。
 - **適合的人**：奇招位。即便資訊極多也能消化的人。
+
+</div>
+
+</div>
 
 ---
 
@@ -423,6 +463,12 @@
 
 # 事前公開 NPC
 
+<div class="vamp-npc-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/NPC/Act0/Kasumi.png" alt="Kasumi Bouquet 立繪" style="width: 220px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
+
 ### Kasumi Bouquet ／ 卡斯米・布凱　❖ Age 25
 
 - 歌劇團的**副團長**。代替目前不在的團長掌舵歌劇團。
@@ -438,7 +484,17 @@
 
 > 〈藝術：演技〉75、〈信用〉50、〈隱密〉70、〈手槍〉85
 
+</div>
+
+</div>
+
 ---
+
+<div class="vamp-npc-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/NPC/Act0/Anemone.png" alt="Anemone Bouquet 立繪" style="width: 220px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
 
 ### Anemone Bouquet ／ 阿涅墨涅・布凱　❖ Age 23
 
@@ -455,7 +511,17 @@
 
 > 〈藝術：歌唱〉80、〈藝術：演技〉65、〈醫學〉85、〈精神分析〉70
 
+</div>
+
+</div>
+
 ---
+
+<div class="vamp-npc-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/NPC/Act1/Pachira.png" alt="Pachira Bouquet 立繪" style="width: 220px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
 
 ### Pachira Bouquet ／ 帕奇拉・布凱　❖ Age ?
 
@@ -472,7 +538,17 @@
 
 > 〈目星〉50、〈圖書館〉40、〈藝術：料理〉80
 
+</div>
+
+</div>
+
 ---
+
+<div class="vamp-npc-card" style="display: flex; gap: 1.5em; align-items: flex-start; margin: 1em 0 1.5em; padding: 1em 1.2em; background: #faf6f5; border-left: 4px solid #8b3a4f; border-radius: 2px;">
+
+<img src="original/NPC/Act0/BlackRose.png" alt="BlackRose Bouquet 立繪" style="width: 220px; flex-shrink: 0; border-radius: 2px;">
+
+<div style="flex: 1; min-width: 0;">
 
 ### BlackRose Bouquet ／ 黑玫瑰・布凱　❖ Age ?
 
@@ -480,6 +556,10 @@
 - 劇本開始時，**僅有 ｛HO 母｝ 知曉他的長相**。
 
 > 參數・技能：？
+
+</div>
+
+</div>
 
 ---
 
