@@ -1,0 +1,8 @@
+PC：◎
+正常に動作します
+
+iPad：△
+htmlビューアー（HTML Viewer Qなど）を使う事で正常に動作します
+
+スマホ（iPhone）：非推奨
+htmlビューアー（HTML Viewer Qなど）を使う事で一応動作しますが見づらいです
