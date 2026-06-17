@@ -1,0 +1,6855 @@
+
+:root {
+  /* OS テーマ追従を遮断: WebView のスクロールバー / ネイティブフォーム / ダイアログを常にライト基調にする */
+  color-scheme: light;
+  /* OS のシステムアクセント色 (checkbox/radio/range/progress 等) を遮断し、青系で統一する。
+     accent-color は継承するため :root に置けば全 form 要素に伝播する */
+  accent-color: var(--color-accent);
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #666666;
+  --color-border: #e0e0e0;
+  --color-hover: #f5f5f5;
+  --color-header-footer: #ffffff;
+  --color-drag: #007acc;
+  --color-drag-bg: #f0f7ff;
+  --color-accent: var(--color-drag);
+  --color-inactive-pane: #f0f0f0;
+  --color-delete: #999999;
+  --color-delete-hover: #666666;
+  --color-icon-muted: #999999;
+
+  /* カスタマイズ用（見出し1-6個別） */
+  --title-color: #ff6600;
+  --title-font-family: "Noto Sans CJK", sans-serif;
+  --title-size: 4rem;
+  --mark-color: #ffeb3b;
+  --stage-direction-font-family: "Noto Sans CJK", sans-serif;
+  --stage-direction-color: #999999;
+  --stage-direction-size: 1rem;
+  --telop-color: #d26a6a;
+  --telop-font-color: #f5f5f5;
+  --telop-font-size: 0.95rem;
+  --outliner-bg-color: #ffffff;
+  --outliner-text-color: #000000;
+  --outliner-highlight-color: #b4a30d;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 10px;
+  --spacing-lg: 14px;
+  --spacing-xl: 20px;
+
+  /* エディタとHTML出力の見た目を一致させるための行間（両方で同じ値を使用） */
+  --line-height-body: 1.6;
+  --line-height-heading: 1.4;
+
+  --width-components: 291px;
+  --width-explorer: calc(var(--width-components) + var(--scrollbar-size) * 2);
+  --min-height-body: 400px;
+  --min-height-outcolumn: 100px;
+  --min-height-column: 80px;
+
+  --border-radius: 2px;
+  --border-width: 1px;
+  /* タイトルバー高さ（ウィンドウ枠ずれ防止のため変数で一元管理） */
+  --title-bar-height: 24px;
+  /* Windows 11 等の safe area（角丸・オーバーレイ対応） */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  /* ツールバーとメイン領域の右端を揃えるため（body-section の scrollbar-gutter と一致） */
+  --scrollbar-size: 6px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --transition: 0.2s;
+}
+
+/* ダークモード */
+/* 注意: --paragraph-color, --stage-direction-color, --blockquote-color, --callout1/2-*,
+   --background-color, --outliner-* は編集画面(.body-section)内でのみ使用され、
+   編集画面は常にライトモード表示を維持するため、ここでは上書きしない */
+[data-theme="dark"] {
+  /* 手動でダーク切替時のみネイティブ UI もダークに揃える (OS には依存させない) */
+  color-scheme: dark;
+  --color-bg: #1e1e1e;
+  --color-text: #e0e0e0;
+  --color-text-secondary: #a0a0a0;
+  --color-border: #404040;
+  --color-hover: #2d2d2d;
+  --color-header-footer: #1e1e1e;
+  --color-drag: #4a9eff;
+  --color-drag-bg: #1a2d4a;
+  --color-accent: var(--color-drag);
+  --color-inactive-pane: #2a2a2a;
+  --color-delete: #666666;
+  --color-delete-hover: #888888;
+  --color-icon-muted: #808080;
+}
+
+/* ダークモード時のタイトルバー */
+[data-theme="dark"] .custom-title-bar {
+  background-color: var(--color-header-footer);
+  border-bottom-color: var(--color-border);
+}
+
+[data-theme="dark"] .title-bar-button:hover {
+  background-color: var(--color-hover);
+}
+
+[data-theme="dark"] .title-bar-button-close:hover {
+  background-color: #e81123;
+  color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ウィンドウ枠ずれ防止: html/body の高さを明確にし、マージン崩壊を防ぐ */
+html {
+  font-size: 15px;
+  font-family: "Noto Sans CJK", sans-serif;
+  font-weight: 400;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Noto Sans CJK", sans-serif;
+  font-weight: 400;
+  overflow: hidden;
+  min-height: 100%;
+  height: 100vh;
+  color: var(--color-text);
+  /* マージン崩壊防止（時々発生する上方向ずれの対策） */
+  display: flow-root;
+}
+
+/* すべての要素にNoto Sans CJKを適用 */
+* {
+  font-family: "Noto Sans CJK", sans-serif;
+  font-weight: 400;
+}
+
+/* グローバルなスクロールバースタイル（細い棒のみ表示） */
+* {
+  /* Firefox用のスクロールバースタイル */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+/* WebKit系ブラウザ用のスクロールバースタイル */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  border: none;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ダークモード用のスクロールバースタイル */
+[data-theme="dark"] * {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="dark"] *::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* アイコン画像（Material Symbols 由来の SVG） */
+.icon-svg {
+  display: block;
+  object-fit: contain;
+}
+
+[data-theme="dark"] .icon-svg:not(.icon-divider-icon) {
+  filter: invert(1);
+}
+
+/* 区切り線色で表示するアイコン（書き出し・ドロップゾーン） */
+.icon-divider-icon {
+  background-color: var(--color-drag);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.icon-divider-icon.icon-export-code {
+  mask-image: url("data/images/code.svg");
+  -webkit-mask-image: url("data/images/code.svg");
+}
+
+.icon-divider-icon.icon-export-description {
+  mask-image: url("data/images/description.svg");
+  -webkit-mask-image: url("data/images/description.svg");
+}
+
+.icon-divider-icon.icon-export-article {
+  mask-image: url("data/images/article.svg");
+  -webkit-mask-image: url("data/images/article.svg");
+}
+
+.icon-divider-icon.icon-export-picture_as_pdf {
+  mask-image: url("data/images/picture_as_pdf.svg");
+  -webkit-mask-image: url("data/images/picture_as_pdf.svg");
+}
+
+.icon-divider-icon.icon-add_box {
+  mask-image: url("data/images/add_box.svg");
+  -webkit-mask-image: url("data/images/add_box.svg");
+}
+
+/* フレームレスウィンドウ: メイン領域はクリック可能に（ドラッグはタイトルバー内の .title-bar-drag-region のみ） */
+body {
+  -webkit-app-region: no-drag;
+}
+
+/* カスタムタイトルバー（safe-area 対応で Windows 11 等の枠ずれを防止） */
+.custom-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--title-bar-height);
+  padding-top: var(--safe-area-inset-top);
+  background-color: var(--color-header-footer);
+  border-bottom: 1px solid var(--color-border);
+  user-select: none;
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  -webkit-app-region: no-drag; /* 子の .title-bar-drag-region のみ drag にする */
+}
+
+.title-bar-drag-region {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: var(--spacing-md);
+  -webkit-app-region: drag;
+}
+
+.title-bar-title {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  font-weight: 400;
+  pointer-events: none;
+}
+
+.title-bar-controls {
+  display: flex;
+  align-items: center;
+  -webkit-app-region: no-drag;
+  height: 100%;
+}
+
+.title-bar-button {
+  width: 46px;
+  height: var(--title-bar-height);
+  border: none;
+  background-color: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition);
+  font-size: 12px;
+  padding: 0;
+  -webkit-app-region: no-drag;
+}
+
+.title-bar-button:hover {
+  background-color: var(--color-hover);
+}
+
+.title-bar-button-close:hover {
+  background-color: #e81123;
+  color: #ffffff;
+}
+
+.title-bar-button .icon-svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* フレームレスウィンドウでボタンがクリックできるように（Windows でドラッグ領域がクリックを奪う不具合対策） */
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-app-region: no-drag;
+}
+
+/* メインコンテンツ領域（タイトルバー＋safe-area を差し引く） */
+.app-container {
+  display: flex;
+  --effective-title-height: calc(
+    var(--title-bar-height) + var(--safe-area-inset-top)
+  );
+  height: calc(100vh - var(--effective-title-height));
+  width: 100vw;
+  margin-top: var(--effective-title-height);
+  -webkit-app-region: no-drag;
+  position: relative;
+  isolation: isolate;
+}
+
+.file-explorer-panel {
+  width: var(--width-explorer);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  user-select: none;
+  -webkit-user-select: none;
+  padding: var(--spacing-md);
+  overflow-y: auto;
+  /* スクロール時にスクロールバー出現で幅が変わらないようにする（ツールバーずれ防止） */
+  scrollbar-gutter: stable;
+  border-right: var(--border-width) solid var(--color-border);
+  flex-shrink: 0;
+  /* 折りたたみ時は控えめなアニメーション（ゆっくり・滑らかに） */
+  transition:
+    width 0.35s ease-in-out,
+    padding 0.35s ease-in-out;
+  position: relative;
+  -webkit-app-region: no-drag;
+  pointer-events: auto !important;
+  z-index: 500;
+  isolation: isolate;
+}
+
+.file-explorer-panel.collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.explorer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.file-explorer-panel:not(.collapsed) .explorer-header {
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  z-index: 5;
+}
+
+.explorer-title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+.collapse-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  transition:
+    color var(--transition),
+    transform var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--border-radius);
+}
+
+.collapse-btn:hover {
+  color: var(--color-text);
+  background-color: var(--color-hover);
+}
+
+.file-explorer-panel.collapsed .collapse-btn {
+  position: absolute;
+  right: 0;
+  top: var(--spacing-xl);
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  z-index: 100;
+  transform: rotate(180deg);
+}
+
+.file-explorer-panel.collapsed .collapse-btn:hover {
+  background-color: var(--color-hover);
+}
+
+.sidebar-toggle-btn {
+  position: fixed;
+  left: 0;
+  top: calc(var(--title-bar-height) + var(--safe-area-inset-top) + 8px);
+  width: 32px;
+  height: 48px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: none;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  z-index: 1001;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.components-toggle-btn {
+  position: fixed;
+  right: 0;
+  top: calc(var(--title-bar-height) + var(--safe-area-inset-top) + 8px);
+  width: 32px;
+  height: 48px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-right: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  z-index: 1001;
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.components-toggle-btn:hover {
+  background-color: var(--color-hover);
+}
+
+.sidebar-toggle-btn:hover {
+  background-color: var(--color-hover);
+}
+
+.file-explorer-controls {
+  margin: 0 32px var(--spacing-md) 0;
+  padding: var(--spacing-md);
+  border-bottom: var(--border-width) solid var(--color-border);
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  pointer-events: auto;
+}
+
+.folder-select-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xs);
+  background-color: transparent;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  min-width: 40px;
+}
+
+.folder-select-btn:hover:not(:disabled) {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+}
+
+.folder-select-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.folder-select-btn .icon-svg {
+  width: 18px;
+  height: 18px;
+}
+
+.file-explorer-tree {
+  margin-top: var(--spacing-md);
+  min-width: 0; /* 長いファイル名ではみ出さないよう幅を制限 */
+  overflow: hidden;
+}
+
+.file-explorer-empty {
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  margin-bottom: 2px;
+  transition: background-color var(--transition);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  user-select: none;
+  min-width: 0; /* 子の .file-name が省略表示できるようにする */
+  -webkit-app-region: no-drag;
+}
+
+.file-item:hover {
+  background-color: var(--color-hover);
+}
+
+.file-item-folder {
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+/* 子ツリーは常に次の行に表示（アイコン・名前と1行にしない） */
+.file-item-folder .file-item-children {
+  flex-basis: 100%;
+  width: 100%;
+}
+
+/* フォルダ展開時：折りたたみ時と同じ余白・アイコン配置を維持 */
+.file-item-folder[data-expanded="true"] {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 0;
+}
+
+.file-item-folder .expand-icon {
+  margin-right: var(--spacing-xs);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.file-item-folder .file-icon,
+.file-item-folder > .file-icon .icon-svg {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.file-item-folder[data-expanded="true"] .file-name {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-item-file {
+  font-weight: 400;
+}
+
+.file-item-file[draggable="true"] {
+  cursor: grab;
+}
+
+.file-item-file[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.file-item-dragging {
+  opacity: 0.5;
+  cursor: grabbing !important;
+}
+
+.file-item-folder.file-item-drag-over {
+  background-color: var(--color-drag-bg);
+  border: 2px dashed var(--color-drag);
+  border-radius: var(--border-radius);
+}
+
+.file-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-name.renaming {
+  display: block;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 2px 4px;
+  outline: 2px solid var(--color-drag);
+  outline-offset: -2px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: 100%; /* パネル幅をはみ出さない */
+  min-height: 1.5em;
+  max-height: 10em; /* 高さの上限（折り返しで増えた分はスクロール） */
+}
+
+.file-item-children {
+  margin-top: 0;
+}
+
+.file-icon {
+  margin-right: var(--spacing-xs);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.file-item {
+  position: relative;
+}
+
+/* エクスプローラー右クリックメニュー */
+.explorer-context-menu {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xs);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+}
+
+.explorer-context-menu.active {
+  display: flex;
+}
+
+.explorer-context-menu-item {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color var(--transition);
+}
+
+.explorer-context-menu-item:hover {
+  background-color: var(--color-hover);
+}
+
+.expand-icon {
+  font-size: 16px !important;
+  color: var(--color-text-secondary);
+  transition: transform var(--transition);
+}
+
+.editor-area {
+  flex: 1;
+  display: grid;
+  grid-template-rows: 40px 1fr 32px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  background-color: var(--color-bg);
+  overflow: hidden;
+  height: calc(100vh - var(--title-bar-height) - var(--safe-area-inset-top));
+  min-height: 0;
+  min-width: 0; /* グリッド子要素の幅計算を安定化 */
+  position: relative;
+  z-index: 1;
+}
+
+/* ファイル未選択時: 中央に「新規ファイルを作成」のみ表示（ツールバー・フッターは表示したまま） */
+.editor-empty-state {
+  position: absolute;
+  top: 40px; /* ヘッダー（ツールバー）の高さ分下にずらす */
+  right: 0;
+  bottom: 32px; /* フッターの高さ分上にずらす */
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  z-index: 10;
+}
+
+.editor-area.has-file .editor-empty-state {
+  display: none;
+}
+
+/* ファイル未選択時はフッター（文字数・正気度）を非表示 */
+
+/* 空状態のボタンはレイアウトを追加と同じデザイン、幅は内容に合わせる */
+.editor-empty-state .snippet-add-btn.editor-empty-state-btn {
+  width: auto;
+  margin-top: 0;
+}
+
+/* ツールバー・フッターを固定グリッドセルに配置（スクロール・幅変動の影響を完全に受けなくする） */
+/* 右端をメイン領域(.body-section)の内容幅と揃えるため、スクロールバー幅分の余白を常に確保 */
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  margin-left: auto;
+}
+
+.character-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  width: 120px;
+}
+
+.sanity-loss-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-left: auto;
+  margin-right: 40px; /* 右カラム閉時の折りたたみボタンと置換ボタンの重なり防止 */
+  flex-shrink: 0;
+}
+
+.toolbar-btn {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--color-text);
+  transition: all var(--transition);
+}
+
+.toolbar-btn img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.95;
+}
+
+.toolbar-btn .icon-svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ダークモード時のツールバーボタンアイコン */
+[data-theme="dark"] .toolbar-btn img {
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+[data-theme="dark"] .toolbar-btn .icon-svg {
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+.toolbar-btn:hover:not(:disabled) {
+  background-color: #e8e8e8;
+}
+
+.toolbar-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.toolbar-btn.active {
+  background-color: var(--color-drag);
+  color: var(--color-bg);
+}
+
+.toolbar-btn.active:hover {
+  background-color: var(--color-drag);
+  opacity: 0.9;
+}
+
+#splitPaneBtn.active {
+  background-color: var(--color-inactive-pane);
+  color: var(--color-text);
+}
+
+#previewModeBtn.active,
+#previewModeBtn.active:hover {
+  background-color: #e8e8e8;
+  color: var(--color-text);
+}
+
+/* 検索コンテナ */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-left: var(--spacing-md);
+  padding-left: var(--spacing-md);
+  border-left: 1px solid var(--color-border);
+}
+
+.search-input {
+  width: 200px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  user-select: text;
+  -webkit-user-select: text;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-drag);
+  background-color: var(--color-bg);
+}
+
+.search-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.search-nav-btn {
+  min-width: 32px;
+  padding: var(--spacing-xs);
+}
+
+.search-nav-btn .icon-svg {
+  font-size: 18px;
+}
+
+[data-theme="dark"] .search-input {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .search-input:focus {
+  border-color: var(--color-drag);
+}
+
+/* 検索ハイライト（背景色のみ、フォント・文字色は親要素を継承） */
+.search-highlight {
+  background-color: #ffeb3b !important;
+  padding: 2px 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* 置換モーダル */
+.replace-modal-content {
+  max-width: 400px !important;
+  width: 90%;
+}
+
+.replace-input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color var(--transition);
+}
+
+.replace-input:focus {
+  outline: none;
+  border-color: var(--color-drag);
+}
+
+[data-theme="dark"] .replace-input {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .replace-input:focus {
+  border-color: var(--color-drag);
+}
+
+/* 置換モーダルのボタンサイズ調整 */
+#replaceSearchPrevBtn,
+#replaceSearchNextBtn {
+  min-width: 32px !important;
+  padding: var(--spacing-xs) !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+#replaceCancel,
+#replaceExecute {
+  min-width: 60px !important;
+  padding: var(--spacing-xs) var(--spacing-sm) !important;
+  font-size: var(--font-size-xs) !important;
+}
+
+#replaceAllExecute {
+  min-width: 90px !important;
+  padding: var(--spacing-xs) var(--spacing-sm) !important;
+  font-size: var(--font-size-xs) !important;
+}
+
+#splitPaneBtn.active:hover {
+  background-color: var(--color-inactive-pane);
+  opacity: 0.9;
+}
+
+.html-view-container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.html-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: var(--border-width) solid var(--color-border);
+  background-color: var(--color-header-footer);
+}
+
+.html-view-title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.html-view-copy-btn {
+  background-color: transparent;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+  color: var(--color-text);
+}
+
+.html-view-copy-btn:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+}
+
+.html-view-copy-btn .icon-svg {
+  font-size: 18px;
+}
+
+.html-view-content {
+  flex: 1;
+  padding: var(--spacing-lg);
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: auto;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Noto Sans CJK", sans-serif;
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  white-space: pre;
+  word-wrap: break-word;
+  min-height: 0;
+}
+
+.editor-panes-container {
+  grid-area: main;
+  display: flex;
+  flex-direction: row;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--color-border);
+  position: relative;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.editor-pane:last-child {
+  border-right: none;
+}
+
+.editor-pane.active {
+  background-color: var(--color-bg);
+}
+
+.pane-resizer {
+  width: 4px;
+  background-color: var(--color-border);
+  cursor: col-resize;
+  position: relative;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.pane-resizer:hover {
+  background-color: var(--color-drag);
+}
+
+.pane-resizer::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  cursor: col-resize;
+}
+
+.pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-xl);
+  background-color: var(--color-header-footer);
+  border-bottom: 1px solid var(--color-border);
+  min-height: calc(40px * 2 / 3);
+  height: calc(40px * 2 / 3);
+  flex-shrink: 0;
+}
+
+.editor-pane:not(.active) .pane-header {
+  background-color: var(--color-inactive-pane);
+}
+
+.editor-pane:not(.active) .pane-file-name {
+  color: var(--color-text-secondary);
+}
+
+.pane-file-name {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pane-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: color var(--transition);
+}
+
+.pane-close-btn:hover {
+  color: var(--color-text);
+}
+
+.body-section {
+  flex: 1;
+  background-color: var(--background-color);
+  min-height: 0;
+  padding: var(--spacing-xl);
+  position: relative;
+  overflow-y: auto;
+  flex-shrink: 1;
+  overflow-x: hidden;
+  height: auto;
+  /* スクロールバー表示で幅が変わらないようにする（ツールバーずれ防止） */
+  scrollbar-gutter: stable;
+  /* スクロールの伝播を防ぎ親レイアウトへの影響を抑制 */
+  overscroll-behavior: contain;
+}
+
+.section-label {
+  position: absolute;
+  top: var(--spacing-sm);
+  left: var(--spacing-md);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.explorer-panel.floating-explorer {
+  position: absolute !important;
+  top: var(--spacing-xl);
+  right: 10px;
+  width: 220px;
+  max-height: calc(100vh - 200px);
+  background-color: var(--outliner-bg-color);
+  color: var(--outliner-text-color);
+  padding: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 10002 !important; /* ×ボタン(10001)より上に表示 */
+  transition:
+    right var(--transition),
+    left var(--transition);
+  pointer-events: auto !important;
+  margin-left: auto;
+  will-change: transform;
+}
+
+/* アウトライナー表示位置が左のとき */
+.explorer-panel.floating-explorer.outliner-position-left {
+  left: 10px;
+  right: auto;
+}
+
+/* コンポーネントパネルが折りたたまれた時のアウトライナーの位置調整はJavaScriptで動的に設定 */
+
+/* 出力用HTMLでのスタイル調整 */
+/* 出力HTMLではコンポーネントパネルがないため、アウトライナーの位置を調整 */
+body.page-builder-output .explorer-panel.floating-explorer {
+  right: var(--spacing-sm);
+}
+
+body.page-builder-output .body-section {
+  padding-right: 247px;
+}
+
+/* 出力用HTMLでのレスポンシブ対応 */
+
+.explorer-panel.floating-explorer.hidden {
+  display: none;
+}
+
+/* アウトライナーの開く/閉じるボタン */
+.outliner-open-btn {
+  position: absolute;
+  top: var(--spacing-xl);
+  right: var(--spacing-xl);
+  z-index: 10002; /* ×ボタン(10001)より上に表示 */
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  padding: 8px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+}
+
+/* アウトライナー非表示時もボタンが表示されるように
+   (ただし board/filter view 等の suppression 中は除く) */
+.body-section.outliner-hidden:not(.outliner-suppressed) .outliner-open-btn {
+  display: flex !important;
+}
+
+/* board view / filter view 等のカスタムビュー中は outliner UI を完全に隠す。
+   既存の `.outliner-hidden .outliner-open-btn { display: flex !important }` を
+   覆すためこちらも !important が必要。 */
+.body-section.outliner-suppressed .outliner-open-btn,
+.body-section.outliner-suppressed .explorer-panel.floating-explorer {
+  display: none !important;
+}
+
+/* アウトライナー表示位置が左のときは開くボタンも左に配置 */
+.body-section[data-outliner-position="left"] .outliner-open-btn {
+  left: var(--spacing-xl);
+  right: auto;
+}
+
+.outliner-open-btn:hover {
+  background-color: var(--color-hover);
+  color: var(--color-text);
+}
+
+.outliner-close-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  transition: color var(--transition);
+}
+
+.outliner-close-btn:hover {
+  color: var(--color-text);
+}
+
+.outliner-close-btn .icon-svg {
+  font-size: 20px;
+}
+
+.outliner-open-btn .icon-svg {
+  font-size: 20px;
+}
+
+/* グローバルなスクロールバースタイル（細い棒のみ表示） */
+* {
+  /* Firefox用のスクロールバースタイル */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+/* WebKit系ブラウザ用のスクロールバースタイル */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  border: none;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* アウトライナーのスクロールバースタイル（より細く） */
+.explorer-panel.floating-explorer {
+  /* Firefox用のスクロールバースタイル */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+}
+
+.explorer-panel.floating-explorer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.explorer-panel.floating-explorer::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+}
+
+[data-theme="dark"] .explorer-panel.floating-explorer {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.outliner-list {
+  margin-top: var(--spacing-md);
+}
+
+.outliner-item {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  margin-bottom: 1px;
+  transition: color var(--transition);
+  color: var(--outliner-text-color);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  pointer-events: auto;
+}
+
+.outliner-item:hover {
+  color: var(--outliner-highlight-color);
+}
+
+.outliner-item.outliner-item-current {
+  color: var(--outliner-highlight-color);
+  font-weight: 600;
+}
+
+.outliner-empty {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+.outliner-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 折り畳み階層構造 */
+.outliner-list.outliner-collapsible .outliner-node {
+  margin-bottom: 0;
+}
+.outliner-list.outliner-collapsible .outliner-node-has-children > .outliner-item {
+  padding-left: 2px;
+}
+.outliner-toggle {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-right: 2px;
+  padding: 0;
+  font-size: 10px;
+  line-height: 1;
+  border: none;
+  background: transparent;
+  color: var(--outliner-text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outliner-toggle:hover {
+  color: var(--outliner-highlight-color);
+}
+.outliner-children {
+  margin-left: 4px;
+  border-left: 1px solid var(--color-border);
+  padding-left: 2px;
+}
+.outliner-node.outliner-collapsed .outliner-children {
+  display: none;
+}
+
+.outliner-empty {
+  padding: var(--spacing-md);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+.components-panel {
+  width: var(--width-components);
+  background-color: var(--color-bg);
+  padding: var(--spacing-md);
+  user-select: none;
+  -webkit-user-select: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-left: var(--border-width) solid var(--color-border);
+  flex-shrink: 0;
+  transition:
+    width var(--transition),
+    padding var(--transition);
+  position: relative;
+}
+
+.components-panel.collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* CSSカスタマイズの入力欄はテキスト選択を許可 */
+.components-panel input,
+.components-panel select,
+.components-panel textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.components-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.components-panel:not(.collapsed) .components-header {
+  position: absolute;
+  top: var(--spacing-xs);
+  left: var(--spacing-xs);
+  z-index: 5;
+}
+
+.components-title {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin-bottom: 0;
+  color: var(--color-text);
+}
+
+.components-panel.collapsed .collapse-btn {
+  position: absolute;
+  left: 0;
+  top: var(--spacing-xl);
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: none;
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  z-index: 100;
+  transform: rotate(180deg);
+}
+
+.components-panel.collapsed .collapse-btn:hover {
+  background-color: var(--color-hover);
+}
+
+/* タブ切替UI */
+.components-tabs {
+  display: flex;
+  gap: var(--spacing-md);
+  margin: 0 0 var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-md) 0;
+  min-height: 49px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.components-tab-btn {
+  flex: 1;
+  padding: 0 var(--spacing-md);
+  border: none;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+  font-size: var(--font-size-sm);
+  position: relative;
+  top: 1px;
+}
+
+.components-tab-btn:hover {
+  background-color: var(--color-hover);
+  color: var(--color-text);
+}
+
+.components-tab-btn[aria-selected="true"] {
+  background-color: transparent;
+  border-bottom-color: var(--color-drag);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.components-tab-content {
+  display: none;
+}
+
+.components-tab-content.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  padding-right: 10px; /* スクロールバーとボタン・見出しの重なり防止 */
+  box-sizing: border-box;
+}
+
+/* コンポーネントタブのスクロールバーを細く */
+.components-tab-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* CSSカスタマイズフォーム */
+.style-preset-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+/* プリセット行のボタン（アイコン用は正方形、テキスト用は幅可変） */
+.style-preset-row .toolbar-btn {
+  width: auto;
+  min-width: 32px;
+  height: 32px;
+  padding: 4px 8px;
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+}
+
+.style-preset-row .toolbar-btn:has(img) {
+  width: 32px;
+  padding: 4px;
+}
+
+.style-preset-select {
+  flex: 1;
+  min-width: 100px;
+  max-width: 180px;
+  padding: 4px 8px;
+  font-size: var(--font-size-sm);
+}
+
+.style-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: 0;
+  padding: var(--spacing-md) var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.style-control-group:last-child {
+  border-bottom: none;
+}
+
+/* 初期値に戻すボタンのスタイル調整 */
+#resetStyleConfigBtn {
+  width: auto !important;
+  min-width: 80px !important;
+  padding: var(--spacing-xs) var(--spacing-sm) !important;
+  font-size: var(--font-size-xs) !important;
+  margin: 0 auto;
+  display: block;
+}
+
+/* 初期値に戻すボタンの親要素の二重線を解消 */
+.reset-style-group {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* 初期値に戻すボタンの前の要素のborder-bottomを保持 */
+.style-control-group:not(.reset-style-group):last-of-type {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.style-control-group-title {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* 見出しレベル別の折りたたみ */
+.style-heading-section {
+  margin-bottom: 2px;
+}
+
+.style-collapse-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 8px;
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--transition);
+}
+
+.style-collapse-toggle:hover {
+  background-color: var(--color-hover);
+}
+
+.style-collapse-toggle::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--color-text-secondary);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.style-collapse-toggle[aria-expanded="true"]::before {
+  transform: rotate(0deg);
+}
+
+.style-collapse-toggle[aria-expanded="false"]::before {
+  transform: rotate(-90deg);
+}
+
+.style-collapse-content {
+  overflow: hidden;
+  padding-left: 12px;
+  margin-top: 4px;
+  border-left: 2px solid var(--color-border);
+  margin-left: 6px;
+}
+
+.style-collapse-content.collapsed {
+  display: none;
+}
+
+/* 見出し2〜6内のレベルラベル（見出し2, 見出し3...） */
+.style-heading-level-label {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+.style-heading-level-label:first-child {
+  margin-top: 0;
+}
+
+.style-control-row {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.style-control-row label {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-weight: 400;
+  min-width: 60px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.style-control-row input,
+.style-control-row select {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-weight: 400;
+  padding: 2px var(--spacing-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+.color-input-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.style-control-row input[type="color"] {
+  padding: 2px;
+  height: 24px;
+  width: 40px;
+  flex: 0 0 40px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+/* カラーピッカー横のHEX欄（直接入力・貼り付け・コピー可能） */
+.style-control-row .color-hex-value {
+  width: 72px;
+  flex: 0 0 72px;
+  padding: 4px 6px;
+  font-family: ui-monospace, monospace;
+  font-size: var(--font-size-xs);
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+}
+
+.style-control-row input[type="number"] {
+  width: 50px;
+  flex: 0 0 50px;
+}
+
+.style-control-row select {
+  flex: 1;
+  min-width: 0;
+  max-width: 120px;
+  margin-left: auto;
+}
+
+.style-control-row input[type="checkbox"] {
+  accent-color: var(--color-drag);
+  cursor: pointer;
+}
+
+/* 囲み枠デザイン選択 */
+.callout-design-radio-row .callout-design-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+.callout-design-select {
+  flex: 1;
+  min-width: 0;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-input-bg, var(--color-bg));
+  color: var(--color-text);
+  cursor: pointer;
+}
+.callout-design-select:focus {
+  outline: none;
+  border-color: var(--color-drag);
+}
+/* 旧 radio 形式のスタイル (互換のため残置) */
+.callout-design-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+.callout-design-radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-weight: 400;
+  min-width: auto;
+}
+.callout-design-radio-group input[type="radio"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.style-hint {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+  font-style: italic;
+}
+
+.component-category {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* レイアウトボタン群と「レイアウトを追加」は最低限の余白に */
+#componentsTabContent > .component-category:first-of-type {
+  margin-bottom: var(--spacing-xs);
+}
+#componentsTabContent > .component-category:first-of-type .component-grid {
+  margin-bottom: var(--spacing-xs);
+}
+#layout-category-user .snippet-add-btn {
+  margin-top: var(--spacing-xs);
+}
+
+#customLayoutsGrid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.category-note {
+  margin-top: var(--spacing-xs);
+  margin-bottom: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.category-note.note-muted {
+  color: #999999;
+}
+
+.category-title {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.component-grid-snippet {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.component-grid-snippet .component-item {
+  min-width: 0;
+}
+
+/* スニペット（CoC・エモクロア）の長いラベルを枠内で折り返す */
+.component-grid-snippet .snippet-btn span {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.component-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacing-xs) + 1px) calc(var(--spacing-xs) - 3px);
+  background-color: transparent;
+  border: 1px solid #cccccc;
+  border-radius: var(--border-radius);
+  cursor: grab;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+  color: var(--color-text);
+  font-size: 0.7rem;
+  gap: var(--spacing-xs);
+  min-height: 44px;
+  min-width: 4.5em;
+}
+
+.component-item:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+}
+
+.snippet-btn {
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  background-color: transparent;
+  padding: 2px var(--spacing-xs);
+  min-height: 28px;
+  font-size: 0.65rem;
+  font-family: "Noto Sans CJK", sans-serif;
+  font-weight: 400;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  text-align: center;
+}
+
+.snippet-btn span {
+  font-size: 0.65rem !important;
+}
+
+.snippet-btn:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+}
+
+/* ユーザースニペット：追加ボタン */
+.snippet-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-drag);
+  background-color: transparent;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.snippet-add-btn:hover:not(:disabled) {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+}
+
+.snippet-add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.snippet-add-btn .icon-svg {
+  font-size: 18px;
+}
+
+/* ユーザースニペット：1行（挿入ボタン＋編集） */
+.custom-snippet-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 28px;
+}
+
+.custom-snippet-wrap .snippet-btn {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* カスタムレイアウト：1行（ドラッグボタン＋編集） */
+.custom-layout-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 50px;
+}
+
+.custom-layout-wrap .component-item {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* モーダル内の削除ボタン */
+.snippet-modal-delete-btn:hover {
+  background-color: rgba(211, 47, 47, 0.1) !important;
+  border-color: #b71c1c !important;
+  color: #b71c1c !important;
+}
+
+.component-item:active {
+  cursor: grabbing;
+}
+
+.component-item .icon-svg {
+  font-size: 18px;
+  line-height: 1;
+  color: var(--color-icon-muted);
+  /* img で読み込んだ SVG は color が効かないため、薄いグレーに見せる */
+  opacity: 0.65;
+}
+
+.component-item .component-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-icon-muted);
+}
+
+.component-item span:not(.icon-svg) {
+  font-size: var(--font-size-xs);
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* スニペットボタン内の span は折り返す（上記 nowrap を上書き） */
+.component-grid-snippet .snippet-btn span:not(.icon-svg) {
+  white-space: normal;
+}
+
+.dragging {
+  opacity: 0.4;
+  transform: scale(0.95);
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.content-element:hover .delete-btn,
+.div-outcolumn:hover .delete-btn,
+.div-column:hover .delete-btn,
+.content-element.show-controls .delete-btn,
+.div-outcolumn.show-controls .delete-btn,
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* モーダルスタイル（×ボタン z-index:10001 より前面に表示し、グレーアウトで隠す） */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* 閉じた状態では完全に非表示（カーソル非表示・編集不能を防ぐ） */
+  align-items: center;
+  justify-content: center;
+  z-index: 11000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--transition),
+    visibility var(--transition);
+}
+
+.modal-overlay[aria-hidden="false"] {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background-color: var(--color-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform var(--transition);
+}
+
+.modal-overlay[aria-hidden="false"] .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.modal-title {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  border-radius: var(--border-radius);
+  transition:
+    background-color var(--transition),
+    color var(--transition);
+  width: 32px;
+  height: 32px;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-hover);
+  color: var(--color-text);
+}
+
+.modal-close-btn .icon-svg {
+  font-size: 20px;
+}
+
+/* オプション画面の通常文字を12pxに（options-modal-content クラスで対象を限定） */
+.options-modal-content {
+  --font-size-sm: 12px;
+}
+.options-modal-content .modal-body {
+  font-size: 12px;
+}
+
+.modal-body {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.modal-body .toolbar-btn {
+  font-size: var(--font-size-sm);
+}
+
+.modal-body *:not(img):not(svg):not(svg *) {
+  font-family: "Noto Sans CJK", sans-serif !important;
+}
+
+/* キャラシモーダル タブバー */
+.charsheet-tab-bar {
+  display: flex;
+  gap: 0;
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.charsheet-tab {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: transparent;
+  font-family: "Noto Sans CJK", sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s, background-color 0.15s;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.charsheet-tab:hover {
+  background-color: var(--color-hover);
+  color: var(--color-text);
+}
+
+.charsheet-tab.active {
+  color: var(--color-drag);
+  font-weight: 600;
+}
+
+.charsheet-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-drag);
+}
+
+.options-credit-link:hover {
+  text-decoration: underline;
+}
+
+.export-beta-notice {
+  margin: 0 0 var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background-color: var(--color-hover, rgba(0, 0, 0, 0.05));
+  border-radius: 6px;
+  border-left: 3px solid var(--color-drag);
+}
+
+.export-option-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+  width: 100%;
+}
+
+.export-option-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.export-option-btn:not(:disabled):hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.export-option-btn .icon-divider-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.export-option-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  text-align: left;
+}
+
+.export-option-title {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.export-option-description {
+  font-family: "Noto Sans CJK", sans-serif !important;
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ショートカット一覧モーダル */
+.shortcut-list-modal-content .modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: calc(var(--spacing-xl) * 2);
+  display: grid;
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.shortcut-list-section {
+  min-width: 0;
+}
+
+.shortcut-list-section--edit {
+  grid-column: 1 / span 6;
+}
+
+.shortcut-list-section--layout {
+  grid-column: 7 / span 6;
+}
+
+.shortcut-list-section--other {
+  grid-column: 13 / span 8;
+}
+
+.shortcut-list-section--insert {
+  grid-column: 1 / span 8;
+}
+
+.shortcut-list-section--convert {
+  grid-column: 9 / span 8;
+}
+
+.shortcut-list-category {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-sm);
+}
+
+.shortcut-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+  table-layout: fixed;
+}
+
+.shortcut-list-table tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.shortcut-list-table tr:last-child {
+  border-bottom: none;
+}
+
+.shortcut-list-keys {
+  padding: var(--spacing-xs) var(--spacing-sm) var(--spacing-xs)
+    var(--spacing-md);
+  white-space: normal;
+  width: 62%;
+  vertical-align: top;
+}
+
+.shortcut-list-section--layout .shortcut-list-keys,
+.shortcut-list-section--other .shortcut-list-keys {
+  width: 54%;
+  padding-right: var(--spacing-xs);
+}
+
+.shortcut-list-key-badge {
+  display: inline-block;
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+  color: var(--color-text);
+  padding: 2px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-hover);
+}
+
+.shortcut-list-desc {
+  padding: var(--spacing-xs) 0;
+  color: var(--color-text);
+  width: 38%;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.shortcut-list-section--layout .shortcut-list-desc,
+.shortcut-list-section--other .shortcut-list-desc {
+  width: 46%;
+}
+
+.shortcut-list-section--layout .shortcut-list-keys {
+  width: 50%;
+  padding-right: 0;
+}
+
+.shortcut-list-section--layout .shortcut-list-desc {
+  width: 50%;
+}
+
+/* プレビューモード（読む専用）: ハンドル・削除ボタン・挿入ガイドを非表示 */
+[data-preview-mode="true"] .body-drop-zone-insert-guide {
+  display: none !important;
+}
+[data-preview-mode="true"] .column-drop-zone {
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* プレビューモード: マウスオーバーハイライトを無効化 */
+[data-preview-mode="true"] .content-element:hover,
+[data-preview-mode="true"] .div-outcolumn:hover,
+[data-preview-mode="true"] .div-column:hover {
+  background-color: transparent !important;
+}
+
+/* プレビューモード: フォーマットメニューを非表示 */
+
+/* プレビューモード: スペーサーのリサイズハンドルを無効化 */
+[data-preview-mode="true"] .spacer-resize-handle {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* プレビューモード: 空白コンポーネントを出力時と同様に非表示 */
+[data-preview-mode="true"] .content-spacer,
+[data-preview-mode="true"] .content-spacer:hover,
+[data-preview-mode="true"] .content-spacer.is-resizing {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* プレビューモード: 表の操作UIを非表示 */
+[data-preview-mode="true"] .content-table-toolbar,
+[data-preview-mode="true"] .content-table-col-buttons {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* ─── プラグインシステム ─────────────────────────────────────── */
+
+/* ビュー切替ボタングループ */
+.view-switcher {
+  display: inline-flex;
+  align-items: stretch;
+  margin-left: var(--spacing-sm);
+  margin-right: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: transparent;
+}
+.view-switcher-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Noto Sans CJK", sans-serif;
+  font-size: 11px;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  outline: none;
+}
+.view-switcher-btn > span {
+  display: none;
+}
+.view-switcher-btn:hover {
+  background-color: var(--color-hover);
+}
+.view-switcher-btn:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-drag);
+}
+.view-switcher-btn.active {
+  background-color: var(--color-drag);
+  color: #fff;
+}
+.view-switcher-btn.active .icon-svg {
+  filter: brightness(0) invert(1);
+}
+.view-switcher-btn .icon-svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* ビューコンテナ */
+.view-container {
+  flex: 1;
+  overflow: auto;
+  padding: var(--spacing-md);
+}
+
+/* アウトカラム グレーアウト（ボードビューからのナビゲーション時） */
+.outcolumn-dimmed {
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+}
+.div-outcolumn:not(.outcolumn-dimmed) {
+  transition: opacity 0.3s ease;
+}
+
+/* ビューエラー */
+.view-error {
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--color-danger, #e53e3e);
+  font-size: var(--font-size-sm);
+}
+
+/* プラグインカード */
+.plugin-card {
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  transition: border-color var(--transition);
+}
+.plugin-card:hover {
+  border-color: var(--color-accent);
+}
+.plugin-card + .plugin-card {
+  margin-top: var(--spacing-sm);
+}
+.plugin-card-error {
+  border-color: var(--color-danger, #e53e3e);
+}
+
+.plugin-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.plugin-card-info {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.plugin-card-name {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-text);
+}
+.plugin-card-version {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.plugin-card-author {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+.plugin-card-author::before {
+  content: "by ";
+}
+
+.plugin-card-description {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin: var(--spacing-xs) 0 0;
+  line-height: 1.4;
+}
+
+.plugin-card-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  background-color: var(--color-hover);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+.plugin-card-error-msg {
+  font-size: 11px;
+  color: var(--color-danger, #e53e3e);
+  margin-top: var(--spacing-xs);
+  padding: var(--spacing-xs);
+  background-color: rgba(229, 62, 62, 0.08);
+  border-radius: var(--border-radius);
+}
+
+/* トグルスイッチ */
+.plugin-toggle {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.plugin-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.plugin-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background-color: #d0d0d0;
+  border-radius: 10px;
+  transition: background-color var(--transition);
+}
+.plugin-toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition);
+}
+.plugin-toggle input:checked + .plugin-toggle-slider {
+  background-color: #007acc;
+}
+.plugin-toggle input:checked + .plugin-toggle-slider::before {
+  transform: translateX(16px);
+}
+.plugin-toggle input:disabled + .plugin-toggle-slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+[data-theme="dark"] .plugin-toggle-slider {
+  background-color: #555555;
+}
+[data-theme="dark"] .plugin-toggle input:checked + .plugin-toggle-slider {
+  background-color: #4a9eff;
+}
+
+/* プラグイン空状態 */
+.plugin-empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+.plugin-empty-text {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* プラグイン設定パネル */
+.plugin-settings-btn {
+  margin-top: var(--spacing-xs);
+  font-size: 11px;
+  padding: 2px 8px;
+}
+.plugin-settings-panel {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+}
+.plugin-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+  font-size: 12px;
+}
+.plugin-setting-row label {
+  flex-shrink: 0;
+  color: var(--color-text);
+}
+.plugin-setting-input {
+  font-family: "Noto Sans CJK", sans-serif;
+  font-size: 12px;
+  padding: 2px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+.plugin-setting-input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+/* モーダルフッター */
+.modal-footer .btn-secondary {
+  font-family: "Noto Sans CJK", sans-serif;
+  font-size: 12px;
+  padding: 4px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+.modal-footer .btn-secondary:hover {
+  background-color: var(--color-hover);
+}
+
+/* レスポンシブデザイン: 小さいウィンドウ対応 */
+
+/* 基本設定 */
+.body-section {
+  font-family: "Noto Sans CJK", sans-serif;
+  font-weight: 400;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.body-section * {
+  outline: none !important;
+  font-weight: 400;
+}
+
+.body-section *:focus,
+.body-section *:active {
+  outline: none !important;
+}
+
+.body-section b,
+.body-section strong,
+.body-section span[style*="font-weight: 700"],
+.body-section span[style*="font-weight: 700"] *,
+.content-element b,
+.content-element strong {
+  font-weight: 700 !important;
+}
+
+.body-section ruby {
+  ruby-position: over;
+}
+
+.body-section rt {
+  font-size: 0.5em;
+}
+
+.body-section [contenteditable="true"] {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+/* ドロップゾーン */
+.drop-zone {
+  min-height: 100%;
+  padding: 0 var(--spacing-xl) var(--spacing-xl);
+  margin-top: 0;
+  position: relative;
+  transition: padding-right var(--transition);
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.body-section.outliner-hidden .drop-zone {
+  padding-right: var(--spacing-xl);
+}
+
+.body-section.outliner-hidden .drop-zone > .div-outcolumn {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.drop-zone.empty {
+  border: none !important;
+  border-radius: var(--border-radius);
+  min-height: 200px;
+}
+
+.drop-zone-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  pointer-events: none;
+}
+
+.drop-zone.empty .drop-zone-empty {
+  display: flex;
+}
+
+.drop-zone.empty .drop-zone-empty .icon-divider-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.9;
+}
+
+.drop-zone:not(.empty) > .drop-zone-empty {
+  display: none;
+}
+
+.drop-zone.empty.drag-over {
+  border: none !important;
+  background-color: transparent;
+}
+
+.column-drop-zone.drag-over {
+  border-color: var(--color-drag);
+  background-color: rgba(0, 122, 204, 0.04);
+}
+
+/* bodyDropZone の「ここにレイアウトを挿入」ガイド */
+.body-drop-zone-insert-guide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  pointer-events: none;
+  user-select: none;
+}
+
+.body-drop-zone-insert-guide .icon-divider-icon {
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
+}
+
+/* レイアウト要素 */
+.div-outcolumn,
+.div-column {
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border-radius);
+  position: relative;
+  transition: background-color var(--transition);
+  outline: none;
+  pointer-events: none;
+}
+
+.div-outcolumn > .drag-handle,
+.div-column > .drag-handle,
+.div-outcolumn [contenteditable="true"],
+.div-column [contenteditable="true"],
+.div-outcolumn .delete-btn,
+.div-column .delete-btn,
+.div-outcolumn button,
+.div-column button,
+.div-outcolumn input,
+.div-column input,
+.div-outcolumn textarea,
+.div-column textarea,
+.div-outcolumn .div-columns-container,
+.div-column .column-drop-zone,
+.div-outcolumn .content-image-wrapper,
+.div-column .content-image-wrapper,
+.div-outcolumn p,
+.div-column p,
+.div-outcolumn span,
+.div-column span,
+.div-outcolumn h1,
+.div-column h1,
+.div-outcolumn h2,
+.div-column h2,
+.div-outcolumn h3,
+.div-column h3,
+.div-outcolumn h4,
+.div-column h4,
+.div-outcolumn h5,
+.div-column h5,
+.div-outcolumn h6,
+.div-column h6,
+.div-outcolumn li,
+.div-column li,
+.div-outcolumn td,
+.div-column td,
+.div-outcolumn th,
+.div-column th {
+  pointer-events: auto;
+}
+
+/* レイアウト要素内の編集可能な要素でのテキスト選択を許可 */
+.div-outcolumn p,
+.div-column p,
+.div-outcolumn h1,
+.div-column h1,
+.div-outcolumn h2,
+.div-column h2,
+.div-outcolumn h3,
+.div-column h3,
+.div-outcolumn h4,
+.div-column h4,
+.div-outcolumn h5,
+.div-column h5,
+.div-outcolumn h6,
+.div-column h6,
+.div-outcolumn li,
+.div-column li,
+.div-outcolumn td,
+.div-column td,
+.div-outcolumn th,
+.div-column th,
+.div-outcolumn blockquote,
+.div-column blockquote,
+.div-outcolumn code,
+.div-column code {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.div-outcolumn:focus,
+.div-outcolumn:active,
+.div-column:focus,
+.div-column:active,
+.content-element:focus,
+.content-element:active {
+  outline: none;
+}
+
+.div-outcolumn {
+  margin: 0 auto;
+  padding: var(--spacing-xs);
+  min-height: var(--min-height-outcolumn);
+  max-width: min(
+    900px,
+    100%
+  ); /* 2ペイン時など狭い幅でアウトライナー下に潜らない */
+}
+
+@media (max-width: 1200px) {
+  .div-outcolumn {
+    padding: var(--spacing-sm);
+  }
+}
+
+.div-outcolumn:hover,
+.div-column:hover {
+  background-color: transparent;
+}
+
+.div-outcolumn.drag-over,
+.div-column.drag-over {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.div-outcolumn.drag-over .div-columns-container {
+  border-color: transparent;
+  background-color: transparent;
+  border-radius: var(--border-radius);
+}
+
+.div-columns-container {
+  display: flex;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  min-height: 50px;
+  min-width: 0; /* 1段組で親幅を超えてはみ出さないように */
+  transition: background-color var(--transition);
+}
+
+.div-columns-container.drag-over {
+  background-color: transparent;
+  border-radius: var(--border-radius);
+}
+
+.div-columns-container[data-ratio="6-4"] .div-column:first-child {
+  flex: 6;
+}
+
+.div-columns-container[data-ratio="6-4"] .div-column:last-child {
+  flex: 4;
+}
+
+.div-columns-container:not([data-ratio="6-4"]) .div-column:nth-child(1) {
+  flex: var(--ratio-1, 1);
+}
+
+.div-columns-container:not([data-ratio="6-4"]) .div-column:nth-child(2) {
+  flex: var(--ratio-2, 1);
+}
+
+.div-columns-container:not([data-ratio="6-4"]) .div-column:nth-child(3) {
+  flex: var(--ratio-3, 1);
+}
+
+.div-column {
+  flex: 1;
+  padding: var(--spacing-xs);
+  min-height: var(--min-height-column);
+  /* 1段組でテキストがアウトライナー下に潜るのを防ぐ：flex子の縮小を許可 */
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* 空カラム（ドロップゾーンのみ）のとき破線ボックスを縦方向に伸ばす */
+.div-column:has(.column-drop-zone):not(:has(.content-element)) {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-drop-zone {
+  flex: 1;
+  min-height: 120px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-md);
+  position: relative;
+  max-width: 1000px;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+/* 破線ボックス全体をドロップ可能にするためのヒットエリア（コンポーネントドラッグ用） */
+.column-drop-zone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.column-drop-zone .column-drop-zone-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* コンテンツ要素 */
+.content-element {
+  background-color: transparent;
+  border: none;
+  padding: var(--spacing-xs) 10px;
+  margin: var(--spacing-xs) 0;
+  border-radius: var(--border-radius);
+  position: relative;
+  transition: background-color var(--transition);
+  outline: none;
+  pointer-events: none;
+}
+
+.content-element > .drag-handle,
+.content-element [contenteditable="true"],
+.content-element .delete-btn,
+.content-element .content-link,
+.content-element button,
+.content-element input,
+.content-element textarea,
+.content-element .content-checkbox-input,
+.content-element .spacer-resize-handle,
+.content-element .content-image-wrapper,
+.content-element .content-divider,
+.content-element .content-spacer,
+.content-element p,
+.content-element span,
+.content-element h1,
+.content-element h2,
+.content-element h3,
+.content-element h4,
+.content-element h5,
+.content-element h6,
+.content-element li,
+.content-element td,
+.content-element th,
+.content-element code,
+.content-element blockquote,
+.content-element .content-title,
+.content-element .content-callout {
+  pointer-events: auto;
+}
+
+/* 編集可能な要素内でのテキスト選択を許可 */
+.content-element p,
+.content-element h1,
+.content-element h2,
+.content-element h3,
+.content-element h4,
+.content-element h5,
+.content-element h6,
+.content-element li,
+.content-element td,
+.content-element th,
+.content-element blockquote,
+.content-element .callout-content,
+.content-element .callout-label,
+.content-element code,
+.content-element summary,
+.content-element .collapsible-content {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+.div-column > .content-element:first-of-type {
+  margin-top: 0;
+}
+
+.content-element:not(:has(> .content-title)):not(
+    :has(> h1:not(.content-title))
+  ):not(:has(> h2)):not(:has(> h3)):not(:has(> h4)):not(:has(> h5)):not(
+    :has(> h6)
+  ):not(:has(> .content-divider)):not(:has(> .content-spacer)):not(
+    :has(> code)
+  ) {
+  margin-left: 1rem;
+}
+
+.content-element:hover {
+  background-color: var(--editor-hover-highlight, var(--color-hover));
+}
+
+.content-element .content-title {
+  margin: 4rem 0;
+  padding: 0;
+  color: var(--title-color);
+  font-size: var(--title-size);
+  font-family: var(--title-font-family);
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  line-height: var(--line-height-heading, 1.4);
+}
+
+.content-element h1 {
+  margin: var(--spacing-xs) 0;
+  padding: 0;
+  color: var(--heading1-color);
+  font-size: var(--heading1-size);
+  font-family: var(--heading1-font-family);
+  font-weight: 700;
+  line-height: var(--line-height-heading, 1.4);
+}
+
+.content-element h2 {
+  margin: var(--spacing-xs) 0;
+  padding: 0;
+  color: var(--heading2-color);
+  font-size: var(--heading2-size);
+  font-family: var(--heading2-font-family);
+  font-weight: 700;
+  line-height: var(--line-height-heading, 1.4);
+}
+
+.content-element h3 {
+  margin: var(--spacing-xs) 0;
+  padding: 0;
+  color: var(--heading3-color);
+  font-size: var(--heading3-size);
+  font-family: var(--heading3-font-family);
+  font-weight: 700;
+  line-height: var(--line-height-heading, 1.4);
+}
+
+.content-element h4 {
+  margin: var(--spacing-xs) 0;
+  padding: 0;
+  color: var(--heading4-color);
+  font-size: var(--heading4-size);
+  font-family: var(--heading4-font-family);
+  font-weight: 700;
+  line-height: var(--line-height-heading, 1.4);
+}
+
+.content-element h5 {
+  margin: var(--spacing-xs) 0;
+  padding: 0;
+  color: var(--heading5-color);
+  font-size: var(--heading5-size);
+  font-family: var(--heading5-font-family);
+  font-weight: 700;
+  line-height: var(--line-height-heading, 1.4);
+}
+
+.content-element h6 {
+  margin: var(--spacing-xs) 0;
+  padding: 0;
+  color: var(--heading6-color);
+  font-size: var(--heading6-size);
+  font-family: var(--heading6-font-family);
+  font-weight: 700;
+  line-height: var(--line-height-heading, 1.4);
+}
+
+.content-element p,
+.content-element > div[contenteditable="true"] {
+  margin: 0;
+  padding: 0;
+  color: var(--paragraph-color);
+  font-size: var(--paragraph-size);
+  font-family: var(--paragraph-font-family);
+  font-weight: 400;
+  line-height: var(--line-height-body, 1.6);
+}
+
+.content-element .content-link {
+  display: inline-block;
+  color: var(--link-color, var(--color-drag));
+  font-family: var(--link-font-family, "Noto Sans CJK", sans-serif);
+  font-size: var(--link-size, 1rem);
+  text-decoration: underline;
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.content-element p.stage-direction {
+  color: var(--stage-direction-color);
+  font-size: var(--stage-direction-size, 1rem);
+  font-family: var(--stage-direction-font-family);
+  font-weight: 400;
+  line-height: var(--line-height-body, 1.6);
+}
+
+.content-element [data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: #cccccc;
+  pointer-events: none;
+}
+
+.content-element mark {
+  background-color: var(--mark-color);
+  color: inherit;
+  padding: 0;
+}
+
+.content-element blockquote {
+  margin: 0;
+  padding: 0.2em 0;
+  padding-left: calc(var(--spacing-md) + 4px);
+  border-left: none;
+  color: var(--blockquote-color, var(--color-text));
+  background-color: transparent;
+  position: relative;
+  font-size: var(--blockquote-font-size, 0.85rem);
+  font-family: var(--blockquote-font-family);
+  font-weight: 400;
+  line-height: var(--line-height-body, 1.6);
+}
+
+.content-element blockquote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -0.2em;
+  bottom: -0.2em;
+  width: 3px;
+  background-color: var(--blockquote-bar-color);
+  pointer-events: none;
+  transform-origin: left center;
+}
+
+/* コピーボタン共通スタイル */
+.content-element
+  > :is(.copy-blockquote-btn, .copy-paragraph-btn, .copy-callout-btn),
+.content-element code .copy-code-btn {
+  position: absolute;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
+  background-color: transparent;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xs);
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+  opacity: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.content-element
+  > :is(.copy-blockquote-btn, .copy-paragraph-btn, .copy-callout-btn)
+  .icon-svg,
+.content-element code .copy-code-btn .icon-svg {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.content-element
+  > :is(.copy-blockquote-btn, .copy-paragraph-btn, .copy-callout-btn):hover,
+.content-element code .copy-code-btn:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+}
+
+.content-element
+  > :is(.copy-blockquote-btn, .copy-paragraph-btn, .copy-callout-btn):active,
+.content-element code .copy-code-btn:active {
+  background-color: var(--color-drag-bg);
+}
+
+.content-element:has(> blockquote):hover > .copy-blockquote-btn,
+.content-element:has(> p.copy-text-block):hover > .copy-paragraph-btn,
+.content-element:has(.content-callout:hover) > .copy-callout-btn,
+.content-element:has(> .copy-callout-btn:hover) > .copy-callout-btn,
+.content-element:has(> .copy-callout-btn:focus-visible) > .copy-callout-btn,
+.content-element:has(> .copy-callout-btn:hover) > .copy-callout-btn,
+.content-element:has(> .copy-callout-btn:focus-visible) > .copy-callout-btn,
+.content-element code:hover .copy-code-btn {
+  opacity: 1;
+}
+
+.content-element:has(.content-callout) > .copy-callout-btn {
+  z-index: 20;
+}
+
+/* 画像 */
+.content-element .content-image-wrapper {
+  position: relative;
+  margin: var(--spacing-md) 0;
+  min-height: 80px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.content-element .content-image-wrapper[data-placeholder-text] {
+  background-color: var(--color-bg-secondary, #f0f0f0);
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+}
+
+.content-element .content-image-wrapper[data-placeholder-text]::after {
+  content: attr(data-placeholder-text);
+  color: var(--color-text-secondary, #888);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* 画像が読み込まれている場合はプレースホルダー表示を抑止（競合防止） */
+.content-element .content-image-wrapper:has(.content-image[src^="data:"]) {
+  background-color: transparent;
+  border: none;
+}
+
+.content-element
+  .content-image-wrapper:has(.content-image[src^="data:"])::after {
+  content: none;
+}
+
+.content-element .content-image-wrapper .content-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: auto; /* 既存画像クリックでダイアログが開くようにする */
+}
+
+.content-element
+  .content-image-wrapper
+  .content-image[data-placeholder="true"] {
+  display: none;
+}
+
+.content-element .content-divider {
+  width: 92%;
+  margin: var(--spacing-lg) auto;
+  border: none;
+  border-top: var(--border-width) solid var(--divider-color);
+  background-color: transparent;
+}
+
+/* チェックボックス */
+.content-element .content-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0 0 0 var(--spacing-xs);
+}
+
+.content-element .content-checkbox-list .content-checkbox,
+.content-element .content-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: 0;
+  color: var(--list-color, var(--color-text));
+  font-size: var(--list-font-size, 0.85rem);
+  font-family: var(--list-font-family);
+  font-weight: 400;
+}
+
+.content-element > .content-checkbox {
+  padding-left: var(--spacing-xs);
+}
+
+.content-element .content-checkbox .content-checkbox-input {
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
+  cursor: pointer;
+  accent-color: var(--color-drag);
+}
+
+.content-element .content-checkbox .content-checkbox-label {
+  flex: 1;
+  min-width: 0;
+  outline: none;
+}
+
+/* 表 */
+.content-element .content-table-wrapper {
+  margin: var(--spacing-sm) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.content-element .content-table-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.content-element .content-table-inner {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.content-element .content-table-col-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.content-element .content-table-col-buttons button,
+.content-element .content-table-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background: var(--color-bg);
+  color: var(--paragraph-color);
+  cursor: pointer;
+}
+
+.content-element .content-table-col-buttons button:hover,
+.content-element .content-table-toolbar button:hover {
+  background: var(--color-hover);
+}
+
+.content-element
+  .content-table-col-buttons
+  button.content-table-header-toggle
+  .icon-svg,
+.content-element
+  .content-table-toolbar
+  button.content-table-header-toggle
+  .icon-svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.content-element
+  .content-table-col-buttons
+  button.content-table-header-toggle.is-active,
+.content-element
+  .content-table-toolbar
+  button.content-table-header-toggle.is-active {
+  background: var(--color-drag-bg);
+  border-color: var(--color-drag);
+}
+
+.content-element .content-table tbody th[scope="row"] {
+  background: var(--table-header-color, var(--color-drag-bg));
+  font-weight: 400;
+}
+
+.content-element .content-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid var(--table-border-color, var(--color-border));
+  background: var(--table-cell-color, var(--color-bg));
+  color: var(--paragraph-color);
+  font-size: var(--table-font-size, 1rem);
+}
+
+.content-element .content-table th,
+.content-element .content-table td {
+  border: 1px solid var(--table-border-color, var(--color-border));
+  padding: var(--spacing-xs) var(--spacing-sm);
+  min-width: 4em;
+  width: 1%;
+  vertical-align: top;
+  outline: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.content-element .content-table th {
+  background: var(--table-header-color, var(--color-drag-bg));
+  font-weight: 400;
+}
+
+.content-element .content-table-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+  padding-top: var(--spacing-xs);
+  border-top: 1px dashed var(--color-border);
+}
+
+/* スペーサー */
+.content-element:has(> .content-spacer) {
+  padding: 0;
+  margin-left: 1rem;
+}
+
+.content-element .content-spacer {
+  width: 100%;
+  min-height: 8px;
+  position: relative;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.content-element .content-spacer:hover,
+.content-element .content-spacer.is-resizing {
+  background-color: transparent;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.content-element .content-spacer .spacer-resize-handle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  cursor: ns-resize;
+}
+
+/* 囲み枠 */
+.content-element .content-callout {
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-sm);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-drag-bg);
+  color: var(--color-text);
+  position: relative;
+  font-weight: 400;
+}
+
+.content-element .content-callout.callout-type-1 {
+  padding: 1em;
+  border-radius: 4px;
+  background-color: var(--callout1-color);
+  border-width: var(--callout1-border-width, var(--border-width));
+  border-color: var(--callout1-border-color, var(--callout1-color));
+  font-family: var(--callout1-font-family);
+  color: var(--callout1-font-color);
+  font-size: var(--callout1-font-size);
+}
+
+.content-element .content-callout.callout-type-2 {
+  padding: 1em;
+  border-radius: 4px;
+  background-color: var(--callout2-color);
+  border-width: var(--callout2-border-width, var(--border-width));
+  border-color: var(--callout2-border-color, var(--callout2-color));
+  font-family: var(--callout2-font-family);
+  color: var(--callout2-font-color);
+  font-size: var(--callout2-font-size);
+}
+
+.content-element .content-callout.callout-type-3 {
+  padding: 1em;
+  border-radius: 4px;
+  background-color: var(--callout3-color);
+  border-width: var(--callout3-border-width, var(--border-width));
+  border-color: var(--callout3-border-color, var(--callout3-color));
+  font-family: var(--callout3-font-family);
+  color: var(--callout3-font-color);
+  font-size: var(--callout3-font-size);
+}
+
+.content-element .content-callout.callout-type-4 {
+  padding: 1em;
+  border-radius: 4px;
+  background-color: var(--callout4-color);
+  border-width: var(--callout4-border-width, var(--border-width));
+  border-color: var(--callout4-border-color, var(--callout4-color));
+  font-family: var(--callout4-font-family);
+  color: var(--callout4-font-color);
+  font-size: var(--callout4-font-size);
+}
+
+.content-element .content-callout .callout-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.content-element .callout-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.content-element .callout-row > .content-callout {
+  flex: 1;
+  min-width: 0;
+}
+
+.content-element .callout-row > .callout-checkbox {
+  /* 表示/非表示を CSS 変数で切替可能 (プラグインから --callout-checkbox-display: none を指定すれば全 callout で非表示) */
+  display: var(--callout-checkbox-display, inline-block);
+  flex-shrink: 0;
+  margin: 0;
+  /* 囲み枠の padding-top と同じだけ下げてテキスト上辺と揃える */
+  margin-top: 1em;
+  cursor: pointer;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.content-element .callout-row:has(> .callout-type-1) > .callout-checkbox {
+  display: var(--callout1-checkbox-display, var(--callout-checkbox-display, inline-block));
+  accent-color: var(--callout1-checkbox-accent, var(--callout1-font-color));
+}
+.content-element .callout-row:has(> .callout-type-2) > .callout-checkbox {
+  display: var(--callout2-checkbox-display, var(--callout-checkbox-display, inline-block));
+  accent-color: var(--callout2-checkbox-accent, var(--callout2-font-color));
+}
+.content-element .callout-row:has(> .callout-type-3) > .callout-checkbox {
+  display: var(--callout3-checkbox-display, var(--callout-checkbox-display, inline-block));
+  accent-color: var(--callout3-checkbox-accent, var(--callout3-font-color));
+}
+.content-element .callout-row:has(> .callout-type-4) > .callout-checkbox {
+  display: var(--callout4-checkbox-display, var(--callout-checkbox-display, inline-block));
+  accent-color: var(--callout4-checkbox-accent, var(--callout4-font-color));
+}
+
+.content-element .content-callout .callout-content {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+  min-height: 1.5em;
+  font-size: inherit;
+  line-height: var(--line-height-body, 1.6);
+  font-weight: 400;
+}
+
+.content-element .content-callout.callout-type-1 .callout-content {
+  color: var(--callout1-font-color);
+  font-family: var(--callout1-font-family);
+  font-size: var(--callout1-font-size);
+}
+
+.content-element .content-callout.callout-type-2 .callout-content {
+  color: var(--callout2-font-color);
+  font-family: var(--callout2-font-family);
+  font-size: var(--callout2-font-size);
+}
+
+.content-element .content-callout.callout-type-3 .callout-content {
+  color: var(--callout3-font-color);
+  font-family: var(--callout3-font-family);
+  font-size: var(--callout3-font-size);
+}
+
+.content-element .content-callout.callout-type-4 .callout-content {
+  color: var(--callout4-font-color);
+  font-family: var(--callout4-font-family);
+  font-size: var(--callout4-font-size);
+}
+
+/* 囲み枠: デザインタイプのオーバーライド（ラジオで選択したデザインに応じて切り替え） */
+
+/* シンプル（デザイン1）のとき: ラベルを非表示（内部データは保持・ラベル付きに戻すと再表示） */
+:root.callout1-design-1
+  .content-element
+  .content-callout.callout-type-1
+  .callout-label,
+:root.callout2-design-1
+  .content-element
+  .content-callout.callout-type-2
+  .callout-label {
+  display: none;
+}
+
+/* デザイン3 では header を透過させ、ラベルが直接 callout の flex 子要素として展開される（既存のラベル飛び出し効果を維持） */
+:root.callout1-design-3
+  .content-element
+  .content-callout.callout-type-1
+  .callout-header,
+:root.callout2-design-3
+  .content-element
+  .content-callout.callout-type-2
+  .callout-header,
+:root.callout3-design-3
+  .content-element
+  .content-callout.callout-type-3
+  .callout-header,
+:root.callout4-design-3
+  .content-element
+  .content-callout.callout-type-4
+  .callout-header {
+  display: contents;
+}
+
+/* callout-type-1, 2 がデザイン3のとき: 枠・ラベル型 */
+:root.callout1-design-3 .content-element .content-callout.callout-type-1 {
+  background-color: transparent;
+  border-style: solid;
+  border-radius: 4px;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+:root.callout1-design-3
+  .content-element
+  .content-callout.callout-type-1
+  .callout-label {
+  position: relative;
+  top: auto;
+  left: auto;
+  align-self: flex-start;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.3em 0.76em 0.3em 0.84em;
+  margin-top: calc(-1 * var(--spacing-sm) - 0.5em);
+  margin-bottom: 0;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  z-index: 1;
+  min-width: 3em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  background-color: var(--callout1-color);
+}
+:root.callout1-design-3
+  .content-element
+  .content-callout.callout-type-1
+  .callout-content {
+  color: var(--callout1-font-color);
+  font-family: var(--callout1-font-family);
+  font-size: var(--callout1-font-size);
+}
+
+:root.callout2-design-3 .content-element .content-callout.callout-type-2 {
+  background-color: transparent;
+  border-style: solid;
+  border-radius: 4px;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+:root.callout2-design-3
+  .content-element
+  .content-callout.callout-type-2
+  .callout-label {
+  position: relative;
+  top: auto;
+  left: auto;
+  align-self: flex-start;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.3em 0.76em 0.3em 0.84em;
+  margin-top: calc(-1 * var(--spacing-sm) - 0.5em);
+  margin-bottom: 0;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  z-index: 1;
+  min-width: 3em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  background-color: var(--callout2-color);
+}
+:root.callout2-design-3
+  .content-element
+  .content-callout.callout-type-2
+  .callout-content {
+  color: var(--callout2-font-color);
+  font-family: var(--callout2-font-family);
+  font-size: var(--callout2-font-size);
+}
+
+/* callout-type-3, 4 がデザイン1のとき: ラベルを非表示（ベースはシンプル型） */
+:root.callout3-design-1
+  .content-element
+  .content-callout.callout-type-3
+  .callout-label {
+  display: none;
+}
+:root.callout4-design-1
+  .content-element
+  .content-callout.callout-type-4
+  .callout-label {
+  display: none;
+}
+
+/* callout-type-3, 4 がデザイン3のとき: 枠・ラベル型（囲み枠1と同じ構造） */
+:root.callout3-design-3 .content-element .content-callout.callout-type-3 {
+  background-color: transparent;
+  border-width: var(--callout3-border-width, 1px);
+  border-style: solid;
+  border-radius: 4px;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+:root.callout3-design-3
+  .content-element
+  .content-callout.callout-type-3
+  .callout-label {
+  position: relative;
+  top: auto;
+  left: auto;
+  align-self: flex-start;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.3em 0.76em 0.3em 0.84em;
+  margin-top: calc(-1 * var(--spacing-sm) - 0.5em);
+  margin-bottom: 0;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  z-index: 1;
+  min-width: 3em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  background-color: var(--callout3-color);
+}
+:root.callout3-design-3
+  .content-element
+  .content-callout.callout-type-3
+  .callout-content {
+  color: var(--callout3-font-color);
+  font-family: var(--callout3-font-family);
+  font-size: var(--callout3-font-size);
+}
+
+:root.callout4-design-3 .content-element .content-callout.callout-type-4 {
+  background-color: transparent;
+  border-width: var(--callout4-border-width, 1px);
+  border-style: solid;
+  border-radius: 4px;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+:root.callout4-design-3
+  .content-element
+  .content-callout.callout-type-4
+  .callout-label {
+  position: relative;
+  top: auto;
+  left: auto;
+  align-self: flex-start;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.3em 0.76em 0.3em 0.84em;
+  margin-top: calc(-1 * var(--spacing-sm) - 0.5em);
+  margin-bottom: 0;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  z-index: 1;
+  min-width: 3em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  background-color: var(--callout4-color);
+}
+:root.callout4-design-3
+  .content-element
+  .content-callout.callout-type-4
+  .callout-content {
+  color: var(--callout4-font-color);
+  font-family: var(--callout4-font-family);
+  font-size: var(--callout4-font-size);
+}
+
+/* テロップ（角丸1行・クリックでコピー） */
+.content-element .content-telop {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing-sm) 0;
+  padding: 0.3em;
+  border-radius: 4px;
+  background-color: var(--telop-color, #d26a6a);
+  color: var(--telop-font-color, #f5f5f5);
+  font-size: var(--telop-font-size, 0.95rem);
+  min-height: 1.5em;
+  min-width: 22%;
+  width: fit-content;
+  max-width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.content-element .content-telop .telop-text {
+  display: inline-block;
+  min-width: 0;
+  white-space: normal;
+  word-break: break-word;
+  color: var(--telop-font-color, #f5f5f5);
+  flex-shrink: 1;
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+  text-align: center;
+}
+
+.content-element .content-telop .telop-text:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* テロップ：クリックでコピーしたときのフィードバック */
+.content-element .content-telop.telop-copied {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+.content-element .content-telop.telop-copied::after {
+  content: "コピーしました";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85em;
+  color: var(--telop-font-color, #f5f5f5);
+  background-color: var(--telop-color, #d26a6a);
+  border-radius: 4px;
+  animation: telop-copied-fade 1.5s ease-out forwards;
+}
+@keyframes telop-copied-fade {
+  0% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* 折り畳み */
+.content-element details {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+.content-element details summary {
+  padding: calc(var(--spacing-md) / 2);
+  padding-left: 0;
+  cursor: pointer;
+  font-weight: 500;
+  user-select: none;
+  min-height: 1.5em;
+  color: var(--collapsible-title-color, var(--color-text));
+  font-size: var(--collapsible-title-size, 1rem);
+  font-family: var(--collapsible-title-font-family, inherit);
+  list-style: none;
+  position: relative;
+}
+
+.content-element details summary::-webkit-details-marker {
+  display: none;
+}
+
+.content-element details summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: var(--spacing-sm);
+  transition: transform 0.2s;
+  font-size: 0.8em;
+}
+
+.content-element details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.content-element details .collapsible-content {
+  --content-handle-left: -20px;
+  padding: calc(var(--spacing-md) / 2);
+  padding-left: var(--spacing-lg);
+  border-top: none;
+  min-height: 1.5em;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 400;
+}
+
+.content-element details .collapsible-content.div-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+
+
+.content-element details .collapsible-content .column-drop-zone {
+  min-height: 60px;
+}
+
+.content-element details[open] .collapsible-content .column-drop-zone {
+  display: block;
+}
+
+/* コード */
+.content-element code {
+  display: block;
+  margin: 0;
+  padding: var(--spacing-md);
+  padding-right: calc(var(--spacing-md) + 30px);
+  background-color: #f5f5f5;
+  font-family: "Noto Sans CJK", sans-serif;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  border-radius: var(--border-radius);
+  position: relative;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-weight: 400;
+}
+
+/* リスト */
+.content-element ul,
+.content-element ol {
+  margin: 0;
+  padding: 0 0 0 calc(var(--spacing-xl) + 4px);
+  color: var(--list-color, var(--color-text));
+  font-size: var(--list-font-size, 0.85rem);
+  font-family: var(--list-font-family);
+  font-weight: 400;
+  line-height: var(--line-height-body, 1.6);
+}
+
+.content-element ul li::marker,
+.content-element ol li::marker {
+  color: var(--list-bullet-color, var(--list-color, var(--color-text)));
+}
+
+.content-element li {
+  margin: 0;
+  color: var(--list-color, var(--color-text));
+  font-size: var(--list-font-size, 0.85rem);
+  font-weight: 400;
+  line-height: var(--line-height-body, 1.6);
+}
+
+/* テキストフォーマットメニュー */
+
+.text-format-menu .text-format-btn,
+
+
+
+
+
+
+
+.text-format-align-group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+  border-left: 1px solid var(--color-border);
+  padding-left: 4px;
+}
+
+.text-format-align-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.text-format-align-btn .icon-svg {
+  width: 16px;
+  height: 16px;
+}
+
+.text-format-clear-btn {
+  margin-left: 4px;
+  border-left: 1px solid var(--color-border);
+  padding-left: 8px;
+}
+
+/* コンテキストメニュー */
+
+
+
+
+
+
+
+
+
+
+/* カラーピッカー */
+
+
+
+
+
+
+
+
+/* ドラッグハンドル（CSS背景でアイコン表示、DOM軽量化） */
+
+/* 旧形式（img 要素）の後方互換：非表示にして背景のみ使用 */
+
+
+
+
+
+/* 2段組の右カラムの緑ハンドル：横位置のみ14px右へ */
+
+
+
+
+.div-outcolumn:hover .drag-handle,
+.div-column:hover .drag-handle,
+.content-element:hover .drag-handle,
+.div-outcolumn.show-controls .drag-handle,
+.div-column.show-controls .drag-handle,
+
+/* 選択状態 */
+.div-outcolumn.selected,
+.div-column.selected,
+.content-element.selected {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+  background-color: rgba(0, 122, 204, 0.05);
+}
+
+/* 挿入ガイド（要素同士の間のヒットエリア） */
+.insert-guide {
+  position: relative;
+  min-height: 12px;
+  margin: -4px 0;
+}
+
+.insert-guide::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background-color: var(--color-drag);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.insert-guide-horizontal {
+  position: relative;
+  min-width: 12px;
+  margin: 0 -4px;
+}
+
+.insert-guide-horizontal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background-color: var(--color-drag);
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* キャラクターシート */
+.content-element .character-sheet {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm);
+  margin: 0;
+}
+
+.character-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xs);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--spacing-xs);
+}
+
+.character-sheet-name {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.character-sheet-section-title {
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 4px;
+  color: var(--color-text-secondary);
+}
+
+.character-sheet-status {
+  margin-bottom: var(--spacing-xs);
+}
+
+.character-sheet-status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 3px;
+  margin-top: 3px;
+}
+
+.character-sheet-stat-item,
+.character-sheet-param-item {
+  display: flex;
+  flex-direction: column;
+  padding: 3px 4px;
+  background-color: var(--color-hover);
+  border-radius: 2px;
+}
+
+.character-sheet-stat-item {
+  align-items: flex-start;
+}
+
+.character-sheet-param-item {
+  align-items: center;
+}
+
+.character-sheet-stat-label,
+.character-sheet-param-label {
+  font-size: 0.6rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.character-sheet-param-label {
+  font-size: 0.55rem;
+}
+
+.character-sheet-stat-value,
+.character-sheet-param-value {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.2;
+  cursor: text;
+  outline: none;
+}
+
+.character-sheet-stat-value:focus,
+.character-sheet-param-value:focus {
+  background-color: rgba(0, 122, 204, 0.1);
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+
+.character-sheet-stat-value[data-db-type="db"] {
+  cursor: default;
+  opacity: 0.8;
+}
+
+.character-sheet-params {
+  margin-bottom: var(--spacing-xs);
+}
+
+.character-sheet-params-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: 3px;
+  margin-top: 3px;
+}
+
+.character-sheet-commands {
+  margin-bottom: var(--spacing-xs);
+}
+
+.character-sheet-commands-text {
+  font-family: "Noto Sans CJK", sans-serif;
+  font-size: 0.75rem;
+  background-color: var(--color-hover);
+  padding: 4px 6px;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin-top: 4px;
+  line-height: 1.3;
+  height: calc(1.3em * 5);
+  min-height: calc(1.3em * 3);
+  max-height: 20em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  resize: vertical;
+  cursor: text;
+  outline: none;
+  font-weight: 400;
+}
+
+.character-sheet-commands-text:focus {
+  background-color: rgba(0, 122, 204, 0.1);
+  border: 1px solid var(--color-drag);
+}
+
+.character-sheet-memo {
+  margin-bottom: var(--spacing-xs);
+}
+
+.character-sheet-memo-text {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin-top: 4px;
+  white-space: pre-wrap;
+  cursor: text;
+  outline: none;
+  font-weight: 400;
+}
+
+.character-sheet-memo-text:focus {
+  background-color: rgba(0, 122, 204, 0.1);
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+
+.copy-character-sheet-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+  transition:
+    opacity var(--transition),
+    color var(--transition);
+  border-radius: var(--border-radius);
+  flex-shrink: 0;
+}
+
+.copy-character-sheet-btn:hover {
+  opacity: 1;
+  background-color: var(--color-hover);
+}
+
+.copy-character-sheet-btn .icon-svg {
+  font-size: 16px;
+}
+
+.dragging {
+  opacity: 0.4;
+  transform: none;
+  transition: opacity var(--transition);
+}
+
+/* ダークモード */
+[data-theme="dark"] .body-section,
+[data-theme="dark"] .body-section * {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #666666;
+  --color-border: #e0e0e0;
+  --color-hover: #f5f5f5;
+  --color-header-footer: #ffffff;
+  --color-drag: #007acc;
+  --color-drag-bg: #f0f7ff;
+  --color-delete: #999999;
+  --color-delete-hover: #666666;
+}
+
+[data-theme="dark"] .body-section {
+  background-color: var(--background-color);
+}
+
+[data-theme="dark"] .body-section .drop-zone.empty {
+  border: none !important;
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .body-section .column-drop-zone {
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .body-section .drop-zone.empty.drag-over {
+  border: none !important;
+  background-color: transparent;
+}
+
+[data-theme="dark"] .body-section .column-drop-zone.drag-over {
+  border-color: var(--color-drag);
+  background-color: rgba(0, 122, 204, 0.06);
+}
+
+[data-theme="dark"] .body-section .body-drop-zone-insert-guide {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .body-section .content-element {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .body-section .content-element p:not(.stage-direction) {
+  color: var(--paragraph-color);
+}
+
+[data-theme="dark"] .body-section .content-element p.stage-direction {
+  color: var(--stage-direction-color);
+}
+
+[data-theme="dark"] .body-section .content-element blockquote {
+  color: var(--blockquote-color, var(--color-text));
+}
+
+[data-theme="dark"] .body-section .content-element code {
+  background-color: #f5f5f5;
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .body-section .content-element ul,
+[data-theme="dark"] .body-section .content-element ol,
+[data-theme="dark"] .body-section .content-element li,
+[data-theme="dark"] .body-section .content-element .content-checkbox,
+[data-theme="dark"] .body-section .content-element .content-checkbox-list {
+  color: var(--list-color, var(--color-text));
+}
+
+[data-theme="dark"] .body-section .content-element .content-callout {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .body-section .content-element details summary {
+  color: var(--collapsible-title-color, var(--color-text));
+}
+
+[data-theme="dark"]
+  .body-section
+  .content-element
+  details
+  .collapsible-content {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .body-section .character-sheet {
+  background-color: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .body-section .character-sheet-name,
+[data-theme="dark"] .body-section .character-sheet-stat-value,
+[data-theme="dark"] .body-section .character-sheet-param-value,
+[data-theme="dark"] .body-section .character-sheet-commands-text,
+[data-theme="dark"] .body-section .character-sheet-memo-text {
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .body-section .character-sheet-section-title,
+[data-theme="dark"] .body-section .character-sheet-stat-label,
+[data-theme="dark"] .body-section .character-sheet-param-label {
+  color: var(--color-text-secondary);
+}
+
+[data-theme="dark"] .body-section .character-sheet-stat-item,
+[data-theme="dark"] .body-section .character-sheet-param-item {
+  background-color: var(--color-hover);
+}
+
+[data-theme="dark"] .body-section .text-format-menu,
+
+[data-theme="dark"] .body-section .text-format-btn,
+[data-theme="dark"]
+  .body-section
+  .content-element
+  > :is(.copy-blockquote-btn, .copy-paragraph-btn, .copy-callout-btn),
+[data-theme="dark"] .body-section .content-element code .copy-code-btn {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+
+[data-theme="dark"] .body-section .text-format-btn:hover,
+[data-theme="dark"]
+  .body-section
+  .content-element
+  > :is(.copy-blockquote-btn, .copy-paragraph-btn, .copy-callout-btn):hover,
+[data-theme="dark"] .body-section .content-element code .copy-code-btn:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-drag);
+}
+
+/* エディタ画面とHTML出力の見た目を厳密に一致させる */
+html {
+  font-size: 15px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body.page-builder-output {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: auto !important;
+  min-height: 100vh;
+  margin: 0;
+  line-height: var(--line-height-body, 1.6);
+}
+
+body.page-builder-output .app-container {
+  margin-top: 0 !important;
+  min-height: auto !important;
+  height: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+body.page-builder-output .editor-area {
+  overflow: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-rows: unset !important;
+  grid-template-areas: unset !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+body.page-builder-output .header-section,
+body.page-builder-output .footer-section {
+  display: none !important;
+}
+
+.content-element:focus,
+.content-element[contenteditable="true"]:focus,
+.content-element *:focus,
+.content-element *[contenteditable="true"]:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 書き出し時はマウスオーバーハイライトをオフ */
+body.page-builder-output .content-element:hover {
+  background-color: transparent !important;
+}
+
+/* 折り畳み要素をクリック可能に（.div-column の pointer-events: none を上書き） */
+body.page-builder-output .content-element details,
+body.page-builder-output .content-element details summary {
+  pointer-events: auto !important;
+}
+
+body.page-builder-output .body-section {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  flex: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+body.page-builder-output .drop-zone {
+  padding: 0 var(--spacing-xl) var(--spacing-xl) !important;
+  min-height: 0 !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+body.page-builder-output .content-spacer,
+body.page-builder-output .content-spacer:hover,
+body.page-builder-output .content-spacer.is-resizing {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+body.page-builder-output .explorer-panel.floating-explorer {
+  position: fixed !important;
+  top: var(--spacing-xl) !important;
+  width: 220px !important;
+  max-height: calc(100vh - 200px) !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  left: 17px !important;
+  right: auto !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer:not(.outliner-position-left) {
+  right: 17px !important;
+  left: auto !important;
+}
+
+body.page-builder-output [id^="heading-"] {
+  scroll-margin-top: 1em;
+}
+
+/* アウトライナー折り畳みトグル（書き出しHTMLでも14pxサイズを確実に反映） */
+body.page-builder-output .outliner-toggle {
+  flex-shrink: 0 !important;
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  min-height: 14px !important;
+  margin-right: 2px !important;
+  padding: 0 !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  border: none !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.page-builder-output .explorer-panel.floating-explorer.hidden {
+  display: none !important;
+}
+
+body.page-builder-output .body-section.outliner-hidden .drop-zone {
+  padding-right: var(--spacing-xl) !important;
+  padding-left: var(--spacing-xl) !important;
+}
+
+body.page-builder-output .body-section.outliner-hidden .outliner-open-btn {
+  position: fixed !important;
+  top: var(--spacing-xl) !important;
+  left: var(--spacing-xl) !important;
+  right: auto !important;
+}
+
+body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone {
+  padding-right: var(--spacing-xl) !important;
+  padding-left: 247px !important;
+}
+
+@media (max-width: 1000px) {
+  body.page-builder-output .explorer-panel.floating-explorer {
+    top: var(--spacing-xl) !important;
+    width: 220px !important;
+  }
+  body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+    left: 17px !important;
+    right: auto !important;
+  }
+  body.page-builder-output .explorer-panel.floating-explorer:not(.outliner-position-left) {
+    right: 17px !important;
+    left: auto !important;
+  }
+  body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone {
+    padding-right: var(--spacing-xl) !important;
+    padding-left: 247px !important;
+  }
+}
+:root {
+  --heading1-color: #a58a27;
+  --heading1-size: 2rem;
+  --heading1-font-family: "Meiryo", "Meiryo UI", sans-serif;
+  --heading2-color: #a58a27;
+  --heading2-size: 1.75rem;
+  --heading2-font-family: "Noto Sans CJK", sans-serif;
+  --heading3-color: #000000;
+  --heading3-size: 1.5rem;
+  --heading3-font-family: "Noto Sans CJK", sans-serif;
+  --heading4-color: #000000;
+  --heading4-size: 1.25rem;
+  --heading4-font-family: "Noto Sans CJK", sans-serif;
+  --heading5-color: #000000;
+  --heading5-size: 0.85rem;
+  --heading5-font-family: "Noto Sans CJK", sans-serif;
+  --heading6-color: #000000;
+  --heading6-size: 0.9rem;
+  --heading6-font-family: "Noto Sans CJK", sans-serif;
+  --title-color: #bfbfbf;
+  --title-size: 4rem;
+  --title-font-family: "Noto Serif JP", serif;
+  --blockquote-color: #333333;
+  --blockquote-bar-color: #f2f2f2;
+  --blockquote-font-family: "Noto Serif JP", serif;
+  --blockquote-font-size: 0.9rem;
+  --list-color: #1a1a1a;
+  --list-bullet-color: #a58a27;
+  --list-font-size: 0.95rem;
+  --list-font-family: "Noto Sans CJK", sans-serif;
+  --callout1-color: #ffffff;
+  --callout1-font-family: "Noto Sans CJK", sans-serif;
+  --callout1-font-color: #616161;
+  --callout1-font-size: 0.9rem;
+  --callout2-color: #ffffff;
+  --callout2-font-family: "Noto Sans CJK", sans-serif;
+  --callout2-font-color: #463f3f;
+  --callout2-font-size: 0.72rem;
+  --callout3-color: #317a8c;
+  --callout3-font-family: "Noto Sans CJK", sans-serif;
+  --callout3-font-color: #463f3f;
+  --callout3-font-size: 0.85rem;
+  --callout4-color: #a58a27;
+  --callout4-font-family: "Noto Sans CJK", sans-serif;
+  --callout4-font-color: #463f3f;
+  --callout4-font-size: 0.85rem;
+  --divider-color: #e0e0e0;
+  --mark-color: #ffeb3b;
+  --paragraph-font-family: "Noto Sans CJK", sans-serif;
+  --paragraph-size: 0.9rem;
+  --paragraph-color: #333333;
+  --link-color: #a58a27;
+  --link-font-family: "Noto Sans CJK", sans-serif;
+  --link-size: 1rem;
+  --background-color: #f2f2f2;
+  --stage-direction-font-family: "Meiryo", "Meiryo UI", sans-serif;
+  --stage-direction-color: #636363;
+  --stage-direction-size: 0.7rem;
+  --collapsible-title-color: #a58a27;
+  --collapsible-title-size: 1rem;
+  --collapsible-title-font-family: "Noto Sans CJK", sans-serif;
+  --outliner-bg-color: #FFFFFF;
+  --outliner-text-color: #000000;
+  --outliner-highlight-color: #b4a30d;
+  --table-header-color: #f0f0f0;
+  --table-cell-color: #fdfefb;
+  --table-border-color: #e0e0e0;
+  --table-font-size: 0.95rem;
+  --telop-color: #317a8c;
+  --telop-font-color: #f5f5f5;
+  --telop-font-size: 0.95rem;
+  --callout1-border-width: 1px;
+  --callout1-border-color: #e0e0e0;
+  --callout1-checkbox-display: none;
+  --callout2-border-width: 1px;
+  --callout2-checkbox-display: none;
+  --callout3-border-width: 1px;
+  --callout3-checkbox-display: none;
+  --callout4-border-width: 1px;
+  --callout4-checkbox-display: none;
+}
+
+  
+
+/* === Outliner as fixed left sidebar (added) ===
+:root {
+  --outliner-sidebar-width: 247px;
+}
+
+body.page-builder-output .body-section {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.page-builder-output .body-section:not(.outliner-hidden) .explorer-panel.floating-explorer.outliner-position-left {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  width: var(--outliner-sidebar-width) !important;
+  height: 100vh !important;
+  max-height: none !important;
+  padding: 20px !important;
+  border-radius: 0 !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: 1px solid var(--color-border) !important;
+  box-shadow: none !important;
+  background-color: var(--outliner-bg-color) !important;
+  overflow-y: auto !important;
+  z-index: 10002 !important;
+}
+
+body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone {
+  padding-left: calc(var(--outliner-sidebar-width) + var(--spacing-xl)) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+
+body.page-builder-output .body-section.outliner-hidden .drop-zone {
+  padding-left: var(--spacing-xl) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+
+body.page-builder-output .body-section.outliner-hidden .outliner-open-btn,
+body.page-builder-output .body-section[data-outliner-position="left"].outliner-hidden .outliner-open-btn {
+  position: fixed !important;
+  top: var(--spacing-xl) !important;
+  left: var(--spacing-xl) !important;
+  right: auto !important;
+}
+
+@media (max-width: 760px) {
+  body.page-builder-output .body-section:not(.outliner-hidden) .explorer-panel.floating-explorer.outliner-position-left {
+    width: 220px !important;
+  }
+
+  body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone {
+    padding-left: calc(220px + var(--spacing-xl)) !important;
+  }
+}
+
+
+/* === OUTLINER LEFT FULL-HEIGHT BAR OVERRIDE ===
+   アウトライナーを左端ベタ付け・上から下までの固定バーにする */
+:root {
+  --outliner-fixed-width: 280px;
+}
+
+body.page-builder-output .explorer-panel.floating-explorer,
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .explorer-panel.floating-explorer:not(.outliner-position-left) {
+  position: fixed !important;
+  left: 0 !important;
+  right: auto !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: var(--outliner-fixed-width) !important;
+  height: 100vh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 20px 14px !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-bottom: none !important;
+  border-right: 1px solid var(--color-border) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  z-index: 10002 !important;
+}
+
+/* 本文はバーの幅ぶんだけ右へ。余計な17px/247pxの空きは作らない */
+body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone {
+  padding-left: calc(var(--outliner-fixed-width) + var(--spacing-xl)) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+
+body.page-builder-output .body-section.outliner-hidden .drop-zone {
+  padding-left: var(--spacing-xl) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+
+/* 非表示時の開くボタンも左端ベタ付け */
+body.page-builder-output .body-section.outliner-hidden .outliner-open-btn,
+body.page-builder-output .body-section[data-outliner-position="left"].outliner-hidden .outliner-open-btn {
+  position: fixed !important;
+  left: 0 !important;
+  right: auto !important;
+  top: 0 !important;
+  border-left: none !important;
+  border-top: none !important;
+  border-radius: 0 0 var(--border-radius) 0 !important;
+}
+
+@media (max-width: 1000px) {
+  body.page-builder-output .explorer-panel.floating-explorer,
+  body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+  body.page-builder-output .explorer-panel.floating-explorer:not(.outliner-position-left) {
+    left: 0 !important;
+    right: auto !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    max-height: none !important;
+    width: var(--outliner-fixed-width) !important;
+  }
+  body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone {
+    padding-left: calc(var(--outliner-fixed-width) + var(--spacing-xl)) !important;
+    padding-right: var(--spacing-xl) !important;
+  }
+}
+
+
+/* === OUTLINER WIDER / STRONGER TEXT / H1 COLLAPSIBLE === */
+body.page-builder-output #outlinerTitleExport {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+}
+
+body.page-builder-output .explorer-panel.floating-explorer {
+  padding: 22px 18px !important;
+}
+
+body.page-builder-output .outliner-list {
+  margin-top: 14px !important;
+}
+
+body.page-builder-output .outliner-item {
+  min-height: 28px;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  padding-right: 4px !important;
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+}
+
+body.page-builder-output .outliner-item[data-level="1"] {
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+}
+
+body.page-builder-output .outliner-node-h1 > .outliner-item {
+  padding-left: 0 !important;
+}
+
+body.page-builder-output .outliner-node-h1 > .outliner-item .outliner-text {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+body.page-builder-output .outliner-toggle {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  margin-right: 5px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--outliner-text-color) !important;
+}
+
+body.page-builder-output .outliner-children {
+  margin-left: 9px !important;
+  padding-left: 8px !important;
+  border-left: 1px solid var(--color-border) !important;
+}
+
+body.page-builder-output .outliner-node.outliner-collapsed > .outliner-children {
+  display: none !important;
+}
+
+
+/* === OUTLINER TUNING: smaller items / stronger title / aligned no-toggle H1 === */
+body.page-builder-output #outlinerTitleExport {
+  font-size: 1.28rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.25 !important;
+}
+
+body.page-builder-output .outliner-item {
+  min-height: 25px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+
+body.page-builder-output .outliner-item[data-level="1"] {
+  font-size: 0.94rem !important;
+  font-weight: 650 !important;
+}
+
+body.page-builder-output .outliner-toggle {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  margin-right: 5px !important;
+}
+
+body.page-builder-output .outliner-node-h1:not(.outliner-node-has-children) > .outliner-item::before {
+  content: "";
+  display: block;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+
+
+/* === HO name replace + selected memo tools (added) === */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  width: 286px !important;
+}
+body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone {
+  padding-left: calc(286px + var(--spacing-xl)) !important;
+}
+.outliner-tools {
+  border-bottom: 1px solid var(--color-border);
+  margin: 0 0 14px;
+  padding: 0 0 14px;
+}
+.ho-tools-title,
+.memo-tools-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--outliner-highlight-color);
+  margin: 10px 0 6px;
+  letter-spacing: 0.04em;
+}
+.ho-replace-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 38px;
+  gap: 6px;
+  align-items: center;
+}
+.ho-replace-row select,
+.ho-replace-row input {
+  min-width: 0;
+  height: 30px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--outliner-bg-color);
+  color: var(--outliner-text-color);
+  font-size: 12px;
+  padding: 4px 7px;
+}
+.ho-replace-row button,
+.ho-reset-btn,
+.memo-clear-btn,
+.memo-modal-actions button {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--outliner-bg-color);
+  color: var(--outliner-text-color);
+  cursor: pointer;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.ho-replace-row button {
+  height: 30px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.ho-reset-btn,
+.memo-clear-btn {
+  width: 100%;
+  height: 28px;
+  margin-top: 6px;
+  font-size: 11px;
+}
+.ho-replace-row button:hover,
+.ho-reset-btn:hover,
+.memo-clear-btn:hover,
+.memo-modal-actions button:hover {
+  border-color: var(--outliner-highlight-color);
+  color: var(--outliner-highlight-color);
+}
+.ho-tools-hint,
+.memo-tools-hint {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+  margin-top: 6px;
+}
+.ho-name-token {
+  color: var(--outliner-highlight-color);
+  font-weight: 700;
+}
+.memo-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+.memo-card-mini {
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 7px;
+  background: rgba(0,0,0,0.02);
+}
+.memo-card-mini button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: var(--outliner-text-color);
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 0;
+}
+.memo-card-mini small {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.memo-anchor-highlight {
+  background: color-mix(in srgb, var(--outliner-highlight-color) 22%, transparent);
+  border-bottom: 2px solid var(--outliner-highlight-color);
+  border-radius: 2px;
+}
+.memo-anchor-highlight.memo-jump-highlight {
+  animation: memoJumpPulse 1.2s ease-out;
+}
+@keyframes memoJumpPulse {
+  0% {
+    background: color-mix(in srgb, var(--outliner-highlight-color) 48%, transparent);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--outliner-highlight-color) 55%, transparent);
+  }
+  100% {
+    background: color-mix(in srgb, var(--outliner-highlight-color) 22%, transparent);
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+.memo-inline-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45em;
+  height: 1.45em;
+  margin: 0 .12em;
+  border: 1px solid var(--outliner-highlight-color);
+  border-radius: 999px;
+  color: var(--outliner-highlight-color);
+  background: var(--outliner-bg-color);
+  font-size: .78em;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  vertical-align: text-top;
+}
+.memo-hover-tooltip {
+  position: fixed;
+  z-index: 14000;
+  display: none;
+  max-width: min(340px, calc(100vw - 24px));
+  max-height: 220px;
+  overflow: auto;
+  padding: 10px 12px;
+  border: 1px solid var(--outliner-highlight-color);
+  border-radius: 8px;
+  background: var(--outliner-bg-color);
+  color: var(--outliner-text-color);
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  pointer-events: none;
+}
+.memo-hover-tooltip::before {
+  content: "メモ";
+  display: block;
+  margin-bottom: 4px;
+  color: var(--outliner-highlight-color);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+.memo-anchor-highlight:hover,
+.memo-inline-marker:hover {
+  filter: brightness(0.98);
+}
+.memo-float-btn {
+  position: fixed;
+  z-index: 12000;
+  display: none;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--outliner-highlight-color);
+  border-radius: 999px;
+  background: var(--outliner-bg-color);
+  color: var(--outliner-highlight-color);
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.memo-float-btn.show { display: inline-flex; }
+.memo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 13000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.34);
+}
+.memo-modal-backdrop.show { display: flex; }
+.memo-modal-box {
+  width: min(420px, calc(100vw - 32px));
+  background: var(--outliner-bg-color);
+  color: var(--outliner-text-color);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 14px 45px rgba(0,0,0,.25);
+  padding: 16px;
+}
+.memo-modal-box h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--outliner-highlight-color);
+}
+.memo-selected-preview {
+  max-height: 72px;
+  overflow: auto;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid var(--color-border);
+  background: rgba(0,0,0,.03);
+  font-size: 12px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+.memo-modal-box textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  padding: 9px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--outliner-text-color);
+  background: var(--outliner-bg-color);
+}
+.memo-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+.memo-modal-actions button {
+  padding: 7px 12px;
+  font-size: 12px;
+}
+.memo-modal-actions .primary {
+  background: var(--outliner-highlight-color);
+  border-color: var(--outliner-highlight-color);
+  color: #fff;
+}
+@media (max-width: 760px) {
+  body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left { width: 250px !important; }
+  body.page-builder-output .body-section:not(.outliner-hidden) .drop-zone { padding-left: calc(250px + var(--spacing-md)) !important; }
+}
+
+
+/* === TWO SIDEBARS + RIGHT READER TOOLS PANEL === */
+:root {
+  --outliner-fixed-width: 286px;
+  --reader-tools-width: 304px;
+}
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  width: var(--outliner-fixed-width) !important;
+}
+body.page-builder-output .reader-tools-panel {
+  position: fixed !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: var(--reader-tools-width) !important;
+  height: 100vh !important;
+  background: var(--outliner-bg-color);
+  color: var(--outliner-text-color);
+  border-left: 1px solid var(--color-border);
+  z-index: 10002;
+  padding: 20px 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: none;
+}
+body.page-builder-output .reader-tools-panel.hidden {
+  display: none !important;
+}
+.reader-tools-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.reader-tools-title {
+  font-size: 1.28rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: var(--outliner-text-color);
+}
+.reader-tools-close-btn,
+.reader-tools-open-btn {
+  border: 1px solid var(--color-border);
+  background: var(--outliner-bg-color);
+  color: var(--outliner-text-color);
+  cursor: pointer;
+  transition: background-color .15s, color .15s, border-color .15s;
+}
+.reader-tools-close-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 1;
+}
+.reader-tools-open-btn {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10003;
+  min-width: 44px;
+  height: 34px;
+  border-top: none;
+  border-right: none;
+  border-radius: 0 0 0 var(--border-radius);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.reader-tools-close-btn:hover,
+.reader-tools-open-btn:hover {
+  border-color: var(--outliner-highlight-color);
+  color: var(--outliner-highlight-color);
+}
+.reader-tool-section {
+  border-top: 1px solid var(--color-border);
+  padding-top: 14px;
+  margin-top: 14px;
+}
+.reader-tool-section:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+body.page-builder-output .body-section:not(.reader-tools-hidden) .drop-zone {
+  padding-right: calc(var(--reader-tools-width) + var(--spacing-xl)) !important;
+}
+body.page-builder-output .body-section.reader-tools-hidden .drop-zone {
+  padding-right: var(--spacing-xl) !important;
+}
+body.page-builder-output .body-section.outliner-hidden.reader-tools-hidden .drop-zone {
+  padding-left: var(--spacing-xl) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+body.page-builder-output .body-section.outliner-hidden:not(.reader-tools-hidden) .drop-zone {
+  padding-left: var(--spacing-xl) !important;
+  padding-right: calc(var(--reader-tools-width) + var(--spacing-xl)) !important;
+}
+body.page-builder-output .body-section:not(.outliner-hidden):not(.reader-tools-hidden) .drop-zone {
+  padding-left: calc(var(--outliner-fixed-width) + var(--spacing-xl)) !important;
+  padding-right: calc(var(--reader-tools-width) + var(--spacing-xl)) !important;
+}
+.memo-card-mini {
+  position: relative;
+  padding-right: 34px !important;
+}
+.memo-card-main {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: var(--outliner-text-color);
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1.45;
+  padding: 0;
+}
+.memo-card-delete {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 22px !important;
+  height: 22px;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 999px;
+  background: var(--outliner-bg-color) !important;
+  color: var(--color-text-secondary) !important;
+  cursor: pointer;
+  font-size: 14px !important;
+  line-height: 1;
+  padding: 0 !important;
+  text-align: center !important;
+}
+.memo-card-delete:hover {
+  color: var(--outliner-highlight-color) !important;
+  border-color: var(--outliner-highlight-color) !important;
+}
+
+
+/* === OUTLINER INTERNAL TABS: main / individual intro === */
+body.page-builder-output .outliner-tabbar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.025);
+}
+body.page-builder-output .outliner-tab-btn {
+  min-width: 0;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--outliner-text-color);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: background-color .15s, color .15s, box-shadow .15s;
+}
+body.page-builder-output .outliner-tab-btn:hover {
+  color: var(--outliner-highlight-color);
+}
+body.page-builder-output .outliner-tab-btn[aria-selected="true"] {
+  background: var(--outliner-highlight-color);
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+body.page-builder-output .outliner-tab-panel {
+  display: block;
+}
+body.page-builder-output .outliner-tab-panel[hidden] {
+  display: none !important;
+}
+body.page-builder-output .outliner-tab-panel .outliner-list {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 900px) {
+  :root { --reader-tools-width: 270px; }
+  body.page-builder-output .reader-tools-panel { width: var(--reader-tools-width) !important; }
+}
+
+
+/* === LIGHT / DARK THEME TOGGLE === */
+body.page-builder-output {
+  transition: background-color .18s ease, color .18s ease;
+}
+body.page-builder-output[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #666666;
+  --color-border: #e0e0e0;
+  --color-hover: #f5f5f5;
+  --outliner-bg-color: #ffffff;
+  --outliner-text-color: #000000;
+  --outliner-highlight-color: #a58a27;
+  --background-color: #f2f2f2;
+  background: #f2f2f2;
+}
+body.page-builder-output[data-theme="dark"] {
+  --color-bg: #171717;
+  --color-text: #eeeeee;
+  --color-text-secondary: #aaa;
+  --color-border: #3b3b3b;
+  --color-hover: #252525;
+  --outliner-bg-color: #161616;
+  --outliner-text-color: #eeeeee;
+  --outliner-highlight-color: #a58a27;
+  --background-color: #111111;
+  background: #111111;
+}
+body.page-builder-output[data-theme="dark"] .editor-area,
+body.page-builder-output[data-theme="dark"] .body-section,
+body.page-builder-output[data-theme="dark"] .drop-zone {
+  background: #111111 !important;
+  color: #eeeeee !important;
+}
+body.page-builder-output[data-theme="light"] .editor-area,
+body.page-builder-output[data-theme="light"] .body-section,
+body.page-builder-output[data-theme="light"] .drop-zone {
+  background: var(--background-color) !important;
+}
+body.page-builder-output[data-theme="dark"] .body-section .content-element,
+body.page-builder-output[data-theme="dark"] .body-section .content-element p,
+body.page-builder-output[data-theme="dark"] .body-section .content-element li,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h1,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h2,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h3,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h4,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h5,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h6,
+body.page-builder-output[data-theme="dark"] .body-section .content-element blockquote {
+  color: #eeeeee !important;
+}
+body.page-builder-output[data-theme="dark"] .content-callout,
+body.page-builder-output[data-theme="dark"] .content-custom-box,
+body.page-builder-output[data-theme="dark"] .content-table,
+body.page-builder-output[data-theme="dark"] .content-table th,
+body.page-builder-output[data-theme="dark"] .content-table td {
+  background-color: #1c1c1c !important;
+  color: #eeeeee !important;
+  border-color: #3b3b3b !important;
+}
+body.page-builder-output[data-theme="dark"] .content-divider {
+  border-color: #444 !important;
+}
+.theme-tools-title {
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--outliner-text-color);
+}
+.theme-toggle-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(0,0,0,.025);
+}
+body.page-builder-output[data-theme="dark"] .theme-toggle-row {
+  background: rgba(255,255,255,.045);
+}
+.theme-mode-btn {
+  min-width: 0;
+  height: 30px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--outliner-text-color);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  transition: background-color .15s, color .15s, box-shadow .15s;
+}
+.theme-mode-btn:hover {
+  color: var(--outliner-highlight-color);
+}
+.theme-mode-btn[aria-pressed="true"] {
+  background: var(--outliner-highlight-color);
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+
+body.page-builder-output[data-theme="dark"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="dark"] .theme-mode-btn[aria-pressed="true"] {
+  color: #111111;
+}
+body.page-builder-output[data-theme="light"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="light"] .theme-mode-btn[aria-pressed="true"] {
+  color: #ffffff;
+}
+
+.theme-tools-hint {
+  margin: 8px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+body.page-builder-output[data-theme="dark"] .memo-modal-box,
+body.page-builder-output[data-theme="dark"] .memo-modal-box textarea,
+body.page-builder-output[data-theme="dark"] .memo-selected-preview {
+  background: #161616;
+  color: #eeeeee;
+  border-color: #3b3b3b;
+}
+
+/* === Restore original light palette: gold accent + grey reading canvas === */
+body.page-builder-output[data-theme="light"] {
+  --outliner-highlight-color: #a58a27;
+  --background-color: #f2f2f2;
+}
+body.page-builder-output[data-theme="light"] .editor-area,
+body.page-builder-output[data-theme="light"] .body-section,
+body.page-builder-output[data-theme="light"] .drop-zone {
+  background-color: #f2f2f2 !important;
+  background: #f2f2f2 !important;
+}
+body.page-builder-output[data-theme="light"] .explorer-panel.floating-explorer,
+body.page-builder-output[data-theme="light"] .reader-tools-panel {
+  background: #ffffff !important;
+}
+
+
+
+/* === Screenshot feedback polish === */
+/* 1) Dark mode: improve low-contrast boxes/text */
+body.page-builder-output[data-theme="dark"] {
+  --color-border: #2b2b2b;
+  --blockquote-color: #d6d6d6;
+  --blockquote-bar-color: transparent;
+}
+body.page-builder-output[data-theme="dark"] .content-callout,
+body.page-builder-output[data-theme="dark"] .content-custom-box,
+body.page-builder-output[data-theme="dark"] .content-element[data-type="callout"],
+body.page-builder-output[data-theme="dark"] .content-element[data-type="custom-box"] {
+  background-color: #202020 !important;
+  color: #d7d7d7 !important;
+  border-color: #4a4a4a !important;
+}
+body.page-builder-output[data-theme="dark"] .content-callout *,
+body.page-builder-output[data-theme="dark"] .content-custom-box *,
+body.page-builder-output[data-theme="dark"] .content-table *,
+body.page-builder-output[data-theme="dark"] .body-section .content-element blockquote,
+body.page-builder-output[data-theme="dark"] .body-section .content-element blockquote * {
+  color: #d7d7d7 !important;
+}
+body.page-builder-output[data-theme="dark"] .content-callout [style*="color"],
+body.page-builder-output[data-theme="dark"] .content-custom-box [style*="color"] {
+  color: #d7d7d7 !important;
+}
+
+/* 2) Soften right tool/sidebar borders */
+body.page-builder-output .reader-tools-panel {
+  border-left-color: rgba(128,128,128,.22) !important;
+}
+.reader-tool-section {
+  border-top-color: rgba(128,128,128,.28) !important;
+}
+.reader-tools-close-btn,
+.reader-tools-open-btn,
+.reader-tools-panel input,
+.reader-tools-panel select,
+.reader-tools-panel button,
+.theme-toggle-row,
+body.page-builder-output .outliner-tabbar {
+  border-color: rgba(128,128,128,.45) !important;
+}
+body.page-builder-output[data-theme="dark"] .reader-tools-close-btn,
+body.page-builder-output[data-theme="dark"] .reader-tools-open-btn,
+body.page-builder-output[data-theme="dark"] .reader-tools-panel input,
+body.page-builder-output[data-theme="dark"] .reader-tools-panel select,
+body.page-builder-output[data-theme="dark"] .reader-tools-panel button,
+body.page-builder-output[data-theme="dark"] .theme-toggle-row,
+body.page-builder-output[data-theme="dark"] .outliner-tabbar {
+  border-color: rgba(255,255,255,.32) !important;
+}
+
+/* 3) Hide the vertical blockquote bar in both themes */
+.content-element blockquote::before,
+body.page-builder-output[data-theme="dark"] .content-element blockquote::before,
+body.page-builder-output[data-theme="light"] .content-element blockquote::before {
+  background-color: transparent !important;
+  opacity: 0 !important;
+}
+.content-element blockquote {
+  padding-left: 0 !important;
+}
+
+/* 4) Keep gold accents visible in light mode */
+body.page-builder-output[data-theme="light"] {
+  --title-color: #a58a27;
+  --heading1-color: #a58a27;
+  --heading2-color: #a58a27;
+  --outliner-highlight-color: #a58a27;
+  --color-drag: #a58a27;
+  --color-accent: #a58a27;
+}
+body.page-builder-output[data-theme="light"] .body-section .content-element h1,
+body.page-builder-output[data-theme="light"] .body-section .content-element h2,
+body.page-builder-output[data-theme="light"] .body-section .content-element h3,
+body.page-builder-output[data-theme="light"] .body-section .content-element h4,
+body.page-builder-output[data-theme="light"] .body-section .content-element h5,
+body.page-builder-output[data-theme="light"] .body-section .content-element h6 {
+  color: inherit;
+}
+body.page-builder-output[data-theme="light"] .body-section .content-element h1 {
+  color: #a58a27 !important;
+}
+body.page-builder-output[data-theme="light"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="light"] .theme-mode-btn[aria-pressed="true"] {
+  background: #a58a27 !important;
+  color: #ffffff !important;
+}
+body.page-builder-output[data-theme="dark"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="dark"] .theme-mode-btn[aria-pressed="true"] {
+  background: #a58a27 !important;
+  color: #111111 !important;
+}
+
+
+/* === Final polish: keep gold accents in both themes, remove callout outer grey spill === */
+body.page-builder-output,
+body.page-builder-output[data-theme="light"],
+body.page-builder-output[data-theme="dark"] {
+  --gold-accent: #a58a27;
+  --title-color: var(--gold-accent);
+  --heading1-color: var(--gold-accent);
+  --heading2-color: var(--gold-accent);
+  --outliner-highlight-color: var(--gold-accent);
+  --color-drag: var(--gold-accent);
+  --color-accent: var(--gold-accent);
+  --link-color: var(--gold-accent);
+  --list-bullet-color: var(--gold-accent);
+  --collapsible-title-color: var(--gold-accent);
+}
+
+/* 見出しなど“アクセント扱い”の文字はライト/ダークで共通ゴールドに固定 */
+body.page-builder-output .body-section .content-element h1,
+body.page-builder-output .body-section .content-element h2,
+body.page-builder-output .body-section .content-element[data-level="2"] > h3,
+body.page-builder-output .body-section .content-element[data-type="heading"][data-level="2"] h3,
+body.page-builder-output[data-theme="light"] .body-section .content-element h1,
+body.page-builder-output[data-theme="light"] .body-section .content-element h2,
+body.page-builder-output[data-theme="light"] .body-section .content-element[data-level="2"] > h3,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h1,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h2,
+body.page-builder-output[data-theme="dark"] .body-section .content-element[data-level="2"] > h3 {
+  color: var(--gold-accent) !important;
+}
+
+body.page-builder-output .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output .theme-mode-btn[aria-pressed="true"],
+body.page-builder-output[data-theme="light"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="light"] .theme-mode-btn[aria-pressed="true"],
+body.page-builder-output[data-theme="dark"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="dark"] .theme-mode-btn[aria-pressed="true"] {
+  background: var(--gold-accent) !important;
+  border-color: var(--gold-accent) !important;
+}
+
+body.page-builder-output[data-theme="dark"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="dark"] .theme-mode-btn[aria-pressed="true"] {
+  color: #111111 !important;
+}
+body.page-builder-output[data-theme="light"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="light"] .theme-mode-btn[aria-pressed="true"] {
+  color: #ffffff !important;
+}
+
+/* コールアウトの外側だけグレーがはみ出すのを止める。枠内の読みやすさは維持 */
+body.page-builder-output .body-section .content-element[data-type="callout"],
+body.page-builder-output[data-theme="dark"] .body-section .content-element[data-type="callout"],
+body.page-builder-output[data-theme="light"] .body-section .content-element[data-type="callout"],
+body.page-builder-output .body-section .callout-row {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.page-builder-output[data-theme="dark"] .body-section .content-callout {
+  background-color: #1c1c1c !important;
+  color: #eeeeee !important;
+  border-color: #424242 !important;
+}
+body.page-builder-output[data-theme="dark"] .body-section .content-callout *,
+body.page-builder-output[data-theme="dark"] .body-section .callout-content,
+body.page-builder-output[data-theme="dark"] .body-section .callout-content * {
+  color: #eeeeee !important;
+}
+body.page-builder-output[data-theme="light"] .body-section .content-callout {
+  background-color: #ffffff !important;
+  border-color: #d8d8d8 !important;
+}
+
+
+
+/* === Final requested adjustments: equal sidebars / H3 restore / matching controls === */
+:root {
+  --outliner-fixed-width: 304px;
+  --reader-tools-width: 304px;
+}
+
+/* 左右サイドバー幅を完全に揃える */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  width: 304px !important;
+}
+
+/* 左右の境界線色も統一 */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  border-color: rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  border-right: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .reader-tools-panel {
+  border-left: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left {
+  border-right-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-left-color: rgba(255,255,255,.22) !important;
+}
+
+/* 「情報 / シナリオ本文」と「ライト / ダーク」の見た目・サイズを合わせる */
+body.page-builder-output .outliner-tabbar,
+body.page-builder-output .theme-toggle-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 4px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(128,128,128,.45) !important;
+  background: rgba(0,0,0,.025) !important;
+}
+body.page-builder-output[data-theme="dark"] .outliner-tabbar,
+body.page-builder-output[data-theme="dark"] .theme-toggle-row {
+  border-color: rgba(255,255,255,.32) !important;
+  background: rgba(255,255,255,.045) !important;
+}
+body.page-builder-output .outliner-tab-btn,
+body.page-builder-output .theme-mode-btn {
+  height: 30px !important;
+  min-width: 0 !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .03em !important;
+  padding: 0 !important;
+  line-height: 30px !important;
+}
+
+/* H3として作られている Case.1 個別導入などを、H2風のゴールド見出しにしない */
+body.page-builder-output .body-section .content-element[data-type="heading"][data-level="2"] > h3,
+body.page-builder-output .body-section .content-element[data-level="2"] > h3 {
+  color: var(--heading3-color) !important;
+  font-size: var(--heading3-size) !important;
+  font-family: var(--heading3-font-family) !important;
+  font-weight: 700 !important;
+  line-height: var(--line-height-heading, 1.4) !important;
+}
+body.page-builder-output[data-theme="light"] {
+  --heading3-color: #000000;
+}
+body.page-builder-output[data-theme="dark"] {
+  --heading3-color: #eeeeee;
+}
+
+/* ただし本当のH1/H2アクセントはライト/ダーク共通でゴールド維持 */
+body.page-builder-output .body-section .content-element h1,
+body.page-builder-output .body-section .content-element h2,
+body.page-builder-output[data-theme="light"] .body-section .content-element h1,
+body.page-builder-output[data-theme="light"] .body-section .content-element h2,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h1,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h2 {
+  color: var(--gold-accent, #a58a27) !important;
+}
+
+
+
+/* グレー枠・黒枠のコピーボタンを非表示 */
+.content-element[data-callout-type="2"] > .copy-callout-btn,
+.content-element[data-callout-type="4"] > .copy-callout-btn,
+.content-element:has(.content-callout.callout-type-2) > .copy-callout-btn,
+.content-element:has(.content-callout.callout-type-4) > .copy-callout-btn {
+  display: none !important;
+}
+
+
+/* ===== final fix: 情報/シナリオ本文タブの目次スクロールを完全分離 ===== */
+body.page-builder-output .explorer-panel.floating-explorer {
+  position: fixed !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  max-height: calc(100vh - 48px) !important;
+  height: auto !important;
+  transform: none !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer > div:first-child {
+  flex: 0 0 auto !important;
+}
+body.page-builder-output #outlinerList {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+body.page-builder-output .outliner-tabbar {
+  flex: 0 0 auto !important;
+}
+body.page-builder-output .outliner-tab-panel {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  scrollbar-gutter: stable !important;
+}
+body.page-builder-output .outliner-tab-panel[hidden] {
+  display: none !important;
+}
+
+
+/* ===== FINAL: 目次を復活させ、左右サイドバーの開閉と見た目を整理 ===== */
+:root {
+  --final-outliner-width: 286px;
+  --final-reader-tools-width: 304px;
+  --final-side-border-light: rgba(128,128,128,.22);
+  --final-side-border-dark: rgba(255,255,255,.22);
+  --final-side-button-size: 28px;
+  --final-side-open-size: 36px;
+}
+
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  position: fixed !important;
+  left: 0 !important;
+  right: auto !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: var(--final-outliner-width) !important;
+  height: 100vh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 20px 18px !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-right: 1px solid var(--final-side-border-light) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--outliner-bg-color) !important;
+  color: var(--outliner-text-color) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  transform: none !important;
+  z-index: 10002 !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left {
+  border-right-color: var(--final-side-border-dark) !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left.hidden {
+  display: none !important;
+}
+
+body.page-builder-output #outlinerPanel > div:first-child,
+body.page-builder-output .reader-tools-header {
+  min-height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  flex: 0 0 auto !important;
+  margin-bottom: var(--spacing-md) !important;
+}
+body.page-builder-output #outlinerTitleExport {
+  font-size: 1.28rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .04em !important;
+  line-height: 1.25 !important;
+}
+body.page-builder-output #outlinerList {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+body.page-builder-output .outliner-tabbar { flex: 0 0 auto !important; }
+body.page-builder-output .outliner-tab-panel {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  scrollbar-gutter: stable !important;
+}
+body.page-builder-output .outliner-tab-panel[hidden] { display: none !important; }
+body.page-builder-output #outlinerList > .outliner-item,
+body.page-builder-output .outliner-tab-panel > .outliner-item,
+body.page-builder-output .outliner-node > .outliner-item {
+  min-height: 25px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  font-size: .88rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+
+body.page-builder-output .reader-tools-panel {
+  position: fixed !important;
+  right: 0 !important;
+  left: auto !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: var(--final-reader-tools-width) !important;
+  height: 100vh !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 20px 18px !important;
+  box-sizing: border-box !important;
+  border: 0 !important;
+  border-left: 1px solid var(--final-side-border-light) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: var(--outliner-bg-color) !important;
+  color: var(--outliner-text-color) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  z-index: 10002 !important;
+}
+body.page-builder-output[data-theme="dark"] .reader-tools-panel { border-left-color: var(--final-side-border-dark) !important; }
+body.page-builder-output .reader-tools-panel.hidden { display: none !important; }
+
+body.page-builder-output .body-section .drop-zone {
+  box-sizing: border-box !important;
+  transition: padding-left .22s ease, padding-right .22s ease !important;
+}
+body.page-builder-output .body-section:not(.outliner-hidden):not(.reader-tools-hidden) .drop-zone {
+  padding-left: calc(var(--final-outliner-width) + var(--spacing-xl)) !important;
+  padding-right: calc(var(--final-reader-tools-width) + var(--spacing-xl)) !important;
+}
+body.page-builder-output .body-section:not(.outliner-hidden).reader-tools-hidden .drop-zone {
+  padding-left: calc(var(--final-outliner-width) + var(--spacing-xl)) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+body.page-builder-output .body-section.outliner-hidden:not(.reader-tools-hidden) .drop-zone {
+  padding-left: var(--spacing-xl) !important;
+  padding-right: calc(var(--final-reader-tools-width) + var(--spacing-xl)) !important;
+}
+body.page-builder-output .body-section.outliner-hidden.reader-tools-hidden .drop-zone {
+  padding-left: var(--spacing-xl) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+
+body.page-builder-output .outliner-close-btn,
+body.page-builder-output .reader-tools-close-btn {
+  width: var(--final-side-button-size) !important;
+  height: var(--final-side-button-size) !important;
+  min-width: var(--final-side-button-size) !important;
+  padding: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 0 !important;
+  border-radius: var(--border-radius) !important;
+  background: transparent !important;
+  color: var(--color-text-secondary) !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+body.page-builder-output .outliner-close-btn:hover,
+body.page-builder-output .reader-tools-close-btn:hover {
+  background: var(--color-hover) !important;
+  color: var(--outliner-highlight-color) !important;
+}
+body.page-builder-output .outliner-open-btn,
+body.page-builder-output .reader-tools-open-btn {
+  position: fixed !important;
+  top: 0 !important;
+  width: var(--final-side-open-size) !important;
+  height: var(--final-side-open-size) !important;
+  min-width: var(--final-side-open-size) !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: var(--outliner-bg-color) !important;
+  color: var(--color-text-secondary) !important;
+  border: 1px solid var(--final-side-border-light) !important;
+  cursor: pointer !important;
+  z-index: 10003 !important;
+  box-shadow: none !important;
+  font-size: 0 !important;
+  line-height: 1 !important;
+  transform: none !important;
+}
+body.page-builder-output[data-theme="dark"] .outliner-open-btn,
+body.page-builder-output[data-theme="dark"] .reader-tools-open-btn { border-color: var(--final-side-border-dark) !important; }
+body.page-builder-output .outliner-open-btn {
+  left: 0 !important;
+  right: auto !important;
+  border-left: 0 !important;
+  border-top: 0 !important;
+  border-radius: 0 0 var(--border-radius) 0 !important;
+}
+body.page-builder-output .reader-tools-open-btn {
+  right: 0 !important;
+  left: auto !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  border-radius: 0 0 0 var(--border-radius) !important;
+}
+body.page-builder-output .outliner-open-btn:hover,
+body.page-builder-output .reader-tools-open-btn:hover {
+  background: var(--color-hover) !important;
+  color: var(--outliner-highlight-color) !important;
+}
+body.page-builder-output .outliner-close-btn svg,
+body.page-builder-output .reader-tools-close-btn svg,
+body.page-builder-output .outliner-open-btn svg,
+body.page-builder-output .reader-tools-open-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+}
+body.page-builder-output .outliner-close-btn svg path,
+body.page-builder-output .reader-tools-close-btn svg path,
+body.page-builder-output .outliner-open-btn svg path,
+body.page-builder-output .reader-tools-open-btn svg path { fill: currentColor !important; }
+body.page-builder-output .body-section.outliner-hidden .outliner-open-btn { display: flex !important; }
+body.page-builder-output .body-section:not(.outliner-hidden) .outliner-open-btn { display: none !important; }
+body.page-builder-output .body-section.reader-tools-hidden .reader-tools-open-btn { display: flex !important; }
+body.page-builder-output .body-section:not(.reader-tools-hidden) .reader-tools-open-btn { display: none !important; }
+
+@media (max-width: 760px) {
+  :root { --final-outliner-width: 270px; --final-reader-tools-width: 270px; }
+}
+
+
+/* === Tabbed content separation: 情報 / シナリオ本文 === */
+body.page-builder-output .content-tab-hidden {
+  display: none !important;
+}
+body.page-builder-output .outliner-tab-btn {
+  white-space: nowrap;
+}
+
+
+/* === Final requested adjustments: equal sidebars / H3 restore / matching controls === */
+:root {
+  --outliner-fixed-width: 304px;
+  --reader-tools-width: 304px;
+}
+
+/* 左右サイドバー幅を完全に揃える */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  width: 304px !important;
+}
+
+/* 左右の境界線色も統一 */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  border-color: rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  border-right: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .reader-tools-panel {
+  border-left: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left {
+  border-right-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-left-color: rgba(255,255,255,.22) !important;
+}
+
+/* 「情報 / シナリオ本文」と「ライト / ダーク」の見た目・サイズを合わせる */
+body.page-builder-output .outliner-tabbar,
+body.page-builder-output .theme-toggle-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 4px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(128,128,128,.45) !important;
+  background: rgba(0,0,0,.025) !important;
+}
+body.page-builder-output[data-theme="dark"] .outliner-tabbar,
+body.page-builder-output[data-theme="dark"] .theme-toggle-row {
+  border-color: rgba(255,255,255,.32) !important;
+  background: rgba(255,255,255,.045) !important;
+}
+body.page-builder-output .outliner-tab-btn,
+body.page-builder-output .theme-mode-btn {
+  height: 30px !important;
+  min-width: 0 !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .03em !important;
+  padding: 0 !important;
+  line-height: 30px !important;
+}
+
+/* H3として作られている Case.1 個別導入などを、H2風のゴールド見出しにしない */
+body.page-builder-output .body-section .content-element[data-type="heading"][data-level="2"] > h3,
+body.page-builder-output .body-section .content-element[data-level="2"] > h3 {
+  color: var(--heading3-color) !important;
+  font-size: var(--heading3-size) !important;
+  font-family: var(--heading3-font-family) !important;
+  font-weight: 700 !important;
+  line-height: var(--line-height-heading, 1.4) !important;
+}
+body.page-builder-output[data-theme="light"] {
+  --heading3-color: #000000;
+}
+body.page-builder-output[data-theme="dark"] {
+  --heading3-color: #eeeeee;
+}
+
+/* ただし本当のH1/H2アクセントはライト/ダーク共通でゴールド維持 */
+body.page-builder-output .body-section .content-element h1,
+body.page-builder-output .body-section .content-element h2,
+body.page-builder-output[data-theme="light"] .body-section .content-element h1,
+body.page-builder-output[data-theme="light"] .body-section .content-element h2,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h1,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h2 {
+  color: var(--gold-accent, #a58a27) !important;
+}
+
+
+
+/* === Hard split tabs: 情報 / シナリオ本文 === */
+body.page-builder-output .hard-tab-hidden {
+  display: none !important;
+}
+
+
+/* === Final requested adjustments: equal sidebars / H3 restore / matching controls === */
+:root {
+  --outliner-fixed-width: 304px;
+  --reader-tools-width: 304px;
+}
+
+/* 左右サイドバー幅を完全に揃える */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  width: 304px !important;
+}
+
+/* 左右の境界線色も統一 */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  border-color: rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  border-right: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .reader-tools-panel {
+  border-left: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left {
+  border-right-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-left-color: rgba(255,255,255,.22) !important;
+}
+
+/* 「情報 / シナリオ本文」と「ライト / ダーク」の見た目・サイズを合わせる */
+body.page-builder-output .outliner-tabbar,
+body.page-builder-output .theme-toggle-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 4px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(128,128,128,.45) !important;
+  background: rgba(0,0,0,.025) !important;
+}
+body.page-builder-output[data-theme="dark"] .outliner-tabbar,
+body.page-builder-output[data-theme="dark"] .theme-toggle-row {
+  border-color: rgba(255,255,255,.32) !important;
+  background: rgba(255,255,255,.045) !important;
+}
+body.page-builder-output .outliner-tab-btn,
+body.page-builder-output .theme-mode-btn {
+  height: 30px !important;
+  min-width: 0 !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .03em !important;
+  padding: 0 !important;
+  line-height: 30px !important;
+}
+
+/* H3として作られている Case.1 個別導入などを、H2風のゴールド見出しにしない */
+body.page-builder-output .body-section .content-element[data-type="heading"][data-level="2"] > h3,
+body.page-builder-output .body-section .content-element[data-level="2"] > h3 {
+  color: var(--heading3-color) !important;
+  font-size: var(--heading3-size) !important;
+  font-family: var(--heading3-font-family) !important;
+  font-weight: 700 !important;
+  line-height: var(--line-height-heading, 1.4) !important;
+}
+body.page-builder-output[data-theme="light"] {
+  --heading3-color: #000000;
+}
+body.page-builder-output[data-theme="dark"] {
+  --heading3-color: #eeeeee;
+}
+
+/* ただし本当のH1/H2アクセントはライト/ダーク共通でゴールド維持 */
+body.page-builder-output .body-section .content-element h1,
+body.page-builder-output .body-section .content-element h2,
+body.page-builder-output[data-theme="light"] .body-section .content-element h1,
+body.page-builder-output[data-theme="light"] .body-section .content-element h2,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h1,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h2 {
+  color: var(--gold-accent, #a58a27) !important;
+}
+
+
+
+/* === TRUE separate pages override: 情報 / シナリオ本文 === */
+body.page-builder-output .true-page-hidden,
+body.page-builder-output .true-page-part-hidden {
+  display: none !important;
+}
+
+
+/* === Final requested adjustments: equal sidebars / H3 restore / matching controls === */
+:root {
+  --outliner-fixed-width: 304px;
+  --reader-tools-width: 304px;
+}
+
+/* 左右サイドバー幅を完全に揃える */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  width: 304px !important;
+}
+
+/* 左右の境界線色も統一 */
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output .reader-tools-panel {
+  border-color: rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .explorer-panel.floating-explorer.outliner-position-left {
+  border-right: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output .reader-tools-panel {
+  border-left: 1px solid rgba(128,128,128,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left,
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .explorer-panel.floating-explorer.outliner-position-left {
+  border-right-color: rgba(255,255,255,.22) !important;
+}
+body.page-builder-output[data-theme="dark"] .reader-tools-panel {
+  border-left-color: rgba(255,255,255,.22) !important;
+}
+
+/* 「情報 / シナリオ本文」と「ライト / ダーク」の見た目・サイズを合わせる */
+body.page-builder-output .outliner-tabbar,
+body.page-builder-output .theme-toggle-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  padding: 4px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(128,128,128,.45) !important;
+  background: rgba(0,0,0,.025) !important;
+}
+body.page-builder-output[data-theme="dark"] .outliner-tabbar,
+body.page-builder-output[data-theme="dark"] .theme-toggle-row {
+  border-color: rgba(255,255,255,.32) !important;
+  background: rgba(255,255,255,.045) !important;
+}
+body.page-builder-output .outliner-tab-btn,
+body.page-builder-output .theme-mode-btn {
+  height: 30px !important;
+  min-width: 0 !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .03em !important;
+  padding: 0 !important;
+  line-height: 30px !important;
+}
+
+/* H3として作られている Case.1 個別導入などを、H2風のゴールド見出しにしない */
+body.page-builder-output .body-section .content-element[data-type="heading"][data-level="2"] > h3,
+body.page-builder-output .body-section .content-element[data-level="2"] > h3 {
+  color: var(--heading3-color) !important;
+  font-size: var(--heading3-size) !important;
+  font-family: var(--heading3-font-family) !important;
+  font-weight: 700 !important;
+  line-height: var(--line-height-heading, 1.4) !important;
+}
+body.page-builder-output[data-theme="light"] {
+  --heading3-color: #000000;
+}
+body.page-builder-output[data-theme="dark"] {
+  --heading3-color: #eeeeee;
+}
+
+/* ただし本当のH1/H2アクセントはライト/ダーク共通でゴールド維持 */
+body.page-builder-output .body-section .content-element h1,
+body.page-builder-output .body-section .content-element h2,
+body.page-builder-output[data-theme="light"] .body-section .content-element h1,
+body.page-builder-output[data-theme="light"] .body-section .content-element h2,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h1,
+body.page-builder-output[data-theme="dark"] .body-section .content-element h2 {
+  color: var(--gold-accent, #a58a27) !important;
+}
+
+
+
+/* ===== Scenario background only: gold left accent ===== */
+:root {
+  --scenario-background-accent-color: #b4a30d;
+}
+.scenario-background-accent {
+  border-left: 4px solid var(--scenario-background-accent-color) !important;
+  padding-left: 18px !important;
+  margin-left: 0 !important;
+}
+.scenario-background-accent[data-type="spacer"],
+.scenario-background-accent[data-type="divider"] {
+  border-left-color: transparent !important;
+  padding-left: 22px !important;
+}
+.scenario-background-accent .content-divider {
+  margin-left: 0 !important;
+}
+[data-theme="dark"] .scenario-background-accent,
+[data-theme="light"] .scenario-background-accent {
+  border-left-color: var(--scenario-background-accent-color) !important;
+}
+
+
+/* ===== Scenario background accent position fix =====
+   画像の通り、縦棒は見出し行ではなく本文段落の左にだけ出す。 */
+.scenario-background-accent {
+  border-left: 0 !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+.scenario-background-accent[data-type="spacer"],
+.scenario-background-accent[data-type="divider"],
+.scenario-background-accent[data-type="heading"] {
+  border-left: 0 !important;
+  padding-left: 0 !important;
+}
+.scenario-background-accent[data-tag="blockquote"] {
+  border-left: 0 !important;
+  padding-left: 0 !important;
+}
+.scenario-background-accent[data-tag="blockquote"] > p,
+.scenario-background-accent[data-tag="blockquote"] blockquote,
+.scenario-background-accent[data-tag="blockquote"] .content-text {
+  border-left: 4px solid var(--scenario-background-accent-color, #b4a30d) !important;
+  padding-left: 16px !important;
+  margin-left: 16px !important;
+}
+body.page-builder-output[data-theme="dark"] .scenario-background-accent[data-tag="blockquote"] > p,
+body.page-builder-output[data-theme="light"] .scenario-background-accent[data-tag="blockquote"] > p {
+  border-left-color: var(--scenario-background-accent-color, #b4a30d) !important;
+}
+
+
+/* ===== Scenario tab only: soften the right column text ===== */
+:root {
+  --scenario-right-column-soft-text: #5f5f5f;
+  --scenario-right-column-soft-heading: #474747;
+}
+
+/* シナリオ本文タブのみ：2カラム右側を Kiwi Maru 系にし、コントラストを少し下げる */
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2),
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) * {
+  font-family: "Kiwi Maru", "Noto Sans JP", "Noto Sans CJK", sans-serif !important;
+  font-weight: 400 !important;
+  color: var(--scenario-right-column-soft-text) !important;
+}
+
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h1,
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h2,
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h3,
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h4,
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h5,
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h6 {
+  color: var(--scenario-right-column-soft-heading) !important;
+}
+
+
+/* ===== Dark mode readability adjustment ===== */
+body.page-builder-output[data-theme="dark"] {
+  --scenario-right-column-soft-text: #a9a9a9;
+  --scenario-right-column-soft-heading: #c4c4c4;
+}
+
+/* ダーク時：右カラムの薄さを少し戻して読みやすくする */
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2),
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) * {
+  color: var(--scenario-right-column-soft-text) !important;
+}
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h1,
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h2,
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h3,
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h4,
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h5,
+body.page-builder-output[data-theme="dark"] #bodySection[data-active-content-tab="scenario"] .div-columns-container[data-columns="2"] > .div-column:nth-child(2) h6 {
+  color: var(--scenario-right-column-soft-heading) !important;
+}
+
+/* ダーク時：黄色背景ボタン/mark の文字を白ではなく濃色にして視認性を上げる */
+body.page-builder-output[data-theme="dark"] .outliner-tab-btn[aria-selected="true"],
+body.page-builder-output[data-theme="dark"] .theme-mode-btn[aria-pressed="true"],
+body.page-builder-output[data-theme="dark"] mark {
+  color: #24210f !important;
+  text-shadow: none !important;
+}
+body.page-builder-output[data-theme="dark"] mark * {
+  color: #24210f !important;
+  text-shadow: none !important;
+}
+
+
+/* ===== Scenario right column: replace square marker with clip mark ===== */
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .scenario-clip-mark {
+  display: inline-block;
+  width: 1.28em;
+  height: 1.28em;
+  margin-right: 0.38em;
+  vertical-align: -0.22em;
+  background-color: currentColor;
+  opacity: 0.95;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.7 18.8c-1.2 0-2.4-.5-3.3-1.4-1.8-1.8-1.8-4.8 0-6.6l7.9-7.9c1.3-1.3 3.5-1.3 4.8 0s1.3 3.5 0 4.8l-7.7 7.7c-.8.8-2.2.8-3 0s-.8-2.2 0-3l6.8-6.8 1.35 1.35-6.8 6.8c-.1.1-.1.25 0 .35.1.1.25.1.35 0l7.7-7.7c.55-.55.55-1.45 0-2s-1.45-.55-2 0L6.8 12.25c-1.05 1.05-1.05 2.75 0 3.8s2.75 1.05 3.8 0l7.85-7.85 1.35 1.35-7.85 7.85c-.9.9-2.05 1.4-3.25 1.4Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8.7 18.8c-1.2 0-2.4-.5-3.3-1.4-1.8-1.8-1.8-4.8 0-6.6l7.9-7.9c1.3-1.3 3.5-1.3 4.8 0s1.3 3.5 0 4.8l-7.7 7.7c-.8.8-2.2.8-3 0s-.8-2.2 0-3l6.8-6.8 1.35 1.35-6.8 6.8c-.1.1-.1.25 0 .35.1.1.25.1.35 0l7.7-7.7c.55-.55.55-1.45 0-2s-1.45-.55-2 0L6.8 12.25c-1.05 1.05-1.05 2.75 0 3.8s2.75 1.05 3.8 0l7.85-7.85 1.35 1.35-7.85 7.85c-.9.9-2.05 1.4-3.25 1.4Z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+
+/* ===== Requested fix: larger clip icon + readable yellow SAN marker ===== */
+body.page-builder-output #bodySection[data-active-content-tab="scenario"] .scenario-clip-mark {
+  width: 1.28em !important;
+  height: 1.28em !important;
+  margin-right: 0.38em !important;
+  vertical-align: -0.22em !important;
+}
+
+/* SANcなど黄色マーカーは、ダークモードでも白抜きにせず濃い文字へ固定 */
+body.page-builder-output .body-section .content-element mark,
+body.page-builder-output[data-theme="dark"] .body-section .content-element mark,
+html[data-theme="dark"] body.page-builder-output .body-section .content-element mark,
+body.page-builder-output.theme-dark .body-section .content-element mark {
+  background-color: #ffeb3b !important;
+  color: #2e2a12 !important;
+  text-shadow: none !important;
+  font-weight: 700 !important;
+}
+body.page-builder-output .body-section .content-element mark *,
+body.page-builder-output[data-theme="dark"] .body-section .content-element mark *,
+html[data-theme="dark"] body.page-builder-output .body-section .content-element mark *,
+body.page-builder-output.theme-dark .body-section .content-element mark * {
+  color: #2e2a12 !important;
+  text-shadow: none !important;
+}
+
+
+/* 目次パネル全体ではなく、各タブパネル自身をスクロール容器にする。
+   これにより「情報」と「シナリオ本文」の目次スクロールが物理的に別々になる。 */
+body.page-builder-output #outlinerPanel.explorer-panel.floating-explorer {
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+body.page-builder-output #outlinerPanel > div:first-child {
+  flex: 0 0 auto !important;
+}
+body.page-builder-output #outlinerPanel > #outlinerList {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+body.page-builder-output #outlinerPanel > #outlinerList > .outliner-tabbar {
+  flex: 0 0 auto !important;
+}
+body.page-builder-output #outlinerPanel > #outlinerList > .outliner-tab-panel {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  scrollbar-gutter: stable !important;
+  padding-right: 4px !important;
+}
+body.page-builder-output #outlinerPanel > #outlinerList > .outliner-tab-panel[hidden] {
+  display: none !important;
+}
+body.page-builder-output #outlinerPanel > #outlinerList > .outliner-tab-panel > .outliner-list,
+body.page-builder-output #outlinerPanel > #outlinerList > .outliner-tab-panel > .outliner-collapsible {
+  display: block !important;
+  overflow: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+
+
+/* 出力HTMLでは中央本文の実スクロールは #bodySection ではなくページ(window)側。
+   前回のように #bodySection へ固定すると本文がスクロール不能になるため、ページスクロールを明示的に生かす。 */
+html {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+body.page-builder-output {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: auto !important;
+  min-height: 100vh !important;
+}
+body.page-builder-output #bodySection {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+  scroll-behavior: auto !important;
+}
+
+
+/* #outlinerPanel の display:flex !important が .hidden を上書きしていたため、
+   hidden 時だけさらに強い指定で完全に非表示にする。目次の中身は触らない。 */
+body.page-builder-output #bodySection #outlinerPanel.explorer-panel.floating-explorer.hidden,
+body.page-builder-output #outlinerPanel.explorer-panel.floating-explorer.outliner-position-left.hidden,
+body.page-builder-output #outlinerPanel.hidden {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 左サイドバーを閉じた時は本文を左へ詰める。右ツールの状態は既存指定を尊重。 */
+body.page-builder-output #bodySection.outliner-hidden #bodyDropZone,
+body.page-builder-output #bodySection.outliner-hidden .drop-zone {
+  padding-left: var(--spacing-xl) !important;
+}
+
+body.page-builder-output #bodySection:not(.outliner-hidden) #bodyDropZone,
+body.page-builder-output #bodySection:not(.outliner-hidden) .drop-zone {
+  padding-left: calc(var(--outliner-fixed-width, 304px) + var(--spacing-xl)) !important;
+}
+
+/* 開くボタンは hidden の時だけ表示。 */
+body.page-builder-output #bodySection.outliner-hidden #outlinerOpenBtnExport {
+  display: flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+body.page-builder-output #bodySection:not(.outliner-hidden) #outlinerOpenBtnExport {
+  display: none !important;
+}
+
+
+body.page-builder-output .reader-tools-panel,
+body.page-builder-output #readerToolsContent,
+body.page-builder-output #memoList,
+body.page-builder-output .memo-card-mini,
+body.page-builder-output .memo-card-main,
+body.page-builder-output .memo-card-main small {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+body.page-builder-output .reader-tools-panel {
+  width: min(304px, calc(100vw - 48px)) !important;
+  overflow-x: hidden !important;
+}
+body.page-builder-output .memo-list {
+  min-width: 0 !important;
+  overflow-x: hidden !important;
+}
+body.page-builder-output .memo-card-mini {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+body.page-builder-output .memo-card-main {
+  display: block !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+body.page-builder-output .memo-card-main small {
+  white-space: normal !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+
+/* === Sibyl merge adjustments: 3 independent tabs + requested callout colors === */
+body.page-builder-output .scenario-tab-hidden {
+  display: none !important;
+}
+body.page-builder-output .outliner-tabbar {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+body.page-builder-output .outliner-tab-btn {
+  font-size: 11px !important;
+  white-space: nowrap !important;
+}
+body.page-builder-output .outliner-tab-panel {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  scrollbar-gutter: stable !important;
+}
+body.page-builder-output,
+body.page-builder-output[data-theme="light"] {
+  --callout3-color: #a58a27;
+  --callout3-border-color: #a58a27;
+  --callout3-font-color: #000000;
+  --callout4-color: #000000;
+  --callout4-border-color: #000000;
+  --callout4-font-color: #000000;
+}
+body.page-builder-output[data-theme="dark"] {
+  --callout3-color: #a58a27;
+  --callout3-border-color: #a58a27;
+  --callout4-color: #f2f2f2;
+  --callout4-border-color: #f2f2f2;
+  --callout4-font-color: #f2f2f2;
+}
+body.page-builder-output[data-theme="light"] .body-section .content-callout.callout-type-3,
+body.page-builder-output .body-section .content-callout.callout-type-3 {
+  background-color: transparent !important;
+  border-color: #a58a27 !important;
+}
+body.page-builder-output[data-theme="light"] .body-section .content-callout.callout-type-4,
+body.page-builder-output .body-section .content-callout.callout-type-4 {
+  background-color: transparent !important;
+  border-color: #000000 !important;
+}
+body.page-builder-output[data-theme="light"] .body-section .content-callout.callout-type-3 .callout-content,
+body.page-builder-output[data-theme="light"] .body-section .content-callout.callout-type-3 .callout-content *,
+body.page-builder-output[data-theme="light"] .body-section .content-callout.callout-type-4 .callout-content,
+body.page-builder-output[data-theme="light"] .body-section .content-callout.callout-type-4 .callout-content * {
+  color: #000000 !important;
+}
+body.page-builder-output .body-section .content-callout.callout-type-3 .callout-label {
+  background-color: #a58a27 !important;
+  color: #ffffff !important;
+}
+body.page-builder-output .body-section .content-callout.callout-type-4 .callout-label {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+body.page-builder-output[data-theme="dark"] .body-section .content-callout.callout-type-3 {
+  background-color: transparent !important;
+  border-color: #a58a27 !important;
+}
+body.page-builder-output[data-theme="dark"] .body-section .content-callout.callout-type-3 .callout-label {
+  background-color: #a58a27 !important;
+  color: #111111 !important;
+}
+body.page-builder-output[data-theme="dark"] .body-section .content-callout.callout-type-4 {
+  background-color: transparent !important;
+  border-color: #f2f2f2 !important;
+  color: #f2f2f2 !important;
+}
+body.page-builder-output[data-theme="dark"] .body-section .content-callout.callout-type-4 .callout-label {
+  background-color: #f2f2f2 !important;
+  color: #111111 !important;
+}
+body.page-builder-output[data-theme="dark"] .body-section .content-callout.callout-type-4 .callout-content,
+body.page-builder-output[data-theme="dark"] .body-section .content-callout.callout-type-4 .callout-content *,
+body.page-builder-output[data-theme="dark"] .body-section .content-callout.callout-type-4 [style*="color"] {
+  color: #f2f2f2 !important;
+}
+
+
+/* 2個目HTMLの本文サイズに合わせる: H5 と囲み枠2〜4のみ調整。
+   レイアウト/色/タブスクロール制御には触れない。 */
+body.page-builder-output,
+body.page-builder-output[data-theme="light"],
+body.page-builder-output[data-theme="dark"] {
+  --heading5-size: 0.85rem;
+  --callout2-font-size: 0.72rem;
+  --callout3-font-size: 0.85rem;
+  --callout4-font-size: 0.85rem;
+}
+
+/* 赤文字参照リンク（イベント／分岐／END） */
+body.page-builder-output .scenario-event-link {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+}
+body.page-builder-output .scenario-event-link:hover,
+body.page-builder-output .scenario-event-link:focus-visible {
+  opacity: 0.78;
+}
+
+/* 赤い強調文字／赤リンクをライト・ダーク両方で赤に固定。
+   囲み枠3・4の本文色調整に !important が入っているため、#bodySection を重ねて詳細度を上げる。 */
+body.page-builder-output #bodySection#bodySection#bodySection .scenario-event-link,
+body.page-builder-output #bodySection#bodySection#bodySection .scenario-event-link *,
+body.page-builder-output #bodySection#bodySection#bodySection [style*="rgb(255, 0, 0)"],
+body.page-builder-output #bodySection#bodySection#bodySection [style*="rgb(255, 0, 0)"] *,
+body.page-builder-output #bodySection#bodySection#bodySection [style*="rgb(255,0,0)"],
+body.page-builder-output #bodySection#bodySection#bodySection [style*="rgb(255,0,0)"] *,
+body.page-builder-output #bodySection#bodySection#bodySection [style*="#ff0000" i],
+body.page-builder-output #bodySection#bodySection#bodySection [style*="#ff0000" i] *,
+body.page-builder-output #bodySection#bodySection#bodySection [style*="#f00" i],
+body.page-builder-output #bodySection#bodySection#bodySection [style*="#f00" i] *,
+body.page-builder-output #bodySection#bodySection#bodySection [style*="color: red" i],
+body.page-builder-output #bodySection#bodySection#bodySection [style*="color: red" i] *,
+body.page-builder-output #bodySection#bodySection#bodySection [style*="color:red" i],
+body.page-builder-output #bodySection#bodySection#bodySection [style*="color:red" i] * {
+  color: rgb(255, 0, 0) !important;
+}
+
+
+/* 既存の .outliner-item-current は古いスクロール判定で付くことがあるため、
+   新しい判定で付け直した .sibyl-toc-current だけを点灯表示にする。 */
+body.page-builder-output #outlinerList .outliner-item.outliner-item-current:not(.sibyl-toc-current) {
+  color: var(--outliner-text-color) !important;
+}
+body.page-builder-output #outlinerList .outliner-item.sibyl-toc-current {
+  color: var(--outliner-highlight-color) !important;
+}
+body.page-builder-output #outlinerList .outliner-item:hover {
+  color: var(--outliner-highlight-color) !important;
+}
+
