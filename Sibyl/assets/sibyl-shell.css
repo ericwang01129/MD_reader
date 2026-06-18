@@ -94,6 +94,25 @@ body.page-builder-output {
 }
 .sibyl-content .content-element:hover { background: transparent !important; }
 
+/* ===== 可複製文字塊：複製鈕（HO 用）；閱讀版常駐淡顯，hover 全顯 ===== */
+.sibyl-content .content-element[data-type="copy-text"] { position: relative; }
+.sibyl-content .content-element > .copy-paragraph-btn,
+.sibyl-content .content-element > .copy-callout-btn {
+  opacity: 0.4 !important;
+}
+.sibyl-content .content-element:hover > .copy-paragraph-btn,
+.sibyl-content .content-element:hover > .copy-callout-btn {
+  opacity: 1 !important;
+}
+.sibyl-content .copy-paragraph-btn.copied,
+.sibyl-content .copy-callout-btn.copied {
+  opacity: 1 !important;
+  background: #2e8b57 !important;
+  border-color: #2e8b57 !important;
+}
+.sibyl-content .copy-paragraph-btn.copied .icon-svg,
+.sibyl-content .copy-callout-btn.copied .icon-svg { filter: invert(1) brightness(2); }
+
 /* ===== 行動版：目次收合 ===== */
 .sibyl-toc-toggle {
   display: none;
