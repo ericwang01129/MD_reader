@@ -55,7 +55,7 @@ body.page-builder-output {
 /* ===== 內容區（讓出左側欄寬度；閱讀欄置中）===== */
 .sibyl-content {
   margin-left: 256px;
-  padding: 24px 48px 120px;
+  padding: 24px 32px 120px;
   box-sizing: border-box;
 }
 /* 中和原作 app 版面，使內容為一般文件流且撐滿 */
@@ -78,9 +78,9 @@ body.page-builder-output {
   padding: 0 !important;
   width: auto !important;
 }
-/* 閱讀欄寬度（原作 .div-outcolumn 為 max 900px 置中，這裡確保撐開）*/
+/* 閱讀欄寬度（加寬中央欄、收窄兩側留白；原作為 max 900px）*/
 .sibyl-content .div-outcolumn {
-  max-width: 900px !important;
+  max-width: 1400px !important;
   width: 100% !important;
   margin: 0 auto !important;
 }
@@ -141,7 +141,28 @@ body.page-builder-output {
   .sibyl-toc.open { transform: none; }
   .sibyl-content {
     margin-left: 0;
-    padding: 56px 18px 120px;
+    padding: 56px 16px 120px;
+  }
+}
+
+/* ===== 手機直式自適應：兩側留白歸零、多欄改直式堆疊 ===== */
+@media (max-width: 600px) {
+  .sibyl-content {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .sibyl-content .div-outcolumn {
+    max-width: 100% !important;
+  }
+  /* 兩欄版面（如 NPC 立繪＋文字）於手機改為上下堆疊 */
+  .sibyl-content .div-columns-container {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+  .sibyl-content .div-column {
+    flex: 1 1 auto !important;
+    width: 100% !important;
   }
 }
 
