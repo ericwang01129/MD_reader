@@ -109,10 +109,38 @@
     });
   }
 
+  /* 文本內事件連結（.scenario-event-link）：跳轉至同頁 data-event-target-id 對應元素 */
+  function initEventLinks() {
+    function go(link) {
+      var id = link.getAttribute('data-event-target-id');
+      if (!id) return;
+      var target = document.getElementById(id);
+      if (!target) return;
+      var y = target.getBoundingClientRect().top + window.scrollY - 12;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      target.classList.add('event-flash');
+      setTimeout(function () { target.classList.remove('event-flash'); }, 1600);
+    }
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest && e.target.closest('.scenario-event-link');
+      if (!link) return;
+      e.preventDefault();
+      go(link);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var link = e.target.closest && e.target.closest('.scenario-event-link');
+      if (!link) return;
+      e.preventDefault();
+      go(link);
+    });
+  }
+
   function init() {
     buildOutliner();
     initToggle();
     initCopy();
+    initEventLinks();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

@@ -144,3 +144,22 @@ body.page-builder-output {
     padding: 56px 18px 120px;
   }
 }
+
+/* ===== 文本內事件連結（跨段跳轉）===== */
+.scenario-event-link {
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+.scenario-event-link:hover {
+  text-decoration: underline solid;
+}
+/* 跳轉抵達時，目標元素短暫高亮 */
+.event-flash {
+  animation: sibyl-event-flash 1.6s ease-out;
+  border-radius: 4px;
+}
+@keyframes sibyl-event-flash {
+  0%   { background: rgba(165, 138, 39, 0.38); box-shadow: 0 0 0 6px rgba(165, 138, 39, 0.18); }
+  100% { background: transparent; box-shadow: 0 0 0 6px transparent; }
+}
