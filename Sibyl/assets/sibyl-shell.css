@@ -55,7 +55,7 @@ body.page-builder-output {
 /* ===== 內容區（讓出左側欄寬度；閱讀欄置中）===== */
 .sibyl-content {
   margin-left: 256px;
-  padding: 24px 80px 120px;
+  padding: 24px 120px 120px;
   box-sizing: border-box;
 }
 /* 中和原作 app 版面，使內容為一般文件流且撐滿 */
