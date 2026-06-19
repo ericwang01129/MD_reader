@@ -78,6 +78,12 @@ body.page-builder-output {
   padding: 0 !important;
   width: auto !important;
 }
+/* 蓋過原作 @media(max-width:760px) 對 .drop-zone 施加的側欄偏移
+   padding-left: calc(250px + …)；否則手機版內容會被向右推成細長條 */
+body.page-builder-output .sibyl-content .body-section:not(.outliner-hidden) .drop-zone {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 /* 閱讀欄寬度（加寬中央欄、收窄兩側留白；原作為 max 900px）*/
 .sibyl-content .div-outcolumn {
   max-width: 1400px !important;
