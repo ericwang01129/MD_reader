@@ -37,6 +37,45 @@
   function mdToHtml(p) { return p.replace(/\.md$/i, '.html'); }
   function htmlToMd(p) { return p.replace(/\.html$/i, '.md'); }
 
+  // ===== 受密碼保護的檔案（完整劇本＋各系列譯名表） =====
+  // 以「檔名」比對，避免不同來源（hash／pathname／data-file）的路徑編碼差異。
+  // PL 向、HO 秘匿不在此清單，玩家無須密碼即可閱覽。
+  function nfc(s) {
+    s = String(s == null ? '' : s);
+    return s.normalize ? s.normalize('NFC') : s;
+  }
+  const PROTECTED_BASENAMES = new Set([
+    '暴く深淵_完整劇本.md',
+    'decamahoro_zh-TW.md',
+    '02_VAMP_KP_完整劇本.md',
+    'Till_tomorrow_mates_zh-TW.md',
+    '匿された神託と天使の腑分け_完整劇本.md',
+    'Call_of_Etranger_zh-TW.md',
+    '黎明心声のアリアライト_完整劇本.md',
+    '忘却犯_完整劇本.md',
+    '完整劇本.md',
+    'to_change_zh-TW.md',
+    'to_change_stories_zh-TW.md',
+    // 譯名表（各系列）
+    'Sibyl_譯名對照表.md',
+    '暴く深淵_譯名對照表.md',
+    '01_VAMP_PL_譯名對照表.md',
+    'DX3_譯名對照表.md',
+    'glossary_zh-TW.md'
+  ].map(nfc));
+  function baseName(p) {
+    if (!p) return '';
+    let s = String(p).split(/[?#]/)[0].replace(/\/+$/, '');
+    const i = s.lastIndexOf('/');
+    return i >= 0 ? s.slice(i + 1) : s;
+  }
+  function isProtectedFile(filePath) {
+    let p = filePath;
+    try { p = decodeURIComponent(filePath); } catch (e) { /* 用原值 */ }
+    return PROTECTED_BASENAMES.has(nfc(baseName(p)));
+  }
+  function authReady() { return typeof window.MDAuth !== 'undefined'; }
+
   // ===== <title> 與 <meta description> =====
   const DEFAULT_TITLE = document.title;
   const DEFAULT_DESC = (document.querySelector('meta[name="description"]') || {}).content || '';
@@ -286,6 +325,11 @@
 
   // ===== Markdown 載入 =====
   async function loadMarkdown(filePath, anchor) {
+    // 完整劇本需通過密碼門檻；通過後重新載入同一檔案。
+    if (isProtectedFile(filePath) && authReady() && !window.MDAuth.isAuthed()) {
+      window.MDAuth.require(function () { loadMarkdown(filePath, anchor); });
+      return;
+    }
     try {
       welcome.classList.add('hidden');
       docArticle.classList.add('hidden');
@@ -359,6 +403,11 @@
   }
 
   function showWelcome() {
+    // 目錄頁（首頁）需通過密碼門檻；通過後重新顯示。
+    if (authReady() && !window.MDAuth.isAuthed()) {
+      window.MDAuth.require(showWelcome);
+      return;
+    }
     if (scrollObserver) { scrollObserver.disconnect(); scrollObserver = null; }
     currentFile = null;
     docArticle.classList.add('hidden');

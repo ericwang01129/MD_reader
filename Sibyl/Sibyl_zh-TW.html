@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 完整劇本密碼門檻：未驗證時先隱藏內容，避免閃現 -->
+<style id="mdAuthHide">html.md-locked .sibyl-shell,html.md-locked .sibyl-toc-toggle{visibility:hidden !important}</style>
+<script>(function(){try{if(localStorage.getItem('mdreader_auth_v1')!=='1'){document.documentElement.className+=' md-locked';}}catch(e){document.documentElement.className+=' md-locked';}})();</script>
 <title>Sibyl-西比拉-（新版）｜完整劇本（KP 向）</title>
 <meta name="description" content="克蘇魯神話 TRPG（第 6 版）劇本《Sibyl-シビュラ-（新版）》完整劇本繁中翻譯（KP 向・含全劇透）。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +14,8 @@
 <link rel="stylesheet" href="assets/sibyl-original.css">
 <link rel="stylesheet" href="assets/sibyl-shell.css">
 <script defer src="assets/sibyl.js"></script>
+<script defer src="../assets/auth.js"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){function unlock(){var d=document.documentElement;d.className=d.className.replace(/\bmd-locked\b/,'').trim();}if(window.MDAuth){window.MDAuth.require(unlock);}else{unlock();}});</script>
 </head>
 <body class="page-builder-output">
 <button class="sibyl-toc-toggle" id="tocToggle">☰ 目次</button>
