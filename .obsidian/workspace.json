@@ -176,7 +176,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -194,6 +194,6 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ce7bf605e2361f48",
+  "active": "27729732a9fecc0b",
   "lastOpenFiles": []
 }

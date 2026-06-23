@@ -68,12 +68,12 @@ python -m http.server 8000
 
 ## 收錄文件
 
-| 子資料夾 | 內容 | 說明 |
-|---|---|---|
-| [`decamahoro/`](decamahoro/) | デカマホロ 繁體中文翻譯 | 非公式 CoC 劇本 · 詳見 [decamahoro/README.md](decamahoro/README.md) |
-| [`To_change/`](To_change/) | To Change 繁體中文翻譯 | 塔羅大阿爾克那為核心、無骰、PbtA 風的「蛻化」主題 TRPG 規則書（Ulysses · Ewen 著）之繁中版 |
-| [`hyperoean/`](hyperoean/) | 終北大陸希柏里爾 Hyperoean | C. A. Smith《終北大陸系列》二創 D&D 5e 劇本 |
-| [`vamp/`](vamp/) | VAMP（ヴァンプ）繁體中文翻譯 | 新克蘇魯神話 TRPG 劇本 · PL 向資料與譯名對照表 |
+| 子資料夾                         | 內容                 | 說明                                                           |
+| ---------------------------- | ------------------ | ------------------------------------------------------------ |
+| [`decamahoro/`](decamahoro/) | デカマホロ 繁體中文翻譯       | 非公式 CoC 劇本 · 詳見 [decamahoro/README.md](decamahoro/README.md) |
+| [`To_change/`](To_change/)   | To Change 繁體中文翻譯   | 塔羅大阿爾克那為核心、無骰、PbtA 風的「蛻化」主題 TRPG 規則書（Ulysses · Ewen 著）之繁中版   |
+| [`hyperoean/`](hyperoean/)   | 終北大陸希柏里爾 Hyperoean | C. A. Smith《終北大陸系列》二創 D&D 5e 劇本                              |
+| [`vamp/`](vamp/)             | VAMP（ヴァンプ）繁體中文翻譯   | 新克蘇魯神話 TRPG 劇本 · PL 向資料與譯名對照表                                |
 
 ## 授權
 
