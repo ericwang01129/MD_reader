@@ -45,6 +45,7 @@
     return s.normalize ? s.normalize('NFC') : s;
   }
   const PROTECTED_BASENAMES = new Set([
+    'subekishi_完整劇本.md',
     '暴く深淵_完整劇本.md',
     'decamahoro_zh-TW.md',
     '02_VAMP_KP_完整劇本.md',
@@ -57,6 +58,7 @@
     'to_change_zh-TW.md',
     'to_change_stories_zh-TW.md',
     // 譯名表（各系列）
+    'subekishi_譯名對照表.md',
     'Sibyl_譯名對照表.md',
     '暴く深淵_譯名對照表.md',
     '01_VAMP_PL_譯名對照表.md',
