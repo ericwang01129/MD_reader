@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "subekishi/subekishi_完整劇本.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "subekishi_完整劇本"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "subekishi/subekishi_完整劇本.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "README 的反向連結"
+              "title": "subekishi_完整劇本 的反向連結"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "subekishi/subekishi_完整劇本.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "README 的對外連結"
+              "title": "subekishi_完整劇本 的對外連結"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "subekishi/subekishi_完整劇本.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "README 的大綱"
+              "title": "subekishi_完整劇本 的大綱"
             }
           },
           {
@@ -194,6 +194,8 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "27729732a9fecc0b",
-  "lastOpenFiles": []
+  "active": "9497c7fb452f3131",
+  "lastOpenFiles": [
+    "README.md"
+  ]
 }
