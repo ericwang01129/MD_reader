@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+ <meta http-equiv="content-style-type" content="text/css">
+ <link rel="stylesheet" type="text/css" href="../css/style.css">
+ <script defer src="../js/script.js"></script>
+
+<title>GODARCA</title>
+<base target="main"><!-- リンクを全てメインページ内に表示するように指定 -->
+</head>
+<body id="main_page">
+<h1>HOXIX｜太陽</h1>
+<div class="text1">
+	<br>任意の味方［1d20］名を選択し、選ばれた味方全員のHPを［1d8］回復する。同じ対象を複数回選ぶことはできない。【太陽】本人は対象に含めてよい。
+	<br>人数選択のダイス目が［9］以下だった場合、【太陽】は〈医学〉を追加でロールする。
+	<br>成功した場合、対象全員に［3］ターンの間、［1d3］の継続回復効果を追加付与。継続回復効果は重複せず、効果中に同効果が発動しても効果ターンの延長はない。
+	<br>
+	<br>継続回復の値はターンごとに自分の手番でロールし、継続回復を付与したターンに追加回復は発生しない。
+	<br>
+</div>
+<h3>以下KP用項目</h3>
+<div class="text1">
+
+<h3>【運命の輪】での振り直しについて</h3>
+	<br>自身を含めた任意の味方［1d20］名を選択し、選ばれた味方全員のHPを［1d8］回復する。
+	<br>人数選択ダイスが［9］以下であった場合の〈医学〉ロールは発生しない。
+	<br>
+	<br>再ロールに失敗した場合はその時点で全員の継続回復効果が失効する。
+	<br>
+	<br>
+	
+<h3>決定的成功／致命的失敗の処理</h3>
+	<br>【太陽】の〈原初のアルカナ〉は、1d20の値が高くても低くても違ったメリットがある。
+	<br>そのため決定的成功のメリットを人数最大とせず、［1d20］は通常通りに振っていただいたうえで、その結果に応じて〈原初のアルカナ〉の決定的成功の処理のみ内容を分けている。
+	<br>
+	<br>致命的失敗の処理は共通。
+	<br>
+	<br>
+	<h2>〈原初のアルカナ〉</h2>
+	<arcana>〇決定的成功
+	<br>※1d20の値が10人以上であった場合</arcana>
+	<br>【2～5】：
+	<br>回復値が［1d8＋1］になる。
+	<br>
+	<br>【1】　 ：
+	<br>回復値が［1d8＋1］になる＋MP減少を［1］固定。
+	<br>
+	<br><arcana>※1d20の値が9人以下であった場合</arcana>
+	<br>【2～5】：
+	<br>〈医学〉を自動成功。
+	<br>
+	<br>【1】　 ：
+	<br>〈医学〉を自動成功＋MP減少を［1］固定。
+	<br>
+	<br><arcana>〇致命的失敗</arcana>
+	<br>【96～99】：
+	<br>［1d20］*［1d8］名の隊員を喪失。
+	<br>
+	<br>【100】 　：
+	<br>［20］*［1d8］名の隊員を喪失。
+	<br>
+	<br>
+	<h2>〈医学〉</h2>
+	<arcana>〇決定的成功</arcana>
+	<br>【2～5】：
+	<br>継続回復対象のHPを即座に［1］回復。
+	<br>
+	<br>【1】　 ：
+	<br>継続回復対象のHPを即座に［1d3］回復。
+	<br>
+	<br><arcana>〇致命的失敗</arcana>
+	<br>【96～99】：
+	<br>［1d10］名のランダムな味方に装甲貫通ダメージを［1］与える。（※1）
+	<br>
+	<br>【100】 　：
+	<br>［10］名のランダムな味方に装甲貫通ダメージを［1d3］与える。（※1）
+	<br>
+	<br>
+	<div class="box2">
+	※1：盾装備の味方はダメージを負い、【塔の壁】のあるPCは【塔の壁】の耐久を減らすことで対処する。このダメージ対象は重複しない。
+	</div>
+	<br>
+<!-- コピーボックス -->
+<div class="copy-box" id="copy1" aria-label="コピー用テキスト">
+  <div class="copy-controls">
+    <div class="copy-label">PL開示対象選択用choice（【96～99】用）</div>
+    <div class="copy-actions">
+      <button class="copy-btn" data-target="copy1" aria-label="テキストをコピー">copy</button>
+    </div>
+  </div>
+
+  <!-- 表示領域：改行を保持して表示する -->
+  <div class="copy-content" tabindex="0">※お好きな方を使用してください。
+	  
+choice〇 {HO0} {HO1} {HO2} {HO3} {HO4} {HO5} {HO6} {HO7} {HO8} {HO9} {HO10} {HO11} {HO12} {HO13} {HO14} {HO15} {HO16} {HO17} {HO18} {HO20} {HO21}
+choice〇 【愚者】 【魔術師】 【女教皇】 【女帝】 【皇帝】 【教皇】 【恋人】 【戦車】 【正義】 【隠者】 【運命の輪】 【力】 【吊るされた男】 【死神】 【節制】 【悪魔】 【塔】 【星】 【月】 【審判】 【世界】
+
+〇には1d10の結果を入れてください。
+</div>
+
+  <!-- コピー成功フィードバック（JSで一時表示） -->
+  <div class="copy-feedback" aria-hidden="true">copy completed</div>
+
+</div>
+<!-- コピーボックス -->
+<div class="copy-box" id="copy2" aria-label="コピー用テキスト">
+  <div class="copy-controls">
+    <div class="copy-label">PL開示対象選択用choice（【100】用）</div>
+    <div class="copy-actions">
+      <button class="copy-btn" data-target="copy2" aria-label="テキストをコピー">copy</button>
+    </div>
+  </div>
+
+  <!-- 表示領域：改行を保持して表示する -->
+  <div class="copy-content" tabindex="0">※お好きな方を使用してください。
+	  
+choice10 {HO0} {HO1} {HO2} {HO3} {HO4} {HO5} {HO6} {HO7} {HO8} {HO9} {HO10} {HO11} {HO12} {HO13} {HO14} {HO15} {HO16} {HO17} {HO18} {HO20} {HO21}
+choice10 【愚者】 【魔術師】 【女教皇】 【女帝】 【皇帝】 【教皇】 【恋人】 【戦車】 【正義】 【隠者】 【運命の輪】 【力】 【吊るされた男】 【死神】 【節制】 【悪魔】 【塔】 【星】 【月】 【審判】 【世界】
+</div>
+
+  <!-- コピー成功フィードバック（JSで一時表示） -->
+  <div class="copy-feedback" aria-hidden="true">copy completed</div>
+</div>
+	
+	
+</div>
+</body>
+</html>

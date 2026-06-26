@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-Hant">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <meta http-equiv="content-style-type" content="text/css">
+ <link rel="stylesheet" type="text/css" href="../css/style.css">
+ <script defer src="../js/script.js"></script>
+
+<title>GODARCA</title>
+<base target="main"><!-- 指定所有連結都顯示在主頁面內 -->
+</head>
+<body id="main_page">
+<h1>HOVII｜戰車</h1>
+<div class="text1">
+	<br>對［1d5］隻隨機的敵人造成［1d10］的穿甲傷害。依命中數量，追加傷害值會變動。
+	<br>
+	<br>1 隻：1d10＋5
+	<br>2 隻：1d10＋4
+	<br>3 隻：1d10＋3
+	<br>4 隻：1d10＋2
+	<br>5 隻：1d10＋1
+	<br>
+</div>
+<h3>以下為 KP 用項目</h3>
+<div class="text1">
+
+<h3>關於對象選擇</h3>
+	<br>對象以骰子隨機決定，且不重複。
+	<br>涅墨西斯也包含在對象內，但無法削減其 HP 或 POW。
+	<br>盤面上只有 4 隻敵人時，若對象數骰擲出［5］，傷害骰仍以［5 隻］的值進行。
+	<br>
+	<br>
+<h3>關於以【命運之輪】重擲</h3>
+	<br>以【命運之輪】再次發動〈原初阿爾克那〉時，對本回合已造成傷害的同一對象（不重複）再度造成依對象數而定的傷害（例：1 隻則為 1d10＋5）。
+	<br>
+	<br>另外，即使本回合的攻擊對象已被擊破，對象數也不變動，仍使用包含該敵在內的數量所對應的傷害值。但實際套用傷害的，僅限盤面上殘存的對象。
+	<br>
+	<br>例：
+	<br>本回合以【戰車】攻擊敵 A、敵 B　&#10145;　敵 B 被擊倒
+	<br>於【命運之輪】回合再次發動【戰車】　&#10145;　以 2 隻對象的傷害值（1d10＋4）僅套用於殘存的敵 A
+
+	<br>
+	<br>
+<h3>決定性成功／致命性失敗的處理</h3>
+	<br>
+	<h2>〈原初阿爾克那〉</h2>
+	<arcana>〇決定性成功</arcana>
+	<br>【2～5】：
+	<br>對象數固定為［5］隻。若包含涅墨西斯在內敵人為［5］隻以下，則固定為含涅墨西斯在內的最大值。
+	<br>
+	<br>【1】　 ：
+	<br>對象數固定為［5］隻。若包含涅墨西斯在內敵人為［5］隻以下，則固定為含涅墨西斯在內的最大值＋將傷害骰的［1d10］改為［1d5］，並將固定傷害值增加 5。（※1）
+	<br>
+	<br>
+	<div class="box2">
+	※1：舉例而言，敵人為 5 隻時為［1d5＋6］；4 隻時為［1d5＋7］。傷害的期望值會上升。
+	</div>
+	<br>
+	<arcana>〇致命性失敗</arcana>
+	<br>【96～99】：
+	<br>喪失［1d5］*［1d10＋n］名隊員。（※2）
+	<br>
+	<br>【100】 　：
+	<br>喪失［5*（10＋1）＝55］名隊員。
+	<br>
+	<br>
+	<div class="box2">
+	※2：［1d10＋n］依［1d5］的對象人數而定。舉例而言，［1d5］的值為［2］時，以［2］隻敵人為對象的傷害骰為［1d10＋4］，故以［2*（1d10＋4）］名進行計算。
+	</div>
+<br>
+<br>
+
+
+</div>
+</body>
+</html>

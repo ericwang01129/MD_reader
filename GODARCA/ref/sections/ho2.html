@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+ <meta http-equiv="content-style-type" content="text/css">
+ <link rel="stylesheet" type="text/css" href="../css/style.css">
+ <script defer src="../js/script.js"></script>
+	
+<title>GODARCA</title>
+<base target="main"><!-- リンクを全てメインページ内に表示するように指定 -->
+</head>
+<body id="main_page">
+<h1>HOII｜女教皇</h1>
+<div class="text1">
+	<br>［1］ターンの間、指定した敵［1］体に〝再生反転〟状態を付与する。
+	<br>
+	<br>
+	<h2>&#10022; 再生反転</h2>
+	<br>『再生』効果を反転する。対象は〝再生反転〟状態中、すべての回復が自傷ダメージに変換される。
+	<br>効果終了時、【女教皇】は〝再生反転〟による自傷ダメージの値を2等分し、HPとSAN値に分けて減少させる。奇数の場合はSANの減少値を大きくする。
+	<br>
+</div>
+<h3>以下KP用項目</h3>
+<div class="text1">
+	<br><arcana>※例｜ゾス＝オムモグ相手に本効果を発生させた場合</arcana>
+	<br>
+	<br>1回のダメージにつきHPを3再生させるゾス＝オムモグ相手に、ターン中3回攻撃が当たったとすると、このターンのゾス＝オムモグは3×3で9ダメージを回復させることになり、反転した状態だと追加で9ダメージを負う。
+	<br>
+	<br>このときの9に該当する数字が「反転数値」扱いとなり、この例で言えば効果終了時、【女教皇】は9ダメージをHPとSAN値に分けて負うことになる。
+	<br>受ける値はSANを大きくするため、HPを4、SAN値を5（減少値の合計が9となるように）減少。
+	<br>
+	<br>また、味方が与えたダメージが回復値未満で、そのターンの再生値が少なかった場合は、相手が受けるダメージも自分に溜まる反転数値も、最大値ではなくそのときの変動値で計算してよい。
+	<br>
+	<br>※再生が複数回発生する敵に対しては、ターン内の総再生量を合算して反転数値を算出する。
+	<br>
+	<br>
+<h3>決定的成功／致命的失敗の処理</h3>
+	<br>
+	<h2>〈原初のアルカナ〉</h2>
+	<arcana>〇決定的成功</arcana>
+	<br>【2～5】：
+	<br>消費MPを［1］固定。
+	<br>
+	<br>【1】　 ：
+	<br>反転再生により自身が受けるダメージを、［1d反転数値］とする。（※1）
+	<br>
+	<br>
+	<div class="box2">
+	※1：［1d反転数値］の結果から負うダメージをHPとSAN値に分ける。
+	</div>
+	<br>
+	<arcana>〇致命的失敗</arcana>
+	<br>【96～99】：
+	<br>［ネメシスを含む敵の数d3］名の隊員を喪失。
+	<br>
+	<br>【100】 　：
+	<br>［ネメシスを含む敵の数d3*3］名の隊員を喪失。
+	<br>
+	<br>
+
+</div>
+</body>
+</html>

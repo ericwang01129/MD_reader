@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GODARCA｜完整劇本（KP 向）</title>
+<meta name="description" content="克蘇魯神話 TRPG 戰鬥型劇本《GODARCA》完整劇本繁中翻譯（KP 向・含全劇透）。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<script defer src="../assets/auth.js"></script>
+<style>
+  html,body{margin:0;height:100%;}
+  body{background:#101013;background:linear-gradient(160deg,#1f2024,#101013);
+    font-family:"Noto Sans TC",system-ui,-apple-system,sans-serif;color:#cbd0d3;}
+  .godarca-launch{display:flex;align-items:center;justify-content:center;min-height:100vh;
+    padding:1.5rem;box-sizing:border-box;text-align:center;}
+  .godarca-launch h1{font-size:1.4rem;letter-spacing:3px;color:#ff0058;margin:0 0 .6rem;font-weight:700;}
+  .godarca-launch p{font-size:.9rem;line-height:1.8;color:#9aa0a6;margin:.2rem 0;}
+</style>
+</head>
+<body>
+<div class="godarca-launch">
+  <div>
+    <h1>GODARCA</h1>
+    <p>完整劇本（KP 向）· 含全劇透</p>
+    <p>驗證中…</p>
+  </div>
+</div>
+<script>
+(function(){
+  function enter(){ location.replace('main.html'); }
+  document.addEventListener('DOMContentLoaded', function(){
+    if (window.MDAuth) { window.MDAuth.require(enter); }
+    else { try{ if(localStorage.getItem('mdreader_auth_v1')==='1'){ enter(); } }catch(e){} }
+  });
+})();
+</script>
+</body>
+</html>

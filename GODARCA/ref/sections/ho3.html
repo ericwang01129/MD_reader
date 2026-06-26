@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+ <meta http-equiv="content-style-type" content="text/css">
+ <link rel="stylesheet" type="text/css" href="../css/style.css">
+ <script defer src="../js/script.js"></script>
+	
+<title>GODARCA</title>
+<base target="main"><!-- リンクを全てメインページ内に表示するように指定 -->
+</head>
+<body id="main_page">
+<h1>HOIII｜女帝</h1>
+<div class="text1">
+	<br>［2d3］をロールし、［2d3］の結果と同じ数だけ［choice］を振る。出目と対応する自身以外のHOの味方のダメージロールと回復ロールに＋［1d3］。対象は重複しない。
+	<br>効果は［1d5］ターン継続する。発動後、効果ターン＋［1］ターンのリキャストタイムが発生する。
+	<br>
+	<br>
+<!-- コピーボックス -->
+<div class="copy-box" id="copy1" aria-label="コピー用テキスト">
+  <div class="copy-controls">
+    <div class="copy-label">PL開示対象選択用choice</div>
+    <div class="copy-actions">
+      <button class="copy-btn" data-target="copy1" aria-label="テキストをコピー">copy</button>
+    </div>
+  </div>
+
+  <!-- 表示領域：改行を保持して表示する -->
+  <div class="copy-content" tabindex="0">※お好きな方を使用してください。
+※choice使用時のコピー用／〇には［2d3］の結果を入れてください。
+
+choice〇 {HO0} {HO1} {HO2}{HO4} {HO5} {HO6} {HO7} {HO8} {HO9} {HO10} {HO11} {HO12} {HO13} {HO14} {HO15} {HO16} {HO17} {HO18} {HO19} {HO20} {HO21}
+choice〇 【愚者】 【魔術師】 【女教皇】 【皇帝】 【教皇】 【恋人】 【戦車】 【正義】 【隠者】 【運命の輪】 【力】 【吊るされた男】 【死神】 【節制】 【悪魔】 【塔】 【星】 【月】 【太陽】 【審判】 【世界】
+</div>
+
+  <!-- コピー成功フィードバック（JSで一時表示） -->
+  <div class="copy-feedback" aria-hidden="true">copy completed</div>
+</div>
+</div>
+<h3>以下KP用項目</h3>
+<div class="text1">
+	<br>使用例としては、
+	<br>- 【戦車】のアルカナに適用した場合は、ダメージ値が「1d10＋n＋1d3」
+	<br>- 【太陽】のアルカナに適用した場合は、回復値が「1d8＋1d3」
+	<br>など。
+	<br>
+	<br>
+<h3>【運命の輪】での振り直しについて</h3>
+	<br>【運命の輪】のアルカナで二度目の成功した場合は、対象数が［2d3］から［1d3］に減少するものの、対象を増やすことが可能。
+	<br>一度目の成功者と効果は重複しないため、まだ【女帝】効果を得ていないHOからランダムchoiceで選択する（上記choiceの〇の数値を［1d3］の結果とし、すでに効果を得ているHOを除いた状態でロールする）。
+	<br>効果は一度目の【女帝】と同タイミングで消失する。
+	<br>
+	<br>再ロールに失敗した場合はその時点でバフの効力が消失し、リキャストタイムが［1］ターンになる。
+	<br>
+	<br>
+<h3>決定的成功／致命的失敗の処理</h3>
+	<br>
+	<h2>〈原初のアルカナ〉</h2>
+	<arcana>〇決定的成功</arcana>
+	<br>【2～5】：
+	<br>指定人数が［6］名固定。
+	<br>
+	<br>【1】　 ：
+	<br>指定人数が［6］名固定＋効果時間が［5］ターン固定。
+	<br>
+
+	<br><arcana>〇致命的失敗</arcana>
+	<br>【96～99】：
+	<br>［2d3］*［1d22］名の隊員を喪失。
+	<br>
+	<br>【100】 　：
+	<br>［2d3］*［22］名の隊員を喪失。
+	<br>
+	<br>
+	
+</div>
+</body>
+</html>

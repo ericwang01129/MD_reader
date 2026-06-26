@@ -63,7 +63,8 @@
     '暴く深淵_譯名對照表.md',
     '01_VAMP_PL_譯名對照表.md',
     'DX3_譯名對照表.md',
-    'glossary_zh-TW.md'
+    'glossary_zh-TW.md',
+    '譯名對照表.md'
   ].map(nfc));
   function baseName(p) {
     if (!p) return '';
