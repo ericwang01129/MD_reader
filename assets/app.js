@@ -46,6 +46,7 @@
   }
   const PROTECTED_BASENAMES = new Set([
     'subekishi_完整劇本.md',
+    'subekishi_NPC詳細資料.md',
     '暴く深淵_完整劇本.md',
     'decamahoro_zh-TW.md',
     '02_VAMP_KP_完整劇本.md',
