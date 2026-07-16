@@ -1,0 +1,6 @@
+# 原始日文 PDF 與翻譯中間檔不入 git（避免再散布原作原文）
+# 註：ref/NPC/ 與 ref/tore-ra-/ 之立繪與預告圖「有」入 git，供譯文引用顯示。
+ref/Acrossire.pdf
+_chunks/
+_parts/
+_*.txt

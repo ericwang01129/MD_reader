@@ -45,6 +45,7 @@
     return s.normalize ? s.normalize('NFC') : s;
   }
   const PROTECTED_BASENAMES = new Set([
+    'Acrossire_zh-TW.md',
     'criminals_grave_marker_完整劇本.md',
     'subekishi_完整劇本.md',
     'subekishi_NPC詳細資料.md',
@@ -60,6 +61,7 @@
     'to_change_zh-TW.md',
     'to_change_stories_zh-TW.md',
     // 譯名表（各系列）
+    'Acrossire_譯名對照表.md',
     'criminals_grave_marker_譯名對照表.md',
     'subekishi_譯名對照表.md',
     'Sibyl_譯名對照表.md',
