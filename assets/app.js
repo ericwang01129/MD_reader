@@ -65,6 +65,10 @@
     'to_change_stories_zh-TW.md',
     '戀愛呼喚克蘇魯_zh-TW.md',
     '戀愛呼喚克蘇魯_DLC_zh-TW.md',
+    '聖杯戰爭後日談_HO1_Anonymity_zh-TW.md',
+    '聖杯戰爭後日談_HO2_Skylight_zh-TW.md',
+    '聖杯戰爭後日談_HO3_Cendrillon_zh-TW.md',
+    '聖杯戰爭後日談_HO4_Etoile_zh-TW.md',
     // 譯名表（各系列）
     '魔法少女散於四季_譯名對照表.md',
     '地球黎明_譯名對照表.md',
@@ -78,6 +82,7 @@
     'DX3_譯名對照表.md',
     'glossary_zh-TW.md',
     '戀愛呼喚克蘇魯_譯名對照表.md',
+    '聖杯戰爭後日談_譯名對照表.md',
     '譯名對照表.md'
   ].map(nfc));
   function baseName(p) {
