@@ -63,6 +63,8 @@
     '完整劇本.md',
     'to_change_zh-TW.md',
     'to_change_stories_zh-TW.md',
+    '戀愛呼喚克蘇魯_zh-TW.md',
+    '戀愛呼喚克蘇魯_DLC_zh-TW.md',
     // 譯名表（各系列）
     '魔法少女散於四季_譯名對照表.md',
     '地球黎明_譯名對照表.md',
@@ -75,6 +77,7 @@
     '01_VAMP_PL_譯名對照表.md',
     'DX3_譯名對照表.md',
     'glossary_zh-TW.md',
+    '戀愛呼喚克蘇魯_譯名對照表.md',
     '譯名對照表.md'
   ].map(nfc));
   function baseName(p) {

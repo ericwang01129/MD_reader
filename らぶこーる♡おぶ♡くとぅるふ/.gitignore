@@ -1,0 +1,5 @@
+# 原始日文來源（HTML）與翻譯中間檔不入 git（避免再散布原作原文）
+ref/
+_chunks/
+_parts/
+_*.txt
