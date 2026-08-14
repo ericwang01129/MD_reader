@@ -47,6 +47,7 @@
   const PROTECTED_BASENAMES = new Set([
     '魔法少女散於四季_zh-TW.md',
     '地球黎明_zh-TW.md',
+    '地球黎明_GM指南_zh-TW.md',
     '花與槍與婚約_zh-TW.md',
     'Acrossire_zh-TW.md',
     'criminals_grave_marker_完整劇本.md',
