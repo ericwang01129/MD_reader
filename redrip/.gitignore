@@ -1,0 +1,5 @@
+# 原始日文 PDF 與翻譯中間檔不入 git（避免再散布原作原文）
+ref/*.pdf
+_chunks/
+_parts/
+_*.txt
