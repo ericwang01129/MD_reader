@@ -45,6 +45,7 @@
     return s.normalize ? s.normalize('NFC') : s;
   }
   const PROTECTED_BASENAMES = new Set([
+    '魔法使的水葬_zh-TW.md',
     'REDRIP_zh-TW.md',
     '魔法少女散於四季_zh-TW.md',
     '地球黎明_zh-TW.md',
@@ -86,6 +87,7 @@
     '戀愛呼喚克蘇魯_譯名對照表.md',
     '聖杯戰爭後日談_譯名對照表.md',
     'REDRIP_譯名對照表.md',
+    '魔法使的水葬_譯名對照表.md',
     '譯名對照表.md'
   ].map(nfc));
   function baseName(p) {
