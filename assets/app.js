@@ -45,6 +45,7 @@
     return s.normalize ? s.normalize('NFC') : s;
   }
   const PROTECTED_BASENAMES = new Set([
+    'DIGIN_zh-TW.md',
     'Sigma-AINT_zh-TW.md',
     '向血月乾杯_zh-TW.md',
     '魔法使的水葬_zh-TW.md',
@@ -92,6 +93,7 @@
     '魔法使的水葬_譯名對照表.md',
     '向血月乾杯_譯名對照表.md',
     'Sigma-AINT_譯名對照表.md',
+    'DIGIN_譯名對照表.md',
     '譯名對照表.md'
   ].map(nfc));
   function baseName(p) {

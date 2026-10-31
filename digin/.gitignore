@@ -1,0 +1,5 @@
+# 原文與翻譯中間檔不入 git
+ref/*.txt
+_chunks/
+_parts/
+_*.txt
